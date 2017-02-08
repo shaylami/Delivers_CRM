@@ -1,2 +1,44 @@
 ﻿body {
 }
+#topContent {
+ text-align: right;
+ background-color: skyblue;
+ color: White;
+ font-size: x-large;
+ text-decoration: none;
+ font-weight: bold;
+ padding: 10px;
+ height: 50px;
+}
+#rightContent{
+ text-align: right;
+ background-color:deepskyblue;
+ color: White;
+ font-size: large;
+ text-decoration: none;
+ font-weight: bold;
+ width:20%;
+ max-width:20%;
+ height:auto;
+ float:right;
+}
+#mainContent{
+ text-align: right;
+ background-color:white;
+ color: White;
+ font-size: x-large;
+ text-decoration: none;
+ font-weight: bold;
+ padding: 10px;
+ height: 50px;
+}
+#footerContent{
+    text-align:right;
+ background-color: skyblue;
+ color: White;
+ font-size: x-large;
+ text-decoration: none;
+ font-weight: bold;
+ padding: 10px;
+ height: 50px;
+}

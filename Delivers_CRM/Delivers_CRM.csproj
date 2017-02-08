@@ -187,6 +187,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\" />
     <Folder Include="Pages\" />
   </ItemGroup>
   <PropertyGroup>
