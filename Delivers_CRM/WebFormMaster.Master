@@ -12,16 +12,26 @@
 <body>
     <form id="form1" runat="server">
         <div id="topContent" dir="rtl">
-            <a href="Default.aspx"></a>
-        </div>
-        <div id="rightContent" dir="rtl">
+<asp:contentplaceholder id="TopContent" runat="server">
+            <a href="Default.aspx">Powered by SolveIT</a>
+            </asp:contentplaceholder>
 
         </div>
+        <div id="rightContent" dir="rtl">
+            <asp:contentplaceholder id="RightContent" runat="server">
+                <a>Powered by SolveIT</a>
+            </asp:contentplaceholder>
+        </div>
             <div  id="mainContent">
-        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            <a>asdasd</a>
+        </asp:ContentPlaceHolder>
     </div>
         <div id="footerContent" dir="rtl">
-            <a>Powered by SolveIT</a>
+            <asp:ContentPlaceHolder ID="Footer" runat="server">
+                <a>Powered by SolveIT</a>
+            </asp:ContentPlaceHolder>
+            
         </div>
     </form>
 </body>

@@ -1,19 +1,22 @@
 ﻿body {
+
 }
 #topContent {
  text-align: right;
  background-color: skyblue;
- color: White;
+ color: gray;
  font-size: x-large;
  text-decoration: none;
  font-weight: bold;
  padding: 10px;
  height: 50px;
+ float:right;
+ width:100%;
 }
 #rightContent{
  text-align: right;
  background-color:deepskyblue;
- color: White;
+ color: gray;
  font-size: large;
  text-decoration: none;
  font-weight: bold;
@@ -21,21 +24,24 @@
  max-width:20%;
  height:auto;
  float:right;
+ height: 100%;
 }
 #mainContent{
  text-align: right;
  background-color:white;
- color: White;
+ color: gray;
  font-size: x-large;
  text-decoration: none;
  font-weight: bold;
  padding: 10px;
- height: 50px;
+ width:80%;
+ height: 100%;
+ float:right;
 }
 #footerContent{
     text-align:right;
  background-color: skyblue;
- color: White;
+ color: gray;
  font-size: x-large;
  text-decoration: none;
  font-weight: bold;
