@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,7 @@ namespace Delivers_CRM.Pages
         string connetionString = null;
         SqlConnection connection;
         SqlCommand cmd;
+        SqlDataReader dataReader;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,6 +23,7 @@ namespace Delivers_CRM.Pages
 
         private void DBCon()
         {
+            //connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
             connetionString = "Data Source = localhost; Initial Catalog = Weeles_100_DB; Persist Security Info = True; User ID = weeles100; Password = A123a123";
             connection = new SqlConnection(connetionString);
         }
@@ -29,7 +33,7 @@ namespace Delivers_CRM.Pages
         }
         private void VerifyUserPWDLogin()
         {
-            string email, password;
+            string email, password,isActive="True",FullName=null;
             email = TBEmail.Text;
             password = TBPWD.Text;
             if (email == string.Empty || password == string.Empty)
@@ -42,17 +46,31 @@ namespace Delivers_CRM.Pages
                 DBCon();
                 try
                 {
-                    string sql = "select * from Login_Users where Email=" + email + "AND Password=" + password;
-                    connection.Open();
-                    cmd = new SqlCommand(sql, connection);
-                    cmd.Dispose();
-                    connection.Close();
-                    lblError.Text = "ok";
+
+
+                    string sql = "SELECT FullName,Email,IsActive,Password FROM Login_Users WHERE Email='" + email + "' AND Password='" + password+"' AND IsActive='" + isActive+"'";
+                    connection.Open();               
+                    cmd = new SqlCommand(sql,connection);
+                    dataReader = cmd.ExecuteReader();
+                    if(dataReader.Read())
+                    { 
+                        //string email = (string)reader["Email"];
+                        FullName = (string)dataReader["FullName"];
+                        //lblError.Text = FullName;
+                    }
+                    dataReader.Close();
+
                 }
                 catch (Exception ex)
                 {
                     lblError.Text = ex.ToString();
                     lblError.Visible = true;
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    connection.Close();
+                    Response.Redirect("Home.aspx?FullName="+FullName);
                 }
             }
 
