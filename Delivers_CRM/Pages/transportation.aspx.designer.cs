@@ -31,13 +31,40 @@ namespace Delivers_CRM.Pages {
         protected global::System.Web.UI.WebControls.Label lblUserName;
         
         /// <summary>
-        /// DetailsView1 control.
+        /// AddNewBike control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
+        protected global::System.Web.UI.WebControls.Button AddNewBike;
+        
+        /// <summary>
+        /// ViewAllBikes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ViewAllBikes;
+        
+        /// <summary>
+        /// DVAddBike control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DetailsView DVAddBike;
+        
+        /// <summary>
+        /// GVAllBikes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GVAllBikes;
         
         /// <summary>
         /// SqlDataSourceBike control.

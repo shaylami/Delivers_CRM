@@ -24,5 +24,16 @@ namespace Delivers_CRM.Pages
             lblCurrentDateTime.Text = dt.ToString(datetimeformat);
         }
 
+        protected void AddNewBike_Click(object sender, EventArgs e)
+        {
+            DVAddBike.Visible = true;
+            GVAllBikes.Visible = false;
+        }
+
+        protected void ViewAllBikes_Click(object sender, EventArgs e)
+        {
+            DVAddBike.Visible = false;
+            GVAllBikes.Visible = true;
+        }
     }
 }

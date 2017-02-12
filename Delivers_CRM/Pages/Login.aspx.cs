@@ -77,7 +77,8 @@ namespace Delivers_CRM.Pages
                 {
                     cmd.Dispose();
                     connection.Close();
-                    Response.Redirect("Home.aspx?FullName="+FullName);
+                    //Response.Redirect("Home.aspx?FullName="+FullName);
+                    Response.Redirect("Home.aspx");
                 }
             }
 
