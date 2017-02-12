@@ -35,5 +35,13 @@ namespace Delivers_CRM.Pages
             DVAddBike.Visible = false;
             GVAllBikes.Visible = true;
         }
+
+        protected void DVAddBike_ItemInserting(object sender, DetailsViewInsertEventArgs e)
+        {
+            string filePath = DVAddBike.Fields..PostedFile.FileName;          // getting the file path of uploaded file
+            string filename1 = Path.GetFileName(filePath);               // getting the file name of uploaded file
+            string ext = Path.GetExtension(filename1);                      // getting the file extension of uploaded file
+            string type = String.Empty;
+        }
     }
 }
