@@ -23,9 +23,9 @@ namespace Delivers_CRM.Pages
 
         private void DBCon()
         {
-            //connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
-            connetionString = "Data Source = localhost; Initial Catalog = Weeles_100_DB; Persist Security Info = True; User ID = weeles100; Password = A123a123";
-            connection = new SqlConnection(connetionString);
+            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+            //connetionString = "Data Source = localhost; Initial Catalog = Weeles_100_DB; Persist Security Info = True; User ID = weeles100; Password = A123a123";
+            //connection = new SqlConnection(connetionString);
         }
         protected void UserLogin_Click(object sender, EventArgs e)
         {
@@ -59,6 +59,12 @@ namespace Delivers_CRM.Pages
                         //lblError.Text = FullName;
                     }
                     dataReader.Close();
+                    if(isActive == "False")
+                    {
+                        lblError.Visible = true;
+                        lblError.Text = "משתמש לא מורשה להתחבר";
+                        return;
+                    }
 
                 }
                 catch (Exception ex)
