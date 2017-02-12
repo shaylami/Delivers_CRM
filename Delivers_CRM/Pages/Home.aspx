@@ -10,6 +10,14 @@
     <div>
         <asp:label ID="lblUserName" runat="server"></asp:label>
     </div>
+    <div>
+        <asp:Menu ID="RMenu" runat="server" CssClass="dynamic">
+            <Items>
+                <asp:MenuItem NavigateUrl="~/Pages/Home.aspx" Text="ראשי" Value="New Item"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/Pages/Transportation.aspx" Text="רכב" Value="רכב"></asp:MenuItem>
+            </Items>
+        </asp:Menu>
+    </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
 <asp:GridView id="GvJornal" runat="server"></asp:GridView>

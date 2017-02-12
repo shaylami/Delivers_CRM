@@ -44,8 +44,9 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="רישיון רכב">
                 <InsertItemTemplate>
-                    <asp:FileUpload ID="FileUploadCar_License" runat="server" />&nbsp
-                    <asp:Button ID="btnUploadFileCar_License" runat="server" Text="שמור רישיון רכב" />
+                    <asp:FileUpload ID="FUCarLicense" runat="server"></asp:FileUpload>
+                    &nbsp
+                    <asp:Button ID="btnUploadFileCar_License" runat="server" Text="שמור רישיון רכב"></asp:button>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ButtonType="Button" CancelText="בטל" DeleteText="מחק" EditText="עריכה" InsertText="הוסף" NewText="חדש" SelectText="בחר" ShowInsertButton="True" UpdateText="עדכן" />

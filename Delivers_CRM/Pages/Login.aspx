@@ -7,17 +7,17 @@
 
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Table ID="Table1" runat="server" Font-Size="Large" Width="400px" Font-Names="Palatino" BorderColor="DarkRed" BorderWidth="2" ForeColor="Snow" CellPadding="5" CellSpacing="5" HorizontalAlign="Right" >
+    <asp:Table ID="Table1" runat="server" Font-Size="Large" Width="364px" Font-Names="Palatino" BorderColor="DarkRed" BorderWidth="2" ForeColor="Snow" CellPadding="5" CellSpacing="5" HorizontalAlign="Center" >
             <asp:TableHeaderRow runat="server" ForeColor="Snow" BackColor="DarkOrange" Font-Bold="true">
                 <asp:TableHeaderCell columnSpan="2">התחברות</asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow ID="TableRow1" runat="server" BackColor="DarkOrange">
-                <asp:TableCell><asp:TextBox runat="server" ID="TBEmail" Text="shay@lami.co.il" width="200px"></asp:TextBox></asp:TableCell>
                 <asp:TableCell>שם משתמש</asp:TableCell>
+                <asp:TableCell><asp:TextBox runat="server" ID="TBEmail" Text="shay@lami.co.il" width="200px"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow ID="TableRow2" runat="server" BackColor="DarkOrange">
-                <asp:TableCell><asp:TextBox runat="server" ID="TBPWD" Text="123" width="200px"></asp:TextBox></asp:TableCell>
                 <asp:TableCell>סיסמא</asp:TableCell>
+                <asp:TableCell><asp:TextBox runat="server" ID="TBPWD" Text="123" width="200px"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow ID="TableRow3" runat="server" BackColor="DarkOrange">
                 <asp:TableCell ColumnSpan="2" HorizontalAlign ="Center">
