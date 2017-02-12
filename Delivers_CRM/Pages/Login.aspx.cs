@@ -12,7 +12,7 @@ namespace Delivers_CRM.Pages
 {
     public partial class Login : System.Web.UI.Page
     {
-        string connetionString = null;
+        //string connetionString = null;
         SqlConnection connection;
         SqlCommand cmd;
         SqlDataReader dataReader;
@@ -56,6 +56,7 @@ namespace Delivers_CRM.Pages
                     { 
                         //string email = (string)reader["Email"];
                         FullName = (string)dataReader["FullName"];
+                        Application["FullName"] = FullName;
                         //lblError.Text = FullName;
                     }
                     dataReader.Close();

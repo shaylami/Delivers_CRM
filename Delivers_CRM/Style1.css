@@ -14,7 +14,7 @@
  width:100%;
 }
 #rightContent{
- text-align: right;
+ text-align:center;
  background-color:deepskyblue;
  color: gray;
  font-size: large;
@@ -25,6 +25,7 @@
  height:auto;
  float:right;
  height: 100%;
+ direction:rtl
 }
 #mainContent{
  text-align: right;
@@ -37,6 +38,7 @@
  width:80%;
  height: 100%;
  float:right;
+ direction:rtl;
 }
 #footerContent{
     text-align:right;

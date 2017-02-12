@@ -12,7 +12,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-<asp:GridView runat="server"></asp:GridView>
+<asp:GridView id="GvJornal" runat="server"></asp:GridView>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">

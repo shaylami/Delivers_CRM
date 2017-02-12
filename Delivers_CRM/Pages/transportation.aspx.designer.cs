@@ -10,7 +10,7 @@
 namespace Delivers_CRM.Pages {
     
     
-    public partial class Home {
+    public partial class transportation {
         
         /// <summary>
         /// lblCurrentDateTime control.
@@ -31,30 +31,21 @@ namespace Delivers_CRM.Pages {
         protected global::System.Web.UI.WebControls.Label lblUserName;
         
         /// <summary>
-        /// GvJornal control.
+        /// DetailsView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvJornal;
+        protected global::System.Web.UI.WebControls.DetailsView DetailsView1;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// SqlDataSourceBike control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// TimerClock control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.Timer TimerClock;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceBike;
     }
 }
