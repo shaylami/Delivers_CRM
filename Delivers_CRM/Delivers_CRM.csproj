@@ -155,6 +155,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pages\Delivers.aspx" />
     <Content Include="Pdfhandler.ashx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Pages\Home.aspx" />
@@ -181,6 +182,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Delivers.aspx.cs">
+      <DependentUpon>Delivers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Delivers.aspx.designer.cs">
+      <DependentUpon>Delivers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
