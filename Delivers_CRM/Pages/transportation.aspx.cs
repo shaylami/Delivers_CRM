@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace Delivers_CRM.Pages
         System.Timers.Timer t = new System.Timers.Timer();
         SqlConnection connection;
         SqlCommand cmd;
-        SqlDataReader dataReader; 
+        SqlDataReader dataReader;
+        string bikeID = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             t.Enabled = true;
@@ -51,17 +54,28 @@ namespace Delivers_CRM.Pages
         {
             try
             {
-                string Bike_Plate, Bike_Model, Bike_Color, Year_of_Production;
+                byte[] bytes;
+                string Bike_Plate, Bike_Model, Bike_Color, Year_of_Production,FUFileName,FUContentType;
                 TextBox tbBike_Plate = DVAddBike.FindControl("tbBike_Plate") as TextBox;
                 TextBox tbBike_Model = DVAddBike.FindControl("tbBike_Model") as TextBox;
                 TextBox tbBike_Color = DVAddBike.FindControl("tbBike_Color") as TextBox;
                 TextBox tbYear_of_Production = DVAddBike.FindControl("tbYear_of_Production") as TextBox;
-                Bike_Plate = tbBike_Plate.ToString();
-                Bike_Model = tbBike_Model.ToString();
-                Bike_Color = tbBike_Color.ToString();
-                Year_of_Production = tbYear_of_Production.ToString();
+                FileUpload fu = DVAddBike.FindControl("FUCarLicense") as FileUpload;
+                FUFileName = Path.GetFileName(fu.PostedFile.FileName);
+                FUContentType = fu.PostedFile.ContentType;
+                Bike_Plate = tbBike_Plate.Text.ToString();
+                Bike_Model = tbBike_Model.Text.ToString();
+                Bike_Color = tbBike_Color.Text.ToString();
+                Year_of_Production = tbYear_of_Production.Text.ToString();
+                using (Stream fs = fu.PostedFile.InputStream)
+                {
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        bytes = br.ReadBytes((Int32)fs.Length);
+                    }
+                }
                 DBCon();
-                string query = "INSERT INTO Motor_Bike(Bike_Plate,Bike_Model,Bike_Color,Year_of_Production) VALUES (@Bike_Plate,@Bike_Model,@Bike_Color,@Year_of_Production)";
+                string query = "INSERT INTO Motor_Bike(Bike_Plate,Bike_Model,Bike_Color,Year_of_Production,Car_License_Name,Car_License_Type,Car_License_Data) VALUES (@Bike_Plate,@Bike_Model,@Bike_Color,@Year_of_Production,@Car_License_Name,@Car_License_Type,@Car_License_Data)";
                 using (cmd = new SqlCommand(query))
                 {
                     cmd.Connection = connection;
@@ -69,43 +83,32 @@ namespace Delivers_CRM.Pages
                     cmd.Parameters.AddWithValue("@Bike_Model", Bike_Model);
                     cmd.Parameters.AddWithValue("@Bike_Color", Bike_Color);
                     cmd.Parameters.AddWithValue("@Year_of_Production", Year_of_Production);
+                    cmd.Parameters.AddWithValue("@Car_License_Name", FUFileName);
+                    cmd.Parameters.AddWithValue("@Car_License_Type", FUContentType);
+                    cmd.Parameters.AddWithValue("@Car_License_Data", bytes);
                     connection.Open();
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
+
             }
             catch(Exception ex)
             {
+                string exeption = ex.ToString();
+            }
+        }
 
-            }
-        }
-        protected void FileUploadDoc(object sender, EventArgs e)
+        protected void ViewFile(object sender, EventArgs e)
         {
-            FileUpload fu = DVAddBike.FindControl("FUCarLicense") as FileUpload;
-            string filename = Path.GetFileName(fu.PostedFile.FileName);
-            string contentType = fu.PostedFile.ContentType;
-            using (Stream fs = fu.PostedFile.InputStream)
-            {
-                using (BinaryReader br = new BinaryReader(fs))
-                {
-                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                    DBCon();
-                    {
-                        string query = "INSERT INTO Motor_Bike (Car_License_Name,Car_License_Type,Car_License_Data) VALUES (@Car_License_Name,@Car_License_Type,@Car_License_Data)";
-                        using (cmd = new SqlCommand(query))
-                        {
-                            cmd.Connection = connection;
-                            cmd.Parameters.AddWithValue("@Car_License_Name", filename);
-                            cmd.Parameters.AddWithValue("@Car_License_Type", contentType);
-                            cmd.Parameters.AddWithValue("@Car_License_Data", bytes);
-                            connection.Open();
-                            cmd.ExecuteNonQuery();
-                            connection.Close();
-                        }
-                    }
-                }
-            }
-            Response.Redirect(Request.Url.AbsoluteUri);
+            ltEmbedHT.Text = "";
+            int id = int.Parse((sender as LinkButton).CommandArgument);
+            string embed = "<object data=\"{0}{1}\" type=\"application/pdf\" width=\"800px\" height=\"600px\">";
+            embed += "If you are unable to view file, you can download from <a href = \"{0}{1}&download=1\">here</a>";
+            embed += " or download <a target = \"_blank\" href = \"http://get.adobe.com/reader/\">Adobe PDF Reader</a> to view the file.";
+            embed += "</object>";
+            ltEmbedHT.Text = string.Format(embed, ResolveUrl("~/Pdfhandler.ashx?Id="), id);
+
         }
+
     }
 }

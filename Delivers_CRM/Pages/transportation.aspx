@@ -46,7 +46,6 @@
                 <InsertItemTemplate>
                     <asp:FileUpload ID="FUCarLicense" runat="server"></asp:FileUpload>
                     &nbsp
-                    <asp:Button ID="btnUploadFileCar_License" runat="server" Text="שמור רישיון רכב"></asp:button>
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ButtonType="Button" CancelText="בטל" DeleteText="מחק" EditText="עריכה" InsertText="הוסף" NewText="חדש" SelectText="בחר" ShowInsertButton="True" UpdateText="עדכן" />
@@ -56,11 +55,56 @@
     <div>
         <asp:GridView ID="GVAllBikes" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Bike_Id" DataSourceID="SqlDataSourceBike">
             <Columns>
-                <asp:BoundField DataField="Bike_Id" HeaderText="מזהה מערכת" InsertVisible="False" ReadOnly="True" SortExpression="Bike_Id" />
-                <asp:BoundField DataField="Bike_Plate" HeaderText="לוחית זיהוי" SortExpression="Bike_Plate" />
-                <asp:BoundField DataField="Bike_Model" HeaderText="דגם" SortExpression="Bike_Model" />
-                <asp:BoundField DataField="Bike_Color" HeaderText="צבע" SortExpression="Bike_Color" />
-                <asp:BoundField DataField="Year_of_Production" HeaderText="שנת יצור" SortExpression="Year_of_Production" />
+                <asp:CommandField ButtonType="Button" CancelText="ביטול" DeleteText="מחק" EditText="עריכה" InsertText="הוסף" NewText="חדש" SelectText="בחר" ShowEditButton="True" ShowSelectButton="True" UpdateText="עדכן" />
+                <asp:TemplateField HeaderText="מזהה מערכת" InsertVisible="False" SortExpression="Bike_Id">
+                    <EditItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Bike_Id") %>'></asp:Label>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblBikeID" runat="server" Text='<%# Bind("Bike_Id") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="לוחית זיהוי" SortExpression="Bike_Plate">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Bike_Plate") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Bike_Plate") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="דגם מלא" SortExpression="Bike_Model">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Bike_Model") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Bike_Model") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="צבע" SortExpression="Bike_Color">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Bike_Color") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("Bike_Color") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="שנת יצור" SortExpression="Year_of_Production">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Year_of_Production") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("Year_of_Production") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="רישיון רכב" SortExpression="Car_License_Name">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Car_License_Name") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Car_License_Name") %>' Visible="False"></asp:Label>
+                        <asp:LinkButton ID="FileView" runat="server" Text="רישיון רכב" OnClick="ViewFile" CommandArgument='<%# Bind("Bike_Id") %>'></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </div>
@@ -103,6 +147,9 @@
             <asp:Parameter Name="original_Car_License_Data" Type="Object" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    </div>
+    <div>
+         <asp:Literal ID="ltEmbedHT" runat="server" />
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
