@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebFormMaster.Master" AutoEventWireup="true" CodeBehind="Transportation.aspx.cs" Inherits="Delivers_CRM.Pages.transportation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            margin-right: 40px;
+        }
+    </style>
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TopContent" runat="server">
 </asp:Content>
@@ -53,7 +58,7 @@
     </asp:DetailsView>
     </div>
     <div>
-        <asp:GridView ID="GVAllBikes" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Bike_Id" DataSourceID="SqlDataSourceBike">
+        <asp:GridView ID="GVAllBikes" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Bike_Id" DataSourceID="SqlDataSourceBike" PageSize="5">
             <Columns>
                 <asp:CommandField ButtonType="Button" CancelText="ביטול" DeleteText="מחק" EditText="עריכה" InsertText="הוסף" NewText="חדש" SelectText="בחר" ShowEditButton="True" ShowSelectButton="True" UpdateText="עדכן" />
                 <asp:TemplateField HeaderText="מזהה מערכת" InsertVisible="False" SortExpression="Bike_Id">
@@ -101,8 +106,8 @@
                         <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Car_License_Name") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Car_License_Name") %>' Visible="False"></asp:Label>
-                        <asp:LinkButton ID="FileView" runat="server" Text="רישיון רכב" OnClick="ViewFile" CommandArgument='<%# Bind("Bike_Id") %>'></asp:LinkButton>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Car_License_Name") %>'></asp:Label>&nbsp
+                        <asp:LinkButton ID="FileView" runat="server" Text="לצפייה ברישיון רכב" OnClick="ViewFile" CommandArgument='<%# Bind("Bike_Id") %>'></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

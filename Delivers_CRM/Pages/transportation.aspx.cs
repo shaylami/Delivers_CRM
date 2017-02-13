@@ -42,12 +42,14 @@ namespace Delivers_CRM.Pages
         {
             DVAddBike.Visible = true;
             GVAllBikes.Visible = false;
+            ltEmbedHT.Visible = false;
         }
 
         protected void ViewAllBikes_Click(object sender, EventArgs e)
         {
             DVAddBike.Visible = false;
             GVAllBikes.Visible = true;
+            GVAllBikes.DataBind();
         }
 
         protected void DVAddBike_ItemInserting(object sender, DetailsViewInsertEventArgs e)
@@ -90,12 +92,12 @@ namespace Delivers_CRM.Pages
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
-
             }
             catch(Exception ex)
             {
                 string exeption = ex.ToString();
             }
+
         }
 
         protected void ViewFile(object sender, EventArgs e)
