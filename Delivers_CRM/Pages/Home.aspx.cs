@@ -53,16 +53,16 @@ namespace Delivers_CRM.Pages
         }
         private void GVPOPBikeJornalData()
         {
-            connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT Bike_Jornal_ID,Bike_Current_Owner,Comments FROM Bike_Jornal";
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            GvJornal.DataSource = dt;
-            GvJornal.DataBind();
-            connection.Close();
+            //connection.Open();
+            //SqlCommand cmd = connection.CreateCommand();
+            //cmd.CommandType = CommandType.Text;
+            //cmd.CommandText = "SELECT Bike_Jornal_ID,Bike_Current_Owner,Comments FROM Bike_Jornal";
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //GvJornal.DataSource = dt;
+            //GvJornal.DataBind();
+            //connection.Close();
         }
     }
 }
