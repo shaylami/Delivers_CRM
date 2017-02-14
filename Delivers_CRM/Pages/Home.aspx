@@ -21,15 +21,11 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-<asp:GridView id="GvJornal" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="SqlDataSourceBikesDelivers">
-    <Columns>
-        <asp:CommandField ShowSelectButton="True" />
-        <asp:BoundField DataField="Deliver_FULLName" HeaderText="Deliver_FULLName" SortExpression="Deliver_FULLName" />
-        <asp:BoundField DataField="Deliver_Mobile" HeaderText="Deliver_Mobile" SortExpression="Deliver_Mobile" />
-        <asp:BoundField DataField="Bike_Plate" HeaderText="Bike_Plate" SortExpression="Bike_Plate" />
-    </Columns>
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSourceBikesDelivers" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Deliver_Person.Deliver_FULLName, Deliver_Person.Deliver_Mobile, Motor_Bike.Bike_Plate FROM Deliver_Person CROSS JOIN Motor_Bike"></asp:SqlDataSource>
+    <div></div>
+    <div>
+    </div>
+    <div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
