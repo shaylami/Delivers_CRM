@@ -16,6 +16,7 @@ namespace Delivers_CRM.Pages
     {
         System.Timers.Timer t = new System.Timers.Timer();
         SqlConnection connection;
+        SqlCommand cmd;
         protected void Page_Load(object sender, EventArgs e)
         {
             t.Enabled = true;
@@ -63,6 +64,67 @@ namespace Delivers_CRM.Pages
             //GvJornal.DataSource = dt;
             //GvJornal.DataBind();
             //connection.Close();
+        }
+
+        protected void BtnAddNewDeliver2Bike_Click(object sender, EventArgs e)
+        {
+            DVAddDeliver2Bike.Visible = true;
+            GVDeliverBikeList.Visible = false;
+        }
+
+        protected void BtnDeliversBikesList_Click(object sender, EventArgs e)
+        {
+            DVAddDeliver2Bike.Visible = false;
+            GVDeliverBikeList.Visible = true;
+            GVDeliverBikeList.DataBind();
+        }
+
+        protected void DVAddDeliver2Bike_ItemInserting(object sender, DetailsViewInsertEventArgs e)
+        {
+            try
+            {
+                string BikePlate, CurrentDateTime, DelvierSend, DeliverGet, Km, FinalDeliverName, LastTretmentDate, TretmentDetails, Comments;
+                DropDownList DDLBike_Plate = DVAddDeliver2Bike.FindControl("DDL_BikePlate") as DropDownList;
+                TextBox TBCurrentDT = DVAddDeliver2Bike.FindControl("TBCurrentTodatDateTime") as TextBox;
+                DropDownList tbDelvierSend = DVAddDeliver2Bike.FindControl("DDLDeliverSend") as DropDownList;
+                DropDownList tbDDLDeliverGetBike = DVAddDeliver2Bike.FindControl("DDLDeliverGetBike") as DropDownList;
+                TextBox tbkm = DVAddDeliver2Bike.FindControl("TBKM") as TextBox;
+                TextBox tbFinallDeliverName = DVAddDeliver2Bike.FindControl("TBFinallDeliverName") as TextBox;
+                TextBox tbTretmentDate = DVAddDeliver2Bike.FindControl("TBTretmentDate") as TextBox;
+                TextBox tbTreetmentSummery = DVAddDeliver2Bike.FindControl("TBTreetmentSummery") as TextBox;
+                TextBox tbComments = DVAddDeliver2Bike.FindControl("TBComments") as TextBox;
+                BikePlate = DDLBike_Plate.Text.ToString();
+                CurrentDateTime = DateTime.Now.ToString();
+                DelvierSend = tbDelvierSend.Text.ToString();
+                DeliverGet = tbDDLDeliverGetBike.Text.ToString();
+                Km = tbkm.Text.ToString();
+                FinalDeliverName = DeliverGet;
+                LastTretmentDate = tbTretmentDate.Text.ToString();
+                TretmentDetails = tbTreetmentSummery.Text.ToString();
+                Comments = tbComments.Text.ToString();
+                DBCon();
+                string query = "INSERT INTO Bike_Jornal(Bike_Plate,Tody_Date_Time,Deliver_return_Bike,Deliver_get_Bike,Bike_Km,Bike_Current_Owner,Bike_Last_Treatment_Date,Bike_Last_Treatment_Details,Comments) VALUES (@Bike_Plate,@Tody_Date_Time,@Deliver_return_Bike,@Deliver_get_Bike,@Bike_Km,@Bike_Current_Owner,@Bike_Last_Treatment_Date,@Bike_Last_Treatment_Details,@Comments)";
+                using (cmd = new SqlCommand(query))
+                {
+                    cmd.Connection = connection;
+                    cmd.Parameters.AddWithValue("@Bike_Plate", BikePlate);
+                    cmd.Parameters.AddWithValue("@Tody_Date_Time", CurrentDateTime);
+                    cmd.Parameters.AddWithValue("@Deliver_return_Bike", DelvierSend);
+                    cmd.Parameters.AddWithValue("@Deliver_get_Bike", DeliverGet);
+                    cmd.Parameters.AddWithValue("@Bike_Km", Km);
+                    cmd.Parameters.AddWithValue("@Bike_Current_Owner", FinalDeliverName);
+                    cmd.Parameters.AddWithValue("@Bike_Last_Treatment_Date", LastTretmentDate);
+                    cmd.Parameters.AddWithValue("@Bike_Last_Treatment_Details", TretmentDetails);
+                    cmd.Parameters.AddWithValue("@Comments", Comments);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                string exeption = ex.ToString();
+            }
         }
     }
 }
