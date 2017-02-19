@@ -81,7 +81,7 @@ namespace Delivers_CRM.Pages
                     }
                     connection.Close();
                     //Response.Redirect("Home.aspx?FullName="+FullName);
-                    Response.Redirect("Home.aspx");
+                    Response.Redirect("Pages/Home.aspx");
                 }
             }
 

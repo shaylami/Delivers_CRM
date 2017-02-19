@@ -17,7 +17,7 @@
             </asp:TableRow>
             <asp:TableRow ID="TableRow2" runat="server" BackColor="DarkOrange">
                 <asp:TableCell>סיסמא</asp:TableCell>
-                <asp:TableCell><asp:TextBox runat="server" ID="TBPWD" Text="123" width="200px"></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox runat="server" ID="TBPWD" Text="123" width="200px" TextMode="SingleLine"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow ID="TableRow3" runat="server" BackColor="DarkOrange">
                 <asp:TableCell ColumnSpan="2" HorizontalAlign ="Center">
