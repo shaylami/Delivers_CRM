@@ -26,7 +26,7 @@
         <asp:Button ID="BtnDeliversBikesList" runat="server" Text="רשימת שליחים קטנועים" OnClick="BtnDeliversBikesList_Click" />
     </div>
     <div>
-        <asp:DetailsView ID="DVAddDeliver2Bike" runat="server" AutoGenerateRows="False" DataKeyNames="Bike_Jornal_ID" DefaultMode="Insert" Height="50px" Width="569px" OnItemInserting="DVAddDeliver2Bike_ItemInserting" Visible="False">
+        <asp:DetailsView ID="DVAddDeliver2Bike" runat="server" AutoGenerateRows="False" DataKeyNames="Bike_Jornal_ID" DefaultMode="Insert" Height="50px" Width="569px" OnItemInserting="DVAddDeliver2Bike_ItemInserting" Visible="False" OnModeChanging="DVAddDeliver2Bike_ModeChanging">
             <Fields>
                 <asp:BoundField DataField="Bike_Jornal_ID" HeaderText="Bike_Jornal_ID" InsertVisible="False" ReadOnly="True" SortExpression="Bike_Jornal_ID" />
                 <asp:TemplateField HeaderText="לוחית רישוי" SortExpression="Bike_Plate">
@@ -92,32 +92,10 @@
                         <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Bike_Current_Owner") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TBFinallDeliverName" runat="server" Text='<%# Bind("Bike_Current_Owner") %>'></asp:TextBox>
+                        <asp:TextBox ID="TBFinallDeliverName" runat="server" Text='<%# Bind("Bike_Current_Owner") %>' ReadOnly="True"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("Bike_Current_Owner") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="תאריך טיפול אחרון" SortExpression="Bike_Last_Treatment_Date">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Bike_Last_Treatment_Date") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                        <asp:TextBox ID="TBTretmentDate" runat="server" Text='<%# Bind("Bike_Last_Treatment_Date") %>'></asp:TextBox>
-                    </InsertItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("Bike_Last_Treatment_Date") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="פרטי טיפול אחרון" SortExpression="Bike_Last_Treatment_Details">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Bike_Last_Treatment_Details") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                        <asp:TextBox ID="TBTreetmentSummery" runat="server" Height="55px" Text='<%# Bind("Bike_Last_Treatment_Details") %>' TextMode="MultiLine" Width="333px"></asp:TextBox>
-                    </InsertItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("Bike_Last_Treatment_Details") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="הערות" SortExpression="Comments">
@@ -189,22 +167,6 @@
                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("Bike_Current_Owner") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="תאריך טיפול אחרון" SortExpression="Bike_Last_Treatment_Date">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TBTretmentDate" runat="server" Text='<%# Bind("Bike_Last_Treatment_Date") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("Bike_Last_Treatment_Date") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="פרטי טיפול אחרון" SortExpression="Bike_Last_Treatment_Details">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TBTrementDetails" runat="server" Text='<%# Bind("Bike_Last_Treatment_Details") %>' TextMode="MultiLine" Width="200px"></asp:TextBox>
-                    </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("Bike_Last_Treatment_Details") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
                 <asp:TemplateField HeaderText="הערות" SortExpression="Comments">
                     <EditItemTemplate>
                         <asp:TextBox ID="TBComments" runat="server" Text='<%# Bind("Comments") %>' TextMode="MultiLine" Width="200px"></asp:TextBox>
@@ -215,7 +177,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceBikeJornalViewEdit" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" DeleteCommand="DELETE FROM [Bike_Jornal] WHERE [Bike_Jornal_ID] = @original_Bike_Jornal_ID AND (([Bike_Plate] = @original_Bike_Plate) OR ([Bike_Plate] IS NULL AND @original_Bike_Plate IS NULL)) AND (([Tody_Date_Time] = @original_Tody_Date_Time) OR ([Tody_Date_Time] IS NULL AND @original_Tody_Date_Time IS NULL)) AND (([Deliver_return_Bike] = @original_Deliver_return_Bike) OR ([Deliver_return_Bike] IS NULL AND @original_Deliver_return_Bike IS NULL)) AND (([Deliver_get_Bike] = @original_Deliver_get_Bike) OR ([Deliver_get_Bike] IS NULL AND @original_Deliver_get_Bike IS NULL)) AND (([Bike_Km] = @original_Bike_Km) OR ([Bike_Km] IS NULL AND @original_Bike_Km IS NULL)) AND (([Bike_Current_Owner] = @original_Bike_Current_Owner) OR ([Bike_Current_Owner] IS NULL AND @original_Bike_Current_Owner IS NULL)) AND (([Bike_Last_Treatment_Date] = @original_Bike_Last_Treatment_Date) OR ([Bike_Last_Treatment_Date] IS NULL AND @original_Bike_Last_Treatment_Date IS NULL)) AND (([Bike_Last_Treatment_Details] = @original_Bike_Last_Treatment_Details) OR ([Bike_Last_Treatment_Details] IS NULL AND @original_Bike_Last_Treatment_Details IS NULL)) AND (([Comments] = @original_Comments) OR ([Comments] IS NULL AND @original_Comments IS NULL))" InsertCommand="INSERT INTO [Bike_Jornal] ([Bike_Plate], [Tody_Date_Time], [Deliver_return_Bike], [Deliver_get_Bike], [Bike_Km], [Bike_Current_Owner], [Bike_Last_Treatment_Date], [Bike_Last_Treatment_Details], [Comments]) VALUES (@Bike_Plate, @Tody_Date_Time, @Deliver_return_Bike, @Deliver_get_Bike, @Bike_Km, @Bike_Current_Owner, @Bike_Last_Treatment_Date, @Bike_Last_Treatment_Details, @Comments)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Bike_Jornal]" UpdateCommand="UPDATE [Bike_Jornal] SET [Bike_Plate] = @Bike_Plate, [Tody_Date_Time] = @Tody_Date_Time, [Deliver_return_Bike] = @Deliver_return_Bike, [Deliver_get_Bike] = @Deliver_get_Bike, [Bike_Km] = @Bike_Km, [Bike_Current_Owner] = @Bike_Current_Owner, [Bike_Last_Treatment_Date] = @Bike_Last_Treatment_Date, [Bike_Last_Treatment_Details] = @Bike_Last_Treatment_Details, [Comments] = @Comments WHERE [Bike_Jornal_ID] = @original_Bike_Jornal_ID AND (([Bike_Plate] = @original_Bike_Plate) OR ([Bike_Plate] IS NULL AND @original_Bike_Plate IS NULL)) AND (([Tody_Date_Time] = @original_Tody_Date_Time) OR ([Tody_Date_Time] IS NULL AND @original_Tody_Date_Time IS NULL)) AND (([Deliver_return_Bike] = @original_Deliver_return_Bike) OR ([Deliver_return_Bike] IS NULL AND @original_Deliver_return_Bike IS NULL)) AND (([Deliver_get_Bike] = @original_Deliver_get_Bike) OR ([Deliver_get_Bike] IS NULL AND @original_Deliver_get_Bike IS NULL)) AND (([Bike_Km] = @original_Bike_Km) OR ([Bike_Km] IS NULL AND @original_Bike_Km IS NULL)) AND (([Bike_Current_Owner] = @original_Bike_Current_Owner) OR ([Bike_Current_Owner] IS NULL AND @original_Bike_Current_Owner IS NULL)) AND (([Bike_Last_Treatment_Date] = @original_Bike_Last_Treatment_Date) OR ([Bike_Last_Treatment_Date] IS NULL AND @original_Bike_Last_Treatment_Date IS NULL)) AND (([Bike_Last_Treatment_Details] = @original_Bike_Last_Treatment_Details) OR ([Bike_Last_Treatment_Details] IS NULL AND @original_Bike_Last_Treatment_Details IS NULL)) AND (([Comments] = @original_Comments) OR ([Comments] IS NULL AND @original_Comments IS NULL))">
+        <asp:SqlDataSource ID="SqlDataSourceBikeJornalViewEdit" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" DeleteCommand="DELETE FROM [Bike_Jornal] WHERE [Bike_Jornal_ID] = @original_Bike_Jornal_ID AND (([Bike_Plate] = @original_Bike_Plate) OR ([Bike_Plate] IS NULL AND @original_Bike_Plate IS NULL)) AND (([Tody_Date_Time] = @original_Tody_Date_Time) OR ([Tody_Date_Time] IS NULL AND @original_Tody_Date_Time IS NULL)) AND (([Deliver_return_Bike] = @original_Deliver_return_Bike) OR ([Deliver_return_Bike] IS NULL AND @original_Deliver_return_Bike IS NULL)) AND (([Deliver_get_Bike] = @original_Deliver_get_Bike) OR ([Deliver_get_Bike] IS NULL AND @original_Deliver_get_Bike IS NULL)) AND (([Bike_Km] = @original_Bike_Km) OR ([Bike_Km] IS NULL AND @original_Bike_Km IS NULL)) AND (([Bike_Current_Owner] = @original_Bike_Current_Owner) OR ([Bike_Current_Owner] IS NULL AND @original_Bike_Current_Owner IS NULL)) AND (([Comments] = @original_Comments) OR ([Comments] IS NULL AND @original_Comments IS NULL))" InsertCommand="INSERT INTO [Bike_Jornal] ([Bike_Plate], [Tody_Date_Time], [Deliver_return_Bike], [Deliver_get_Bike], [Bike_Km], [Bike_Current_Owner], [Comments]) VALUES (@Bike_Plate, @Tody_Date_Time, @Deliver_return_Bike, @Deliver_get_Bike, @Bike_Km, @Bike_Current_Owner, @Comments)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Bike_Jornal]" UpdateCommand="UPDATE [Bike_Jornal] SET [Bike_Plate] = @Bike_Plate, [Tody_Date_Time] = @Tody_Date_Time, [Deliver_return_Bike] = @Deliver_return_Bike, [Deliver_get_Bike] = @Deliver_get_Bike, [Bike_Km] = @Bike_Km, [Bike_Current_Owner] = @Bike_Current_Owner, [Comments] = @Comments WHERE [Bike_Jornal_ID] = @original_Bike_Jornal_ID AND (([Bike_Plate] = @original_Bike_Plate) OR ([Bike_Plate] IS NULL AND @original_Bike_Plate IS NULL)) AND (([Tody_Date_Time] = @original_Tody_Date_Time) OR ([Tody_Date_Time] IS NULL AND @original_Tody_Date_Time IS NULL)) AND (([Deliver_return_Bike] = @original_Deliver_return_Bike) OR ([Deliver_return_Bike] IS NULL AND @original_Deliver_return_Bike IS NULL)) AND (([Deliver_get_Bike] = @original_Deliver_get_Bike) OR ([Deliver_get_Bike] IS NULL AND @original_Deliver_get_Bike IS NULL)) AND (([Bike_Km] = @original_Bike_Km) OR ([Bike_Km] IS NULL AND @original_Bike_Km IS NULL)) AND (([Bike_Current_Owner] = @original_Bike_Current_Owner) OR ([Bike_Current_Owner] IS NULL AND @original_Bike_Current_Owner IS NULL)) AND (([Comments] = @original_Comments) OR ([Comments] IS NULL AND @original_Comments IS NULL))">
             <DeleteParameters>
                 <asp:Parameter Name="original_Bike_Jornal_ID" Type="Int64" />
                 <asp:Parameter Name="original_Bike_Plate" Type="String" />
@@ -224,8 +186,6 @@
                 <asp:Parameter Name="original_Deliver_get_Bike" Type="String" />
                 <asp:Parameter Name="original_Bike_Km" Type="String" />
                 <asp:Parameter Name="original_Bike_Current_Owner" Type="String" />
-                <asp:Parameter Name="original_Bike_Last_Treatment_Date" Type="String" />
-                <asp:Parameter Name="original_Bike_Last_Treatment_Details" Type="String" />
                 <asp:Parameter Name="original_Comments" Type="String" />
             </DeleteParameters>
             <InsertParameters>
@@ -235,8 +195,6 @@
                 <asp:Parameter Name="Deliver_get_Bike" Type="String" />
                 <asp:Parameter Name="Bike_Km" Type="String" />
                 <asp:Parameter Name="Bike_Current_Owner" Type="String" />
-                <asp:Parameter Name="Bike_Last_Treatment_Date" Type="String" />
-                <asp:Parameter Name="Bike_Last_Treatment_Details" Type="String" />
                 <asp:Parameter Name="Comments" Type="String" />
             </InsertParameters>
             <UpdateParameters>
@@ -246,8 +204,6 @@
                 <asp:Parameter Name="Deliver_get_Bike" Type="String" />
                 <asp:Parameter Name="Bike_Km" Type="String" />
                 <asp:Parameter Name="Bike_Current_Owner" Type="String" />
-                <asp:Parameter Name="Bike_Last_Treatment_Date" Type="String" />
-                <asp:Parameter Name="Bike_Last_Treatment_Details" Type="String" />
                 <asp:Parameter Name="Comments" Type="String" />
                 <asp:Parameter Name="original_Bike_Jornal_ID" Type="Int64" />
                 <asp:Parameter Name="original_Bike_Plate" Type="String" />
@@ -256,8 +212,6 @@
                 <asp:Parameter Name="original_Deliver_get_Bike" Type="String" />
                 <asp:Parameter Name="original_Bike_Km" Type="String" />
                 <asp:Parameter Name="original_Bike_Current_Owner" Type="String" />
-                <asp:Parameter Name="original_Bike_Last_Treatment_Date" Type="String" />
-                <asp:Parameter Name="original_Bike_Last_Treatment_Details" Type="String" />
                 <asp:Parameter Name="original_Comments" Type="String" />
             </UpdateParameters>
         </asp:SqlDataSource>

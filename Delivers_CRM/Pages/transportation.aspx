@@ -33,7 +33,7 @@
     </div>
     <br/>
     <div>
-    <asp:DetailsView ID="DVAddBike" runat="server" Visible="False" AutoGenerateRows="False" CaptionAlign="Right" DefaultMode="Insert" Height="73px" Width="575px" OnItemInserting="DVAddBike_ItemInserting">
+    <asp:DetailsView ID="DVAddBike" runat="server" Visible="False" AutoGenerateRows="False" CaptionAlign="Right" DefaultMode="Insert" Height="73px" Width="575px" OnItemInserting="DVAddBike_ItemInserting" OnModeChanging="DVAddBike_ModeChanging">
         <CommandRowStyle Wrap="True" />
         <Fields>
             <asp:TemplateField HeaderText="לוחית זיהוי">

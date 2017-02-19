@@ -112,5 +112,11 @@ namespace Delivers_CRM.Pages
 
         }
 
+        protected void DVAddBike_ModeChanging(object sender, DetailsViewModeEventArgs e)
+        {
+            DVAddBike.Visible = false;
+            GVAllBikes.Visible = true;
+            GVAllBikes.DataBind();
+        }
     }
 }

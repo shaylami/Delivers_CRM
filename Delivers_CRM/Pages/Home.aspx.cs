@@ -83,15 +83,13 @@ namespace Delivers_CRM.Pages
         {
             try
             {
-                string BikePlate, CurrentDateTime, DelvierSend, DeliverGet, Km, FinalDeliverName, LastTretmentDate, TretmentDetails, Comments;
+                string BikePlate, CurrentDateTime, DelvierSend, DeliverGet, Km, FinalDeliverName, Comments;
                 DropDownList DDLBike_Plate = DVAddDeliver2Bike.FindControl("DDL_BikePlate") as DropDownList;
                 TextBox TBCurrentDT = DVAddDeliver2Bike.FindControl("TBCurrentTodatDateTime") as TextBox;
                 DropDownList tbDelvierSend = DVAddDeliver2Bike.FindControl("DDLDeliverSend") as DropDownList;
                 DropDownList tbDDLDeliverGetBike = DVAddDeliver2Bike.FindControl("DDLDeliverGetBike") as DropDownList;
                 TextBox tbkm = DVAddDeliver2Bike.FindControl("TBKM") as TextBox;
-                TextBox tbFinallDeliverName = DVAddDeliver2Bike.FindControl("TBFinallDeliverName") as TextBox;
-                TextBox tbTretmentDate = DVAddDeliver2Bike.FindControl("TBTretmentDate") as TextBox;
-                TextBox tbTreetmentSummery = DVAddDeliver2Bike.FindControl("TBTreetmentSummery") as TextBox;
+                Label tbFinallDeliverName = DVAddDeliver2Bike.FindControl("TBFinallDeliverName") as Label;
                 TextBox tbComments = DVAddDeliver2Bike.FindControl("TBComments") as TextBox;
                 BikePlate = DDLBike_Plate.Text.ToString();
                 CurrentDateTime = DateTime.Now.ToString();
@@ -99,11 +97,9 @@ namespace Delivers_CRM.Pages
                 DeliverGet = tbDDLDeliverGetBike.Text.ToString();
                 Km = tbkm.Text.ToString();
                 FinalDeliverName = DeliverGet;
-                LastTretmentDate = tbTretmentDate.Text.ToString();
-                TretmentDetails = tbTreetmentSummery.Text.ToString();
                 Comments = tbComments.Text.ToString();
                 DBCon();
-                string query = "INSERT INTO Bike_Jornal(Bike_Plate,Tody_Date_Time,Deliver_return_Bike,Deliver_get_Bike,Bike_Km,Bike_Current_Owner,Bike_Last_Treatment_Date,Bike_Last_Treatment_Details,Comments) VALUES (@Bike_Plate,@Tody_Date_Time,@Deliver_return_Bike,@Deliver_get_Bike,@Bike_Km,@Bike_Current_Owner,@Bike_Last_Treatment_Date,@Bike_Last_Treatment_Details,@Comments)";
+                string query = "INSERT INTO Bike_Jornal(Bike_Plate,Tody_Date_Time,Deliver_return_Bike,Deliver_get_Bike,Bike_Km,Bike_Current_Owner,Comments) VALUES (@Bike_Plate,@Tody_Date_Time,@Deliver_return_Bike,@Deliver_get_Bike,@Bike_Km,@Bike_Current_Owner,@Comments)";
                 using (cmd = new SqlCommand(query))
                 {
                     cmd.Connection = connection;
@@ -113,8 +109,6 @@ namespace Delivers_CRM.Pages
                     cmd.Parameters.AddWithValue("@Deliver_get_Bike", DeliverGet);
                     cmd.Parameters.AddWithValue("@Bike_Km", Km);
                     cmd.Parameters.AddWithValue("@Bike_Current_Owner", FinalDeliverName);
-                    cmd.Parameters.AddWithValue("@Bike_Last_Treatment_Date", LastTretmentDate);
-                    cmd.Parameters.AddWithValue("@Bike_Last_Treatment_Details", TretmentDetails);
                     cmd.Parameters.AddWithValue("@Comments", Comments);
                     connection.Open();
                     cmd.ExecuteNonQuery();
@@ -125,6 +119,13 @@ namespace Delivers_CRM.Pages
             {
                 string exeption = ex.ToString();
             }
+        }
+
+        protected void DVAddDeliver2Bike_ModeChanging(object sender, DetailsViewModeEventArgs e)
+        {
+            DVAddDeliver2Bike.Visible = false;
+            GVDeliverBikeList.Visible = true;
+            GVDeliverBikeList.DataBind();
         }
     }
 }
