@@ -46,7 +46,7 @@
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Tody_Date_Time") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TBCurrentTodatDateTime" runat="server" Text='<%# Bind("Tody_Date_Time") %>'></asp:TextBox>
+                        <asp:TextBox ID="TBCurrentTodatDateTime" runat="server" Text='<%# Bind("Tody_Date_Time") %>' ReadOnly="True"></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("Tody_Date_Time") %>'></asp:Label>

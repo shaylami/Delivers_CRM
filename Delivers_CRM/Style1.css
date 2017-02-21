@@ -20,22 +20,21 @@
  font-size: large;
  text-decoration: none;
  font-weight: bold;
- width:15%;
- max-width:20%;
- height:auto;
+ width:10%;
+ max-width:10%;
+ height:100%;
  float:right;
- height: 100%;
  direction:rtl
 }
 #mainContent{
  text-align: right;
  background-color:white;
  color: gray;
- font-size: x-large;
+ font-size:large;
  text-decoration: none;
  font-weight: bold;
  padding: 10px;
- width:80%;
+ width:89%;
  height: 100%;
  direction:rtl;
 }
@@ -48,4 +47,9 @@
  font-weight: bold;
  padding: 10px;
  height: 50px;
+}
+.gridview {
+    width: 100%; 
+    word-wrap:break-word;
+    table-layout: fixed;
 }

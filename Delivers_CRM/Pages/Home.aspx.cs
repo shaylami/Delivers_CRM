@@ -20,10 +20,9 @@ namespace Delivers_CRM.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             t.Enabled = true;
-            Clock();
+            lblUserName.Text = "a";
             lblUserName.Text = Application["FullName"].ToString();
-            //string fname = Request.QueryString["FullName"];
-            //lblUserName.Text = fname;
+            Clock();
         }
         private void DBCon()
         {

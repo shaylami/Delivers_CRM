@@ -15,6 +15,7 @@ namespace Delivers_CRM.Pages
         System.Timers.Timer t = new System.Timers.Timer();
         protected void Page_Load(object sender, EventArgs e)
         {
+            DVInsertDelivers.Visible = false;
             t.Enabled = true;
             Clock();
             lblUserName.Text = Application["FullName"].ToString();
@@ -32,5 +33,24 @@ namespace Delivers_CRM.Pages
             lblCurrentDateTime.Text = dt.ToString(datetimeformat);
         }
 
+        protected void BtnInsertDeliver_Click(object sender, EventArgs e)
+        {
+            DVInsertDelivers.Visible = true;
+            GvAllDelives.Visible = false;
+        }
+
+        protected void BtnViewAllDelivers_Click(object sender, EventArgs e)
+        {
+            DVInsertDelivers.Visible = false;
+            GvAllDelives.Visible = true;
+            GvAllDelives.DataBind();
+        }
+
+        protected void DVInsertDelivers_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+        {
+            DVInsertDelivers.DataSource = null;
+            DVInsertDelivers.DataBind();
+            DVInsertDelivers.Visible = true;
+        }
     }
 }

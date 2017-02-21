@@ -40,6 +40,24 @@ namespace Delivers_CRM.Pages {
         protected global::System.Web.UI.WebControls.Menu RMenu;
         
         /// <summary>
+        /// BtnInsertDeliver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnInsertDeliver;
+        
+        /// <summary>
+        /// BtnViewAllDelivers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnViewAllDelivers;
+        
+        /// <summary>
         /// DVInsertDelivers control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace Delivers_CRM.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView DVInsertDelivers;
+        
+        /// <summary>
+        /// GvAllDelives control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GvAllDelives;
         
         /// <summary>
         /// SqlDataSourceDelivers control.
