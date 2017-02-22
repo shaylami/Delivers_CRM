@@ -72,7 +72,7 @@ namespace Delivers_CRM.Pages
                     }
                 }
                 DBCon();
-                string query = "INSERT INTO Bussines_Customers(Bussines_Name,Bussines_Phone,Bussines_Mobile,Bussines_Fax,Bussines_Address,Bussines_Owner,Bussines_Ownre_Mobile,Bussines_WorkingHouers,Bussines_LogoName,Bussines_Type,Bussines_LogoType,Bussines_LogoData,Bussines_CustomerAddDate) VALUES (@Bussines_Name,@Bussines_Phone,@Bussines_Mobile,@Bussines_Fax,@Bussines_Address,Bussines_Owner,@Bussines_Ownre_Mobile,@Bussines_WorkingHouers,@Bussines_Type,@Bussines_LogoName,@Bussines_LogoType,@Bussines_LogoData,@Bussines_CustomerAddDate)";
+                string query = "INSERT INTO Bussines_Customers(Bussines_Name,Bussines_Phone,Bussines_Mobile,Bussines_Fax,Bussines_Address,Bussines_Owner,Bussines_Ownre_Mobile,Bussines_WorkingHouers,Bussines_LogoName,Bussines_Type,Bussines_LogoType,Bussines_LogoData,Bussines_CustomerAddDate) VALUES (@Bussines_Name,@Bussines_Phone,@Bussines_Mobile,@Bussines_Fax,@Bussines_Address,@Bussines_Owner,@Bussines_Ownre_Mobile,@Bussines_WorkingHouers,@Bussines_Type,@Bussines_LogoName,@Bussines_LogoType,@Bussines_LogoData,@Bussines_CustomerAddDate)";
                 using (cmd = new SqlCommand(query))
                 {
                     cmd.Connection = connection;
@@ -98,6 +98,7 @@ namespace Delivers_CRM.Pages
             catch (Exception ex)
             {
                 string exeption = ex.ToString();
+                Response.Write("<script>alert("+ exeption + ")</script>");
             }
 
         }
