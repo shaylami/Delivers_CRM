@@ -18,6 +18,7 @@ namespace Delivers_CRM.Pages
         SqlDataReader dataReader;
         protected void Page_Load(object sender, EventArgs e)
         {
+            DVAddNewCustomer.Visible = false;
             t.Enabled = true;
             Clock();
             lblUserName.Text = "שלום : "+Application["FullName"].ToString();
@@ -106,8 +107,20 @@ namespace Delivers_CRM.Pages
         protected void DVAddNewCustomer_ModeChanging(object sender, DetailsViewModeEventArgs e)
         {
             DVAddNewCustomer.Visible = false;
-            //GVAllBikes.Visible = true;
-            //GVAllBikes.DataBind();
+            GVCustomers.Visible = true;
+            GVCustomers.DataBind();
+        }
+
+        protected void BtnFullListCustomers_Click(object sender, EventArgs e)
+        {
+            DVAddNewCustomer.Visible = false;
+            GVCustomers.Visible = true;
+        }
+
+        protected void BtnAddNewCustomer_Click(object sender, EventArgs e)
+        {
+            DVAddNewCustomer.Visible = true;
+            GVCustomers.Visible = false;
         }
     }
 }

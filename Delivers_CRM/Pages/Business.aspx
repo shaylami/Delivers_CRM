@@ -23,8 +23,8 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <asp:Button ID="BtnFullListCustomers" runat="server" Text="רשימת כל הלקוחות" />&nbsp&nbsp&nbsp
-        <asp:Button ID="BtnAddNewCustomer" runat="server" Text="הוסף לקוח חדש" />
+        <asp:Button ID="BtnFullListCustomers" runat="server" Text="רשימת כל הלקוחות" OnClick="BtnFullListCustomers_Click" />&nbsp&nbsp&nbsp
+        <asp:Button ID="BtnAddNewCustomer" runat="server" Text="הוסף לקוח חדש" OnClick="BtnAddNewCustomer_Click" />
         <br />
     </div>
     <div>
