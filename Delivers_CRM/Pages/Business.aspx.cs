@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace Delivers_CRM.Pages
 {
@@ -21,7 +25,8 @@ namespace Delivers_CRM.Pages
             DVAddNewCustomer.Visible = false;
             t.Enabled = true;
             Clock();
-            lblUserName.Text = "שלום : "+Application["FullName"].ToString();
+            lblUserName.Text = "שלום : " + Application["FullName"].ToString();
+            MapValue();
         }
         private void DBCon()
         {
@@ -99,7 +104,7 @@ namespace Delivers_CRM.Pages
             catch (Exception ex)
             {
                 string exeption = ex.ToString();
-                Response.Write("<script>alert("+ exeption + ")</script>");
+                Response.Write("<script>alert(" + exeption + ")</script>");
             }
 
         }
@@ -121,6 +126,77 @@ namespace Delivers_CRM.Pages
         {
             DVAddNewCustomer.Visible = true;
             GVCustomers.Visible = false;
+        }
+
+        public void MapValue()
+        {
+            string address = "";
+            string add = "", lo = "", lt = "";
+            //Label _Bussines_Address = GVCustomers.FindControl("lblAdd") as Label;
+            GVCustomers.DataBind();
+            for (int i = 0; i < GVCustomers.Rows.Count; i++)
+            {
+                Label _Bussines_Address = (Label)GVCustomers.Rows[i].FindControl("lbladd");
+                address = _Bussines_Address.Text.ToString();
+                if (string.IsNullOrEmpty(address))
+                {
+                    return;
+                }
+            }
+
+            string url = "http://maps.google.com/maps/api/geocode/xml?address=" + address + "&sensor=false";
+            WebRequest request = WebRequest.Create(url);
+
+            using (WebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                {
+                    DataSet dsResult = new DataSet();
+                    dsResult.ReadXml(reader);
+                    DataTable dtCoordinates = new DataTable();
+                    dtCoordinates.Columns.AddRange(new DataColumn[4] { new DataColumn("Id", typeof(int)), new DataColumn("Address", typeof(string)), new DataColumn("Latitude", typeof(string)), new DataColumn("Longitude", typeof(string)) });
+                    foreach (DataRow row in dsResult.Tables["result"].Rows)
+                    {
+                        string geometry_id = dsResult.Tables["geometry"].Select("result_id = " + row["result_id"].ToString())[0]["geometry_id"].ToString();
+                        DataRow location = dsResult.Tables["location"].Select("geometry_id = " + geometry_id)[0];
+                        dtCoordinates.Rows.Add(row["result_id"], row["formatted_address"], location["lat"], location["lng"]);
+                        add = row[1].ToString();
+                        lo = location[0].ToString();
+                        lt = location[1].ToString();
+                    }
+
+                }
+                //DBCon();
+                //string _Add=null, _lo=null, _lt=null;
+                //string select = "SELECT * FROM GIS_Data";
+                //connection.Open();
+                //cmd = new SqlCommand(select, connection);
+                //dataReader = cmd.ExecuteReader();
+                //if (dataReader.Read())
+                //{
+                //    _Add = (string)dataReader["Address"];
+                //    _lt = (string)dataReader["Latitude"];
+                //    _lo = (string)dataReader["Longitude"];
+                //}
+                //dataReader.Close();
+                //connection.Close();
+                //if((string.IsNullOrEmpty(_Add)) && (string.IsNullOrEmpty(_lt)) && (string.IsNullOrEmpty(_lo)))
+                //{
+                //    string query = "INSERT INTO GIS_Data(Address,Latitude,Longitude) VALUES (@Address,@Latitude,@Longitude)";
+                //    using (cmd = new SqlCommand(query))
+                //    {
+                //        cmd.Connection = connection;
+                //        cmd.Parameters.AddWithValue("@Address", add);
+                //        cmd.Parameters.AddWithValue("@Latitude", lt);
+                //        cmd.Parameters.AddWithValue("@Longitude", lo);
+                //        connection.Open();
+                //        cmd.ExecuteNonQuery();
+                //        connection.Close();
+
+                //    }
+                //}
+
+            }
         }
     }
 }

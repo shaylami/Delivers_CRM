@@ -187,7 +187,14 @@
                 <asp:BoundField DataField="Bussines_Phone" HeaderText="Bussines_Phone" SortExpression="Bussines_Phone" />
                 <asp:BoundField DataField="Bussines_Mobile" HeaderText="Bussines_Mobile" SortExpression="Bussines_Mobile" />
                 <asp:BoundField DataField="Bussines_Fax" HeaderText="Bussines_Fax" SortExpression="Bussines_Fax" />
-                <asp:BoundField DataField="Bussines_Address" HeaderText="Bussines_Address" SortExpression="Bussines_Address" />
+                <asp:TemplateField HeaderText="Bussines_Address" SortExpression="Bussines_Address">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="lblAdd" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="Bussines_Owner" HeaderText="Bussines_Owner" SortExpression="Bussines_Owner" />
                 <asp:BoundField DataField="Bussines_Ownre_Mobile" HeaderText="Bussines_Ownre_Mobile" SortExpression="Bussines_Ownre_Mobile" />
                 <asp:BoundField DataField="Bussines_WorkingHouers" HeaderText="Bussines_WorkingHouers" SortExpression="Bussines_WorkingHouers" />
@@ -259,6 +266,41 @@
                 <asp:Parameter Name="original_Bussines_CustomerAddDate" Type="String" />
             </UpdateParameters>
         </asp:SqlDataSource>
+    </div>
+    <div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKS3wLu6L5f5LztAn65PQtPIHXY0O9xt4&callback=initMap"type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>  
+    <script>  
+        var mapcode;  
+        var diag;  
+        function initialize() {  
+            mapcode = new google.maps.Geocoder();  
+            var lnt = new google.maps.LatLng(26.45, 82.85);  
+            var diagChoice = {  
+                zoom: 9,  
+                center: lnt,  
+                diagId: google.maps.MapTypeId.ROADMAP  
+            }  
+            diag = new google.maps.Map(document.getElementById('map_populate'), diagChoice);  
+        }  
+        function getmap() {  
+            var completeaddress = document.getElementById('txt_location').value;
+            mapcode.geocode({ 'address': completeaddress }, function (results, status) {  
+                if (status == google.maps.GeocoderStatus.OK) {  
+                    diag.setCenter(results[0].geometry.location);  
+                    var hint = new google.maps.Marker({  
+                        diag: diag,  
+                        position: results[0].geometry.location  
+                    });  
+                } else {  
+                    alert('Location Not Tracked. ' + status);  
+                }  
+            });  
+        }  
+        google.maps.event.addDomListener(window, 'load', initialize);  
+    </script> 
+        <div id="map_populate" style="width: 100%; height: 500px; border: 5px solid #5E5454;">
+        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">

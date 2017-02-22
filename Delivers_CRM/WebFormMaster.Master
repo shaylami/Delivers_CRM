@@ -20,7 +20,6 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Style1.css" rel="stylesheet" type="text/css" />
-    <link href="Content/sweetalert/sweet-alert.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">

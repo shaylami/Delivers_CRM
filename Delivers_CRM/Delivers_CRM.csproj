@@ -53,6 +53,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GoogleMapsApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMapsApi.0.61.0\lib\net45\GoogleMapsApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
       <Private>True</Private>
@@ -161,10 +165,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
-    <Content Include="Content\sweetalert\docs.css" />
-    <Content Include="Content\sweetalert\sweet-alert.css" />
-    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -217,11 +217,6 @@
     <Content Include="Pages\Business.aspx" />
     <Content Include="Pages\Delivers.aspx" />
     <Content Include="Pdfhandler.ashx" />
-    <Content Include="Content\sweetalert\sweet-alert.less" />
-    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
-    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
-    <Content Include="Content\bootstrap\variables.less" />
-    <Content Include="Content\bootstrap\mixins.less" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -249,7 +244,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
