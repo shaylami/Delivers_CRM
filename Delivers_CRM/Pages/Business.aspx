@@ -33,57 +33,57 @@
                 <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
                 <asp:TemplateField HeaderText="Bussines_Name" SortExpression="Bussines_Name">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Bussines_Name") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Bussines_Name") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_Name" runat="server" Text='<%# Bind("Bussines_Name") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Bussines_Name") %>'></asp:Label>
+                        <asp:Label ID="Label11" runat="server" Text='<%# Bind("Bussines_Name") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_Phone" SortExpression="Bussines_Phone">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Bussines_Phone") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Bussines_Phone") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_Phone" runat="server" Text='<%# Bind("Bussines_Phone") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Bussines_Phone") %>'></asp:Label>
+                        <asp:Label ID="Label10" runat="server" Text='<%# Bind("Bussines_Phone") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_Mobile" SortExpression="Bussines_Mobile">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Bussines_Mobile") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Bussines_Mobile") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_Mobile" runat="server" Text='<%# Bind("Bussines_Mobile") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("Bussines_Mobile") %>'></asp:Label>
+                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("Bussines_Mobile") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_Fax" SortExpression="Bussines_Fax">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Bussines_Fax") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Bussines_Fax") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_Fax" runat="server" Text='<%# Bind("Bussines_Fax") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("Bussines_Fax") %>'></asp:Label>
+                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("Bussines_Fax") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_Address" SortExpression="Bussines_Address">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_Address" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:Label>
+                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_Owner" SortExpression="Bussines_Owner">
@@ -99,57 +99,68 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_Ownre_Mobile" SortExpression="Bussines_Ownre_Mobile">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Bussines_Ownre_Mobile") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Bussines_Ownre_Mobile") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_Owner_Mobile" runat="server" Text='<%# Bind("Bussines_Ownre_Mobile") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("Bussines_Ownre_Mobile") %>'></asp:Label>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Bussines_Ownre_Mobile") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_WorkingHouers" SortExpression="Bussines_WorkingHouers">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Bussines_WorkingHouers") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Bussines_WorkingHouers") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_WorkingHouers" runat="server" Text='<%# Bind("Bussines_WorkingHouers") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("Bussines_WorkingHouers") %>'></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("Bussines_WorkingHouers") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_Type" SortExpression="Bussines_Type">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Bussines_Type") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Bussines_Type") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:TextBox ID="TBBussines_Type" runat="server" Text='<%# Bind("Bussines_Type") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("Bussines_Type") %>'></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("Bussines_Type") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_LogoName" SortExpression="Bussines_LogoName" InsertVisible="False">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:TextBox>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label10" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_LogoType" SortExpression="Bussines_LogoType" InsertVisible="False">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Bussines_LogoType") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Bussines_LogoType") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Bussines_LogoType") %>'></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Bussines_LogoType") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Bussines_LogoData" SortExpression="Bussines_LogoData">
+                    <EditItemTemplate>
+                        <asp:DynamicControl ID="DynamicControl1" runat="server" DataField="Bussines_LogoData" Mode="Edit" />
                     </EditItemTemplate>
                     <InsertItemTemplate>
                         <asp:FileUpload ID="FP_Logo" runat="server" />
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label11" runat="server" Text='<%# Bind("Bussines_LogoType") %>'></asp:Label>
+                        <asp:DynamicControl ID="DynamiControl1" runat="server" DataField="Bussines_LogoData" Mode="ReadOnly" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Bussines_CustomerAddDate" SortExpression="Bussines_CustomerAddDate" InsertVisible="False">
@@ -166,6 +177,7 @@
                 <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT * FROM [Bussines_Customers]"></asp:SqlDataSource>
     </div>
     <div></div>
 </asp:Content>
