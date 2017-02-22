@@ -24,7 +24,7 @@ namespace Delivers_CRM.Pages
             t.Enabled = true;
             Clock();
             string fname = Request.QueryString["FullName"];
-            lblUserName.Text = Application["FullName"].ToString();
+            lblUserName.Text = "שלום : "+Application["FullName"].ToString();
             
         }
         private void DBCon()

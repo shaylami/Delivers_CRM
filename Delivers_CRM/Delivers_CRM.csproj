@@ -214,6 +214,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Pages\Business.aspx" />
     <Content Include="Pages\Delivers.aspx" />
     <Content Include="Pdfhandler.ashx" />
     <Content Include="Content\sweetalert\sweet-alert.less" />
@@ -275,6 +276,13 @@
     <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Business.aspx.cs">
+      <DependentUpon>Business.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Business.aspx.designer.cs">
+      <DependentUpon>Business.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Delivers.aspx.cs">
       <DependentUpon>Delivers.aspx</DependentUpon>

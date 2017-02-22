@@ -18,7 +18,7 @@ namespace Delivers_CRM.Pages
             DVInsertDelivers.Visible = false;
             t.Enabled = true;
             Clock();
-            lblUserName.Text = Application["FullName"].ToString();
+            lblUserName.Text = "שלום : "+Application["FullName"].ToString();
         }
         private void DBCon()
         {
