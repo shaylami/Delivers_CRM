@@ -177,9 +177,89 @@
                 <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT * FROM [Bussines_Customers]"></asp:SqlDataSource>
     </div>
-    <div></div>
+    <div>
+        <asp:GridView ID="GVCustomers" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSourceAllCustomers">
+            <Columns>
+                <asp:CommandField ButtonType="Button" ShowEditButton="True" />
+                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+                <asp:BoundField DataField="Bussines_Name" HeaderText="Bussines_Name" SortExpression="Bussines_Name" />
+                <asp:BoundField DataField="Bussines_Phone" HeaderText="Bussines_Phone" SortExpression="Bussines_Phone" />
+                <asp:BoundField DataField="Bussines_Mobile" HeaderText="Bussines_Mobile" SortExpression="Bussines_Mobile" />
+                <asp:BoundField DataField="Bussines_Fax" HeaderText="Bussines_Fax" SortExpression="Bussines_Fax" />
+                <asp:BoundField DataField="Bussines_Address" HeaderText="Bussines_Address" SortExpression="Bussines_Address" />
+                <asp:BoundField DataField="Bussines_Owner" HeaderText="Bussines_Owner" SortExpression="Bussines_Owner" />
+                <asp:BoundField DataField="Bussines_Ownre_Mobile" HeaderText="Bussines_Ownre_Mobile" SortExpression="Bussines_Ownre_Mobile" />
+                <asp:BoundField DataField="Bussines_WorkingHouers" HeaderText="Bussines_WorkingHouers" SortExpression="Bussines_WorkingHouers" />
+                <asp:BoundField DataField="Bussines_Type" HeaderText="Bussines_Type" SortExpression="Bussines_Type" />
+                <asp:BoundField DataField="Bussines_LogoName" HeaderText="Bussines_LogoName" SortExpression="Bussines_LogoName" />
+                <asp:BoundField DataField="Bussines_LogoType" HeaderText="Bussines_LogoType" SortExpression="Bussines_LogoType" />
+                <asp:BoundField DataField="Bussines_CustomerAddDate" HeaderText="Bussines_CustomerAddDate" SortExpression="Bussines_CustomerAddDate" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSourceAllCustomers" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" DeleteCommand="DELETE FROM [Bussines_Customers] WHERE [ID] = @original_ID AND (([Bussines_Name] = @original_Bussines_Name) OR ([Bussines_Name] IS NULL AND @original_Bussines_Name IS NULL)) AND (([Bussines_Phone] = @original_Bussines_Phone) OR ([Bussines_Phone] IS NULL AND @original_Bussines_Phone IS NULL)) AND (([Bussines_Mobile] = @original_Bussines_Mobile) OR ([Bussines_Mobile] IS NULL AND @original_Bussines_Mobile IS NULL)) AND (([Bussines_Fax] = @original_Bussines_Fax) OR ([Bussines_Fax] IS NULL AND @original_Bussines_Fax IS NULL)) AND (([Bussines_Address] = @original_Bussines_Address) OR ([Bussines_Address] IS NULL AND @original_Bussines_Address IS NULL)) AND (([Bussines_Owner] = @original_Bussines_Owner) OR ([Bussines_Owner] IS NULL AND @original_Bussines_Owner IS NULL)) AND (([Bussines_Ownre_Mobile] = @original_Bussines_Ownre_Mobile) OR ([Bussines_Ownre_Mobile] IS NULL AND @original_Bussines_Ownre_Mobile IS NULL)) AND (([Bussines_WorkingHouers] = @original_Bussines_WorkingHouers) OR ([Bussines_WorkingHouers] IS NULL AND @original_Bussines_WorkingHouers IS NULL)) AND (([Bussines_Type] = @original_Bussines_Type) OR ([Bussines_Type] IS NULL AND @original_Bussines_Type IS NULL)) AND (([Bussines_LogoName] = @original_Bussines_LogoName) OR ([Bussines_LogoName] IS NULL AND @original_Bussines_LogoName IS NULL)) AND (([Bussines_LogoType] = @original_Bussines_LogoType) OR ([Bussines_LogoType] IS NULL AND @original_Bussines_LogoType IS NULL)) AND (([Bussines_LogoData] = @original_Bussines_LogoData) OR ([Bussines_LogoData] IS NULL AND @original_Bussines_LogoData IS NULL)) AND (([Bussines_CustomerAddDate] = @original_Bussines_CustomerAddDate) OR ([Bussines_CustomerAddDate] IS NULL AND @original_Bussines_CustomerAddDate IS NULL))" InsertCommand="INSERT INTO [Bussines_Customers] ([Bussines_Name], [Bussines_Phone], [Bussines_Mobile], [Bussines_Fax], [Bussines_Address], [Bussines_Owner], [Bussines_Ownre_Mobile], [Bussines_WorkingHouers], [Bussines_Type], [Bussines_LogoName], [Bussines_LogoType], [Bussines_LogoData], [Bussines_CustomerAddDate]) VALUES (@Bussines_Name, @Bussines_Phone, @Bussines_Mobile, @Bussines_Fax, @Bussines_Address, @Bussines_Owner, @Bussines_Ownre_Mobile, @Bussines_WorkingHouers, @Bussines_Type, @Bussines_LogoName, @Bussines_LogoType, @Bussines_LogoData, @Bussines_CustomerAddDate)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Bussines_Customers]" UpdateCommand="UPDATE [Bussines_Customers] SET [Bussines_Name] = @Bussines_Name, [Bussines_Phone] = @Bussines_Phone, [Bussines_Mobile] = @Bussines_Mobile, [Bussines_Fax] = @Bussines_Fax, [Bussines_Address] = @Bussines_Address, [Bussines_Owner] = @Bussines_Owner, [Bussines_Ownre_Mobile] = @Bussines_Ownre_Mobile, [Bussines_WorkingHouers] = @Bussines_WorkingHouers, [Bussines_Type] = @Bussines_Type, [Bussines_LogoName] = @Bussines_LogoName, [Bussines_LogoType] = @Bussines_LogoType, [Bussines_LogoData] = @Bussines_LogoData, [Bussines_CustomerAddDate] = @Bussines_CustomerAddDate WHERE [ID] = @original_ID AND (([Bussines_Name] = @original_Bussines_Name) OR ([Bussines_Name] IS NULL AND @original_Bussines_Name IS NULL)) AND (([Bussines_Phone] = @original_Bussines_Phone) OR ([Bussines_Phone] IS NULL AND @original_Bussines_Phone IS NULL)) AND (([Bussines_Mobile] = @original_Bussines_Mobile) OR ([Bussines_Mobile] IS NULL AND @original_Bussines_Mobile IS NULL)) AND (([Bussines_Fax] = @original_Bussines_Fax) OR ([Bussines_Fax] IS NULL AND @original_Bussines_Fax IS NULL)) AND (([Bussines_Address] = @original_Bussines_Address) OR ([Bussines_Address] IS NULL AND @original_Bussines_Address IS NULL)) AND (([Bussines_Owner] = @original_Bussines_Owner) OR ([Bussines_Owner] IS NULL AND @original_Bussines_Owner IS NULL)) AND (([Bussines_Ownre_Mobile] = @original_Bussines_Ownre_Mobile) OR ([Bussines_Ownre_Mobile] IS NULL AND @original_Bussines_Ownre_Mobile IS NULL)) AND (([Bussines_WorkingHouers] = @original_Bussines_WorkingHouers) OR ([Bussines_WorkingHouers] IS NULL AND @original_Bussines_WorkingHouers IS NULL)) AND (([Bussines_Type] = @original_Bussines_Type) OR ([Bussines_Type] IS NULL AND @original_Bussines_Type IS NULL)) AND (([Bussines_LogoName] = @original_Bussines_LogoName) OR ([Bussines_LogoName] IS NULL AND @original_Bussines_LogoName IS NULL)) AND (([Bussines_LogoType] = @original_Bussines_LogoType) OR ([Bussines_LogoType] IS NULL AND @original_Bussines_LogoType IS NULL)) AND (([Bussines_LogoData] = @original_Bussines_LogoData) OR ([Bussines_LogoData] IS NULL AND @original_Bussines_LogoData IS NULL)) AND (([Bussines_CustomerAddDate] = @original_Bussines_CustomerAddDate) OR ([Bussines_CustomerAddDate] IS NULL AND @original_Bussines_CustomerAddDate IS NULL))">
+            <DeleteParameters>
+                <asp:Parameter Name="original_ID" Type="Int64" />
+                <asp:Parameter Name="original_Bussines_Name" Type="String" />
+                <asp:Parameter Name="original_Bussines_Phone" Type="String" />
+                <asp:Parameter Name="original_Bussines_Mobile" Type="String" />
+                <asp:Parameter Name="original_Bussines_Fax" Type="String" />
+                <asp:Parameter Name="original_Bussines_Address" Type="String" />
+                <asp:Parameter Name="original_Bussines_Owner" Type="String" />
+                <asp:Parameter Name="original_Bussines_Ownre_Mobile" Type="String" />
+                <asp:Parameter Name="original_Bussines_WorkingHouers" Type="String" />
+                <asp:Parameter Name="original_Bussines_Type" Type="String" />
+                <asp:Parameter Name="original_Bussines_LogoName" Type="String" />
+                <asp:Parameter Name="original_Bussines_LogoType" Type="String" />
+                <asp:Parameter Name="original_Bussines_LogoData" Type="Object" />
+                <asp:Parameter Name="original_Bussines_CustomerAddDate" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="Bussines_Name" Type="String" />
+                <asp:Parameter Name="Bussines_Phone" Type="String" />
+                <asp:Parameter Name="Bussines_Mobile" Type="String" />
+                <asp:Parameter Name="Bussines_Fax" Type="String" />
+                <asp:Parameter Name="Bussines_Address" Type="String" />
+                <asp:Parameter Name="Bussines_Owner" Type="String" />
+                <asp:Parameter Name="Bussines_Ownre_Mobile" Type="String" />
+                <asp:Parameter Name="Bussines_WorkingHouers" Type="String" />
+                <asp:Parameter Name="Bussines_Type" Type="String" />
+                <asp:Parameter Name="Bussines_LogoName" Type="String" />
+                <asp:Parameter Name="Bussines_LogoType" Type="String" />
+                <asp:Parameter Name="Bussines_LogoData" Type="Object" />
+                <asp:Parameter Name="Bussines_CustomerAddDate" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Bussines_Name" Type="String" />
+                <asp:Parameter Name="Bussines_Phone" Type="String" />
+                <asp:Parameter Name="Bussines_Mobile" Type="String" />
+                <asp:Parameter Name="Bussines_Fax" Type="String" />
+                <asp:Parameter Name="Bussines_Address" Type="String" />
+                <asp:Parameter Name="Bussines_Owner" Type="String" />
+                <asp:Parameter Name="Bussines_Ownre_Mobile" Type="String" />
+                <asp:Parameter Name="Bussines_WorkingHouers" Type="String" />
+                <asp:Parameter Name="Bussines_Type" Type="String" />
+                <asp:Parameter Name="Bussines_LogoName" Type="String" />
+                <asp:Parameter Name="Bussines_LogoType" Type="String" />
+                <asp:Parameter Name="Bussines_LogoData" Type="Object" />
+                <asp:Parameter Name="Bussines_CustomerAddDate" Type="String" />
+                <asp:Parameter Name="original_ID" Type="Int64" />
+                <asp:Parameter Name="original_Bussines_Name" Type="String" />
+                <asp:Parameter Name="original_Bussines_Phone" Type="String" />
+                <asp:Parameter Name="original_Bussines_Mobile" Type="String" />
+                <asp:Parameter Name="original_Bussines_Fax" Type="String" />
+                <asp:Parameter Name="original_Bussines_Address" Type="String" />
+                <asp:Parameter Name="original_Bussines_Owner" Type="String" />
+                <asp:Parameter Name="original_Bussines_Ownre_Mobile" Type="String" />
+                <asp:Parameter Name="original_Bussines_WorkingHouers" Type="String" />
+                <asp:Parameter Name="original_Bussines_Type" Type="String" />
+                <asp:Parameter Name="original_Bussines_LogoName" Type="String" />
+                <asp:Parameter Name="original_Bussines_LogoType" Type="String" />
+                <asp:Parameter Name="original_Bussines_LogoData" Type="Object" />
+                <asp:Parameter Name="original_Bussines_CustomerAddDate" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
 </asp:Content>
