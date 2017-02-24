@@ -19,20 +19,17 @@ namespace Delivers_CRM.Pages
         SqlConnection connection;
         System.Timers.Timer t = new System.Timers.Timer();
         SqlCommand cmd;
-        SqlDataReader dataReader;
         protected void Page_Load(object sender, EventArgs e)
         {
             DVAddNewCustomer.Visible = false;
             t.Enabled = true;
             Clock();
             lblUserName.Text = "שלום : " + Application["FullName"].ToString();
-            MapValue();
+            map_populate.Visible = false;
         }
         private void DBCon()
         {
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
-            //connetionString = "Data Source = localhost; Initial Catalog = Weeles_100_DB; Persist Security Info = True; User ID = weeles100; Password = A123a123";
-            //connection = new SqlConnection(connetionString);
         }
         private void Clock()
         {
@@ -112,31 +109,32 @@ namespace Delivers_CRM.Pages
         protected void DVAddNewCustomer_ModeChanging(object sender, DetailsViewModeEventArgs e)
         {
             DVAddNewCustomer.Visible = false;
-            GVCustomers.Visible = true;
-            GVCustomers.DataBind();
+            //GVCustomers.Visible = true;
+            //GVCustomers.DataBind();
         }
 
         protected void BtnFullListCustomers_Click(object sender, EventArgs e)
         {
             DVAddNewCustomer.Visible = false;
-            GVCustomers.Visible = true;
+            //GVCustomers.Visible = true;
         }
 
         protected void BtnAddNewCustomer_Click(object sender, EventArgs e)
         {
             DVAddNewCustomer.Visible = true;
-            GVCustomers.Visible = false;
+            //GVCustomers.Visible = false;
         }
 
         public void MapValue()
         {
             string address = "";
             string add = "", lo = "", lt = "";
-            //Label _Bussines_Address = GVCustomers.FindControl("lblAdd") as Label;
-            GVCustomers.DataBind();
-            for (int i = 0; i < GVCustomers.Rows.Count; i++)
+            //Label _Bussines_Address = DVSearchResult.FindControl("lblCustomerAddress") as Label;
+            DVSearchResult.DataBind();
+            //address = _Bussines_Address.Text.ToString();
+            for (int i = 0; i < DVSearchResult.Rows.Count; i++)
             {
-                Label _Bussines_Address = (Label)GVCustomers.Rows[i].FindControl("lbladd");
+                Label _Bussines_Address = (Label)DVSearchResult.Rows[i].FindControl("lblCustomerAddress");
                 address = _Bussines_Address.Text.ToString();
                 if (string.IsNullOrEmpty(address))
                 {
@@ -163,9 +161,17 @@ namespace Delivers_CRM.Pages
                         add = row[1].ToString();
                         lo = location[0].ToString();
                         lt = location[1].ToString();
+                        lng.Value = lo;
+                        lat.Value = lt;
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "GoogleMap", "initMap", true);
                     }
 
                 }
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "GoogleMap", "initMap("+add+")", true);
+                //string jsFunc = "getmap(" + add + ")";
+                //string jsFunc = "getmap()";
+                //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "ss", jsFunc, true);
+
                 //DBCon();
                 //string _Add=null, _lo=null, _lt=null;
                 //string select = "SELECT * FROM GIS_Data";
@@ -197,6 +203,12 @@ namespace Delivers_CRM.Pages
                 //}
 
             }
+        }
+
+        protected void BtnSearchBussines_Click(object sender, EventArgs e)
+        {
+            map_populate.Visible = true;
+            MapValue();
         }
     }
 }
