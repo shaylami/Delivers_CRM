@@ -27,8 +27,6 @@ namespace Delivers_CRM.Pages
         private void DBCon()
         {
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
-            //connetionString = "Data Source = localhost; Initial Catalog = Weeles_100_DB; Persist Security Info = True; User ID = weeles100; Password = A123a123";
-            //connection = new SqlConnection(connetionString);
         }
         private void Clock()
         {
