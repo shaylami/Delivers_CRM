@@ -148,13 +148,22 @@ namespace Delivers_CRM.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl map_populate;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// DivError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivError;
+        
+        /// <summary>
+        /// lblMapError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMapError;
         
         /// <summary>
         /// SqlDataSourceSearchResult control.

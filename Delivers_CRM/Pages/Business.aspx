@@ -179,7 +179,8 @@
         </asp:DetailsView>
     </div>
     <div id="DivSearch" runat="server">
-      <asp:Label ID="lblBussinesSerach" runat="server" Text="חפש עסק : "></asp:Label>  <asp:TextBox ID="tbSearchBussines" Width="300px" runat="server"></asp:TextBox><asp:Button ID="BtnSearchBussines" runat="server" Text="חפש עכשיו" OnClick="BtnSearchBussines_Click" />
+        <asp:Label ID="lblBussinesSerach" runat="server" Text="חפש עסק : "></asp:Label>
+        <asp:TextBox ID="tbSearchBussines" Width="300px" runat="server"></asp:TextBox><asp:Button ID="BtnSearchBussines" runat="server" Text="חפש עכשיו" OnClick="BtnSearchBussines_Click" />
     </div>
     <div id="DivSearchResult" runat="server" style="width: 50%; float: right;">
         <input type="hidden" runat="server" id="lng" value="" />
@@ -323,34 +324,33 @@
             </Fields>
         </asp:DetailsView>
     </div>
-    <div id="map_populate" runat="server" style="width: 45%; height: 300px; float: left; border: 5px solid #5E5454;"></div>&nbsp;<script id="GoogleMap">
+    <div id="map_populate" runat="server" style="width: 45%; height: 300px; float: left; border: 5px solid #5E5454;">            
+    </div>
+    <div id="DivError" runat="server" style="width: 45%; height: 300px; float: left; border: 5px solid #5E5454;" visible="false">
+        <asp:Label ID="lblMapError" runat="server"></asp:Label>
+    </div>
+    <div>
+        <script id="GoogleMap">
             var long = null
             var lat = null
             long = document.getElementById("MainContent_lat").value;
             lat = document.getElementById("MainContent_lng").value;
-            
-            function initMap()
-            {
-
-                if ((lat != "" && long != "") || (lat== null && long == null))
-                {
+            function initMap() {
+                if ((lat != "" && long != "") || (lat == null && long == null)) {
                     GetMap();
                 }
-                else
-                {
-                    return false;               
+                else {
+                    return false;
                 }
             }
-            function GetMap()
-            {
+            function GetMap() {
                 //var uluru = { lat: 34.01, lng: 32.09 };
                 var uluru = { lat: parseFloat(lat), lng: parseFloat(long) };
                 var map = new google.maps.Map(document.getElementById("MainContent_map_populate"), { zoom: 16, center: uluru });
                 var marker = new google.maps.Marker({ position: uluru, map: map });
             }
-        </script><script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKS3wLu6L5f5LztAn65PQtPIHXY0O9xt4&callback=initMap"></script><%--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script--%><div>
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKS3wLu6L5f5LztAn65PQtPIHXY0O9xt4&callback=initMap"></script>
         <asp:SqlDataSource ID="SqlDataSourceSearchResult" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" DeleteCommand="DELETE FROM [Bussines_Customers] WHERE [ID] = @original_ID AND (([Bussines_Name] = @original_Bussines_Name) OR ([Bussines_Name] IS NULL AND @original_Bussines_Name IS NULL)) AND (([Bussines_Phone] = @original_Bussines_Phone) OR ([Bussines_Phone] IS NULL AND @original_Bussines_Phone IS NULL)) AND (([Bussines_Mobile] = @original_Bussines_Mobile) OR ([Bussines_Mobile] IS NULL AND @original_Bussines_Mobile IS NULL)) AND (([Bussines_Fax] = @original_Bussines_Fax) OR ([Bussines_Fax] IS NULL AND @original_Bussines_Fax IS NULL)) AND (([Bussines_Address] = @original_Bussines_Address) OR ([Bussines_Address] IS NULL AND @original_Bussines_Address IS NULL)) AND (([Bussines_Owner] = @original_Bussines_Owner) OR ([Bussines_Owner] IS NULL AND @original_Bussines_Owner IS NULL)) AND (([Bussines_Ownre_Mobile] = @original_Bussines_Ownre_Mobile) OR ([Bussines_Ownre_Mobile] IS NULL AND @original_Bussines_Ownre_Mobile IS NULL)) AND (([Bussines_WorkingHouers] = @original_Bussines_WorkingHouers) OR ([Bussines_WorkingHouers] IS NULL AND @original_Bussines_WorkingHouers IS NULL)) AND (([Bussines_Type] = @original_Bussines_Type) OR ([Bussines_Type] IS NULL AND @original_Bussines_Type IS NULL)) AND (([Bussines_LogoName] = @original_Bussines_LogoName) OR ([Bussines_LogoName] IS NULL AND @original_Bussines_LogoName IS NULL)) AND (([Bussines_LogoType] = @original_Bussines_LogoType) OR ([Bussines_LogoType] IS NULL AND @original_Bussines_LogoType IS NULL)) AND (([Bussines_LogoData] = @original_Bussines_LogoData) OR ([Bussines_LogoData] IS NULL AND @original_Bussines_LogoData IS NULL)) AND (([Bussines_CustomerAddDate] = @original_Bussines_CustomerAddDate) OR ([Bussines_CustomerAddDate] IS NULL AND @original_Bussines_CustomerAddDate IS NULL))" InsertCommand="INSERT INTO [Bussines_Customers] ([Bussines_Name], [Bussines_Phone], [Bussines_Mobile], [Bussines_Fax], [Bussines_Address], [Bussines_Owner], [Bussines_Ownre_Mobile], [Bussines_WorkingHouers], [Bussines_Type], [Bussines_LogoName], [Bussines_LogoType], [Bussines_LogoData], [Bussines_CustomerAddDate]) VALUES (@Bussines_Name, @Bussines_Phone, @Bussines_Mobile, @Bussines_Fax, @Bussines_Address, @Bussines_Owner, @Bussines_Ownre_Mobile, @Bussines_WorkingHouers, @Bussines_Type, @Bussines_LogoName, @Bussines_LogoType, @Bussines_LogoData, @Bussines_CustomerAddDate)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Bussines_Customers] WHERE ([Bussines_Name] LIKE '%' + @Bussines_Name + '%')" UpdateCommand="UPDATE [Bussines_Customers] SET [Bussines_Name] = @Bussines_Name, [Bussines_Phone] = @Bussines_Phone, [Bussines_Mobile] = @Bussines_Mobile, [Bussines_Fax] = @Bussines_Fax, [Bussines_Address] = @Bussines_Address, [Bussines_Owner] = @Bussines_Owner, [Bussines_Ownre_Mobile] = @Bussines_Ownre_Mobile, [Bussines_WorkingHouers] = @Bussines_WorkingHouers, [Bussines_Type] = @Bussines_Type, [Bussines_LogoName] = @Bussines_LogoName, [Bussines_LogoType] = @Bussines_LogoType, [Bussines_LogoData] = @Bussines_LogoData, [Bussines_CustomerAddDate] = @Bussines_CustomerAddDate WHERE [ID] = @original_ID AND (([Bussines_Name] = @original_Bussines_Name) OR ([Bussines_Name] IS NULL AND @original_Bussines_Name IS NULL)) AND (([Bussines_Phone] = @original_Bussines_Phone) OR ([Bussines_Phone] IS NULL AND @original_Bussines_Phone IS NULL)) AND (([Bussines_Mobile] = @original_Bussines_Mobile) OR ([Bussines_Mobile] IS NULL AND @original_Bussines_Mobile IS NULL)) AND (([Bussines_Fax] = @original_Bussines_Fax) OR ([Bussines_Fax] IS NULL AND @original_Bussines_Fax IS NULL)) AND (([Bussines_Address] = @original_Bussines_Address) OR ([Bussines_Address] IS NULL AND @original_Bussines_Address IS NULL)) AND (([Bussines_Owner] = @original_Bussines_Owner) OR ([Bussines_Owner] IS NULL AND @original_Bussines_Owner IS NULL)) AND (([Bussines_Ownre_Mobile] = @original_Bussines_Ownre_Mobile) OR ([Bussines_Ownre_Mobile] IS NULL AND @original_Bussines_Ownre_Mobile IS NULL)) AND (([Bussines_WorkingHouers] = @original_Bussines_WorkingHouers) OR ([Bussines_WorkingHouers] IS NULL AND @original_Bussines_WorkingHouers IS NULL)) AND (([Bussines_Type] = @original_Bussines_Type) OR ([Bussines_Type] IS NULL AND @original_Bussines_Type IS NULL)) AND (([Bussines_LogoName] = @original_Bussines_LogoName) OR ([Bussines_LogoName] IS NULL AND @original_Bussines_LogoName IS NULL)) AND (([Bussines_LogoType] = @original_Bussines_LogoType) OR ([Bussines_LogoType] IS NULL AND @original_Bussines_LogoType IS NULL)) AND (([Bussines_LogoData] = @original_Bussines_LogoData) OR ([Bussines_LogoData] IS NULL AND @original_Bussines_LogoData IS NULL)) AND (([Bussines_CustomerAddDate] = @original_Bussines_CustomerAddDate) OR ([Bussines_CustomerAddDate] IS NULL AND @original_Bussines_CustomerAddDate IS NULL))">
             <DeleteParameters>
                 <asp:Parameter Name="original_ID" Type="Int64" />

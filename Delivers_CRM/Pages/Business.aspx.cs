@@ -130,8 +130,11 @@ namespace Delivers_CRM.Pages
 
         public void MapValue()
         {
+            try
+            { 
             string address = "";
             string add = "", lo = "", lt = "";
+            WebResponse response;
             //Label _Bussines_Address = DVSearchResult.FindControl("lblCustomerAddress") as Label;
             DVSearchResult.DataBind();
             //address = _Bussines_Address.Text.ToString();
@@ -154,63 +157,36 @@ namespace Delivers_CRM.Pages
             string url = "http://maps.google.com/maps/api/geocode/xml?address=" + address + "&sensor=false";
             WebRequest request = WebRequest.Create(url);
 
-            using (WebResponse response = (HttpWebResponse)request.GetResponse())
-            {
-                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                using (response = (HttpWebResponse)request.GetResponse())
                 {
-                    DataSet dsResult = new DataSet();
-                    dsResult.ReadXml(reader);
-                    DataTable dtCoordinates = new DataTable();
-                    dtCoordinates.Columns.AddRange(new DataColumn[4] { new DataColumn("Id", typeof(int)), new DataColumn("Address", typeof(string)), new DataColumn("Latitude", typeof(string)), new DataColumn("Longitude", typeof(string)) });
-                    foreach (DataRow row in dsResult.Tables["result"].Rows)
+                    using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
                     {
-                        string geometry_id = dsResult.Tables["geometry"].Select("result_id = " + row["result_id"].ToString())[0]["geometry_id"].ToString();
-                        DataRow location = dsResult.Tables["location"].Select("geometry_id = " + geometry_id)[0];
-                        dtCoordinates.Rows.Add(row["result_id"], row["formatted_address"], location["lat"], location["lng"]);
-                        add = row[1].ToString();
-                        lo = location[0].ToString();
-                        lt = location[1].ToString();
-                        lng.Value = lo;
-                        lat.Value = lt;
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "GoogleMap", "initMap", true);
+                        DataSet dsResult = new DataSet();
+                        dsResult.ReadXml(reader);
+                        DataTable dtCoordinates = new DataTable();
+                        dtCoordinates.Columns.AddRange(new DataColumn[4] { new DataColumn("Id", typeof(int)), new DataColumn("Address", typeof(string)), new DataColumn("Latitude", typeof(string)), new DataColumn("Longitude", typeof(string)) });
+                        foreach (DataRow row in dsResult.Tables["result"].Rows)
+                        {
+                            string geometry_id = dsResult.Tables["geometry"].Select("result_id = " + row["result_id"].ToString())[0]["geometry_id"].ToString();
+                            DataRow location = dsResult.Tables["location"].Select("geometry_id = " + geometry_id)[0];
+                            dtCoordinates.Rows.Add(row["result_id"], row["formatted_address"], location["lat"], location["lng"]);
+                            add = row[1].ToString();
+                            lo = location[0].ToString();
+                            lt = location[1].ToString();
+                            lng.Value = lo;
+                            lat.Value = lt;
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "GoogleMap", "initMap", true);
+                        }
+
                     }
-
                 }
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "GoogleMap", "initMap("+add+")", true);
-                //string jsFunc = "getmap(" + add + ")";
-                //string jsFunc = "getmap()";
-                //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "ss", jsFunc, true);
 
-                //DBCon();
-                //string _Add=null, _lo=null, _lt=null;
-                //string select = "SELECT * FROM GIS_Data";
-                //connection.Open();
-                //cmd = new SqlCommand(select, connection);
-                //dataReader = cmd.ExecuteReader();
-                //if (dataReader.Read())
-                //{
-                //    _Add = (string)dataReader["Address"];
-                //    _lt = (string)dataReader["Latitude"];
-                //    _lo = (string)dataReader["Longitude"];
-                //}
-                //dataReader.Close();
-                //connection.Close();
-                //if((string.IsNullOrEmpty(_Add)) && (string.IsNullOrEmpty(_lt)) && (string.IsNullOrEmpty(_lo)))
-                //{
-                //    string query = "INSERT INTO GIS_Data(Address,Latitude,Longitude) VALUES (@Address,@Latitude,@Longitude)";
-                //    using (cmd = new SqlCommand(query))
-                //    {
-                //        cmd.Connection = connection;
-                //        cmd.Parameters.AddWithValue("@Address", add);
-                //        cmd.Parameters.AddWithValue("@Latitude", lt);
-                //        cmd.Parameters.AddWithValue("@Longitude", lo);
-                //        connection.Open();
-                //        cmd.ExecuteNonQuery();
-                //        connection.Close();
-
-                //    }
-                //}
-
+            }
+            catch(WebException wex)
+            {
+                map_populate.Visible = false;
+                DivError.Visible = true;
+                lblMapError.Text = "אופסי פופסי לא יתן להציג מפה כנראה בעיית קישורית לאינטרנט !!"+wex.Message;
             }
         }
 
