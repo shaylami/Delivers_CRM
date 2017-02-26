@@ -23,7 +23,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <asp:Button ID="BtnFullListCustomers" runat="server" Text="חיפוש לקוח" OnClick="BtnFullListCustomers_Click" />&nbsp&nbsp&nbsp
+        <asp:Button ID="BtnFullListCustomers" runat="server" Text="רשימת כל הלקוחות" OnClick="BtnFullListCustomers_Click" />&nbsp&nbsp&nbsp
         <asp:Button ID="BtnAddNewCustomer" runat="server" Text="הוסף לקוח חדש" OnClick="BtnAddNewCustomer_Click" />
         <br />
     </div>
@@ -31,7 +31,7 @@
         <asp:DetailsView ID="DVAddNewCustomer" runat="server" Height="50px" Width="380px" AutoGenerateRows="False" DataKeyNames="ID" DefaultMode="Insert" OnItemInserting="DVAddNewCustomer_ItemInserting" OnModeChanging="DVAddNewCustomer_ModeChanging">
             <Fields>
                 <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
-                <asp:TemplateField HeaderText="שם העסק" SortExpression="Bussines_Name">
+                <asp:TemplateField HeaderText="Bussines_Name" SortExpression="Bussines_Name">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Bussines_Name") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -42,7 +42,7 @@
                         <asp:Label ID="Label11" runat="server" Text='<%# Bind("Bussines_Name") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="טלפון" SortExpression="Bussines_Phone">
+                <asp:TemplateField HeaderText="Bussines_Phone" SortExpression="Bussines_Phone">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Bussines_Phone") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -53,7 +53,7 @@
                         <asp:Label ID="Label10" runat="server" Text='<%# Bind("Bussines_Phone") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="נייד" SortExpression="Bussines_Mobile">
+                <asp:TemplateField HeaderText="Bussines_Mobile" SortExpression="Bussines_Mobile">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("Bussines_Mobile") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -64,7 +64,7 @@
                         <asp:Label ID="Label9" runat="server" Text='<%# Bind("Bussines_Mobile") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="פקס" SortExpression="Bussines_Fax">
+                <asp:TemplateField HeaderText="Bussines_Fax" SortExpression="Bussines_Fax">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("Bussines_Fax") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -75,7 +75,7 @@
                         <asp:Label ID="Label8" runat="server" Text='<%# Bind("Bussines_Fax") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="כתובת" SortExpression="Bussines_Address">
+                <asp:TemplateField HeaderText="Bussines_Address" SortExpression="Bussines_Address">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -86,7 +86,7 @@
                         <asp:Label ID="Label7" runat="server" Text='<%# Bind("Bussines_Address") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="בעלים" SortExpression="Bussines_Owner">
+                <asp:TemplateField HeaderText="Bussines_Owner" SortExpression="Bussines_Owner">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Bussines_Owner") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -97,7 +97,7 @@
                         <asp:Label ID="Label6" runat="server" Text='<%# Bind("Bussines_Owner") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="בעלים נייד" SortExpression="Bussines_Ownre_Mobile">
+                <asp:TemplateField HeaderText="Bussines_Ownre_Mobile" SortExpression="Bussines_Ownre_Mobile">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Bussines_Ownre_Mobile") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -108,7 +108,7 @@
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("Bussines_Ownre_Mobile") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="שעות עבודה" SortExpression="Bussines_WorkingHouers">
+                <asp:TemplateField HeaderText="Bussines_WorkingHouers" SortExpression="Bussines_WorkingHouers">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Bussines_WorkingHouers") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -119,7 +119,7 @@
                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("Bussines_WorkingHouers") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="תחום עיסוק" SortExpression="Bussines_Type">
+                <asp:TemplateField HeaderText="Bussines_Type" SortExpression="Bussines_Type">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Bussines_Type") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -130,7 +130,7 @@
                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("Bussines_Type") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Bussines_LogoName" SortExpression="Bussines_LogoName" InsertVisible="False" Visible="False">
+                <asp:TemplateField HeaderText="Bussines_LogoName" SortExpression="Bussines_LogoName" InsertVisible="False">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -141,7 +141,7 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("Bussines_LogoName") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Bussines_LogoType" SortExpression="Bussines_LogoType" InsertVisible="False" Visible="False">
+                <asp:TemplateField HeaderText="Bussines_LogoType" SortExpression="Bussines_LogoType" InsertVisible="False">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Bussines_LogoType") %>'></asp:TextBox>
                     </EditItemTemplate>
@@ -152,7 +152,7 @@
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("Bussines_LogoType") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="לוגו חברה" SortExpression="Bussines_LogoData">
+                <asp:TemplateField ConvertEmptyStringToNull="False" HeaderText="Bussines_LogoData" SortExpression="Bussines_LogoData">
                     <EditItemTemplate>
                         <asp:DynamicControl ID="DynamicControl1" runat="server" DataField="Bussines_LogoData" Mode="Edit" />
                     </EditItemTemplate>
@@ -174,7 +174,7 @@
                         <asp:Label ID="Label12" runat="server" Text='<%# Bind("Bussines_CustomerAddDate") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ButtonType="Button" ShowInsertButton="True" CancelText="ביטול" DeleteText="מחק" EditText="ערוך" InsertText="הוסף" NewText="חדש" SelectText="בחר" UpdateText="עדכן" />
+                <asp:CommandField ButtonType="Button" ShowInsertButton="True" />
             </Fields>
         </asp:DetailsView>
     </div>
@@ -326,8 +326,8 @@
     <div id="map_populate" runat="server" style="width: 45%; height: 300px; float: left; border: 5px solid #5E5454;"></div>&nbsp;<script id="GoogleMap">
             var long = null
             var lat = null
-            long = document.getElementById("MainContent_lat").value;
-            lat = document.getElementById("MainContent_lng").value;
+            lat = document.getElementById("MainContent_lat").value;
+            long = document.getElementById("MainContent_lng").value;
             
             function initMap()
             {
