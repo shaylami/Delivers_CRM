@@ -109,6 +109,7 @@ namespace Delivers_CRM.Pages
         protected void DVAddNewCustomer_ModeChanging(object sender, DetailsViewModeEventArgs e)
         {
             DVAddNewCustomer.Visible = false;
+            Response.Write("<script>alert('הפעולה בוטלה !!')</script>");
             //GVCustomers.Visible = true;
             //GVCustomers.DataBind();
         }
@@ -142,6 +143,12 @@ namespace Delivers_CRM.Pages
                 {
                     return;
                 }
+            }
+            if(address == "")
+            {
+                map_populate.Visible = false;
+                Response.Write("<script>alert('אין מידע תואם לנתונים שחיפשת !!!!')</script>");
+                return;
             }
 
             string url = "http://maps.google.com/maps/api/geocode/xml?address=" + address + "&sensor=false";
