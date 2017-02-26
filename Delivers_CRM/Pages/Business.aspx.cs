@@ -108,15 +108,17 @@ namespace Delivers_CRM.Pages
 
         protected void DVAddNewCustomer_ModeChanging(object sender, DetailsViewModeEventArgs e)
         {
-            DVAddNewCustomer.Visible = false;
-            //GVCustomers.Visible = true;
-            //GVCustomers.DataBind();
+            DVAddNewCustomer.Visible = true;
+            DVSearchResult.Visible = false;
+            map_populate.Visible = false;
+            DVSearchResult.DataBind();
         }
 
         protected void BtnFullListCustomers_Click(object sender, EventArgs e)
         {
             DVAddNewCustomer.Visible = false;
-            //GVCustomers.Visible = true;
+            DVSearchResult.Visible = true;
+            map_populate.Visible = true;
         }
 
         protected void BtnAddNewCustomer_Click(object sender, EventArgs e)
