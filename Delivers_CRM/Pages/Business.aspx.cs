@@ -116,13 +116,15 @@ namespace Delivers_CRM.Pages
         protected void BtnFullListCustomers_Click(object sender, EventArgs e)
         {
             DVAddNewCustomer.Visible = false;
-            //GVCustomers.Visible = true;
+            DivSearch.Visible = true;
+            tbSearchBussines.Text = string.Empty;
         }
 
         protected void BtnAddNewCustomer_Click(object sender, EventArgs e)
         {
             DVAddNewCustomer.Visible = true;
-            //GVCustomers.Visible = false;
+            DivSearch.Visible = false;
+            DivSearchResult.Visible = false;
         }
 
         public void MapValue()

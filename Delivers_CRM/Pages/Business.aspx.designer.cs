@@ -67,6 +67,15 @@ namespace Delivers_CRM.Pages {
         protected global::System.Web.UI.WebControls.DetailsView DVAddNewCustomer;
         
         /// <summary>
+        /// DivSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivSearch;
+        
+        /// <summary>
         /// lblBussinesSerach control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,15 @@ namespace Delivers_CRM.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnSearchBussines;
+        
+        /// <summary>
+        /// DivSearchResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivSearchResult;
         
         /// <summary>
         /// lng control.
