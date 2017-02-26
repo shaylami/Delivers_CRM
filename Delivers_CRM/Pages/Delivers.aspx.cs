@@ -49,6 +49,7 @@ namespace Delivers_CRM.Pages
         protected void DVInsertDelivers_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
         {
             DVInsertDelivers.DataSource = null;
+            Response.Write("<script>alert('המידע הוסף בהצלחה')</script>");
             DVInsertDelivers.DataBind();
             DVInsertDelivers.Visible = true;
         }

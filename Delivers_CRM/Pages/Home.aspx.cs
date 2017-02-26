@@ -111,6 +111,8 @@ namespace Delivers_CRM.Pages
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
+                DVAddDeliver2Bike.DataBind();
+                Response.Write("<script>alert('המידע הוסף בהצלחה')</script>");
             }
             catch (Exception ex)
             {
@@ -123,6 +125,7 @@ namespace Delivers_CRM.Pages
             DVAddDeliver2Bike.Visible = false;
             GVDeliverBikeList.Visible = true;
             GVDeliverBikeList.DataBind();
+            Response.Write("<script>alert('הפעולה בוטלה !!')</script>");
         }
     }
 }

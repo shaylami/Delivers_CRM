@@ -49,6 +49,7 @@ namespace Delivers_CRM.Pages
         {
             DVAddBike.Visible = false;
             GVAllBikes.Visible = true;
+            ltEmbedHT.Visible = false;
             GVAllBikes.DataBind();
         }
 
@@ -91,7 +92,10 @@ namespace Delivers_CRM.Pages
                     connection.Open();
                     cmd.ExecuteNonQuery();
                     connection.Close();
+                    
                 }
+                DVAddBike.DataBind();
+                Response.Write("<script>alert('המידע הוסף בהצלחה')</script>");
             }
             catch(Exception ex)
             {
@@ -116,6 +120,8 @@ namespace Delivers_CRM.Pages
         {
             DVAddBike.Visible = false;
             GVAllBikes.Visible = true;
+            ltEmbedHT.Visible = false;
+            Response.Write("<script>alert('הפעולה בוטלה !!')</script>");
             GVAllBikes.DataBind();
         }
     }
