@@ -26,6 +26,7 @@ namespace DeliverCrm_App_Droid
             
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
             CheckNetworkState();
             GetMobileNumber();
             _login = (Button)FindViewById(Resource.Id.LogIn);
@@ -44,28 +45,36 @@ namespace DeliverCrm_App_Droid
         private void CheckMobileNumberInDB()
         {
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            Dialog dialog = alert.Create();
             DBCon();
             string _mobile = _Mobile.Text;
+            string sql_mobile;
             try
             {
-                string sql = "SELECT * FROM Deliver_Person";// WHERE Deliver_Mobile = '"+_mobile+"'";
+                string sql = "SELECT * FROM Deliver_Person WHERE Deliver_Mobile = '"+_mobile+"'";
                 connection.Open();
                 cmd = new SqlCommand(sql, connection);
                 dataReader = cmd.ExecuteReader();
                 if (dataReader.Read())
                 {
                     //string email = (string)reader["Email"];
-                    _mobile = (string)dataReader["Deliver_Mobile"];
-                    //lblError.Text = FullName;
+                    sql_mobile = (string)dataReader["Deliver_Mobile"];
+                    if(_mobile == sql_mobile)
+                    {
+                        dataReader.Close();
+                        OpenHWPage();
+                    }
                 }
-                dataReader.Close();
-
+                else
+                {
+                    Toast.MakeText(this, "משתמש לא קיים במערכת", ToastLength.Long).Show();
+                    dataReader.Close();
+                }        
             }
             catch (Exception ex)
             {
                 alert.SetTitle("Error");
-                alert.SetMessage(ex.ToString());
-                Dialog dialog = alert.Create();
+                alert.SetMessage(ex.ToString());           
                 dialog.Show();
             }
             finally
@@ -74,11 +83,17 @@ namespace DeliverCrm_App_Droid
                 {
                     cmd.Dispose();
                 }
+                
                 connection.Close();
 
             }
 
-
+        }
+        private void OpenHWPage()
+        {
+            var intent = new Intent(this, typeof(WH));
+            StartActivity(intent);
+            Finish();
         }
         private void CheckNetworkState()
         {
@@ -101,6 +116,10 @@ namespace DeliverCrm_App_Droid
         {
             TelephonyManager tm = (TelephonyManager)GetSystemService(Context.TelephonyService);
             string Mobile = tm.Line1Number.ToString();
+            string replacenumbers = Mobile;
+            replacenumbers = Mobile.Replace("+972", "0");
+            string dash = "-";
+            Mobile = replacenumbers.Insert(3, dash);
             _Mobile = FindViewById<EditText>(Resource.Id.MobileNumber);
             _Mobile.Text = Mobile;
         }

@@ -69,6 +69,9 @@ namespace DeliverCrm_App_Droid
 			// aapt resource value: 0x7f050002
 			public const int TVisOnLine = 2131034114;
 			
+			// aapt resource value: 0x7f050003
+			public const int map = 2131034115;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
