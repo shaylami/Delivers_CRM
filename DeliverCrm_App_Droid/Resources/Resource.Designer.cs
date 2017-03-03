@@ -66,6 +66,9 @@ namespace DeliverCrm_App_Droid
 			// aapt resource value: 0x7f050000
 			public const int MobileNumber = 2131034112;
 			
+			// aapt resource value: 0x7f050003
+			public const int ServiceURL = 2131034115;
+			
 			// aapt resource value: 0x7f050002
 			public const int TVisOnLine = 2131034114;
 			

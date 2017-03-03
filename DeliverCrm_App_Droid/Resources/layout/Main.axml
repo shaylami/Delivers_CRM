@@ -5,11 +5,14 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <EditText
-        android:inputType="phone"
+    <TextView
+        android:text="Mobile"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/MobileNumber" />
+        android:id="@+id/MobileNumber"
+        android:phoneNumber="true"
+        android:gravity="center" />
     <Button
         android:text="התחבר"
         android:layout_width="match_parent"
@@ -17,9 +20,14 @@
         android:id="@+id/LogIn"
         android:onClick="LoginButtonClicked" />
     <TextView
-        android:text="Text"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/TVisOnLine"
         android:gravity="center" />
+    <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/ServiceURL" />
 </LinearLayout>

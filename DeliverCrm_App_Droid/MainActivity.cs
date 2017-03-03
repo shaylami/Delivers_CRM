@@ -10,14 +10,24 @@ namespace DeliverCrm_App_Droid
     public class MainActivity : Activity
     {
         TextView _IsOnlineText, _Mobile;
+        EditText _ServiceURL;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
+
+
+            ServiceURL();
             GetMobileNumber();
             CheckNetworkState();
+        }
+
+        private void ServiceURL()
+        {
+            _ServiceURL = FindViewById<EditText>(Resource.Id.ServiceURL);
+            _ServiceURL.Text = "soft.solveit.co.il:8081/delivercrmwebservice.asmx";
         }
         private void CheckNetworkState()
         {
@@ -44,7 +54,7 @@ namespace DeliverCrm_App_Droid
             replacenumbers = Mobile.Replace("+972", "0");
             string dash = "-";
             Mobile = replacenumbers.Insert(3, dash);
-            _Mobile = FindViewById<EditText>(Resource.Id.MobileNumber);
+            _Mobile = FindViewById<TextView>(Resource.Id.MobileNumber);
             _Mobile.Text = Mobile;
         }
 
