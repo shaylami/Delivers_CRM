@@ -57,6 +57,28 @@ namespace DeliverCrm_App_Droid
 			}
 		}
 		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f050001
+			public const int LogIn = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int MobileNumber = 2131034112;
+			
+			// aapt resource value: 0x7f050002
+			public const int TVisOnLine = 2131034114;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
 		public partial class Layout
 		{
 			
