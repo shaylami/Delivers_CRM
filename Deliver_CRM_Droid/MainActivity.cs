@@ -3,6 +3,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Net;
 using Android.Telephony;
+using Android.Content;
 
 namespace Deliver_CRM_Droid
 {
@@ -58,15 +59,28 @@ namespace Deliver_CRM_Droid
             replacenumbers = Mobile.Replace("+972", "0");
             string dash = "-";
             Mobile = replacenumbers.Insert(3, dash);
-            _Mobile = FindViewById<EditText>(Resource.Id.MobileNumber);
+            _Mobile = FindViewById<TextView>(Resource.Id.MobileNumber);
             _Mobile.Text = Mobile;
         }
-
+        private void OpenHWPage()
+        {
+            var intent = new Intent(this, typeof(WH));
+            StartActivity(intent);
+            Finish();
+        }
         public void GetLogin()
         {
             string a = "";
             WebService.DeliverCRMWebService ws = new WebService.DeliverCRMWebService();
             a = ws.GetDeliverMobile(_Mobile.Text);
+            if(a =="-1")
+            {
+                Toast.MakeText(this,"מנוי לא קיים במערכת....",ToastLength.Short).Show();
+            }
+            else
+            {
+                OpenHWPage();
+            }
             
         }
 

@@ -23,7 +23,6 @@ namespace Delivers_CRM
         //SqlConnection connection;
         Weeles_100_DBEntities wde = new Weeles_100_DBEntities();       
         [WebMethod]
-
         public string GetDeliverMobile(string _mobile)
         {
             string query = "", Error = "";
@@ -35,10 +34,24 @@ namespace Delivers_CRM
             }
             catch(Exception ex)
             {
-                Error = "מספר לא קיים במערכת......";
+                Error = "-1";
                 return Error;
             }
             
+        }
+
+        public string ReportWHIn(string ReportIn)
+        {
+            string query = "", Error = "";
+            try
+            {
+                
+
+            }
+            catch
+            {
+
+            }
         }
         //public DataSet login(string _mobile)
         //{
