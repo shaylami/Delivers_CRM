@@ -2,11 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
-    <TextView
-        android:text="Mobile"
+    android:layout_height="match_parent">
+  <TextView
+      android:text="Mobile"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +25,17 @@
         android:id="@+id/TVisOnLine"
         android:gravity="center" />
     <EditText
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/ServiceURL" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ServiceURL" />
+    <TextView
+        android:text="Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/soapresult" />
+    <TextView
+        android:text="Error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Error" />
 </LinearLayout>

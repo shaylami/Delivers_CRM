@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Data.Entity;
 
 namespace Delivers_CRM
 {
@@ -18,14 +20,33 @@ namespace Delivers_CRM
     // [System.Web.Script.Services.ScriptService]
     public class DeliverCRMWebService : System.Web.Services.WebService
     {
-
+        //SqlConnection connection;
+        Weeles_100_DBEntities wde = new Weeles_100_DBEntities();       
         [WebMethod]
-        public DataSet login(string _mobile)
+
+        public string GetDeliverMobile(string _mobile)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Deliver_Person WHERE Deliver_Mobile = '"+_mobile+"'", @"Server=soft.solveit.co.il,1433;Database=Weeles_100_DB;User ID=weeles100;Password=A123a123");
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            return ds;
+            string query = "", Error = "";
+            try
+            {
+                
+                query = wde.Login_Users.First(x => x.Mobile == _mobile).Mobile;
+                return query;
+            }
+            catch(Exception ex)
+            {
+                Error = "מספר לא קיים במערכת......";
+                return Error;
+            }
+            
         }
+        //public DataSet login(string _mobile)
+        //{
+        //    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+        //    SqlDataAdapter da = new SqlDataAdapter("SELECT Deliver_Mobile FROM Deliver_Person WHERE Deliver_Mobile = '" + _mobile+"'", connection);
+        //    DataSet ds = new DataSet();
+        //    da.Fill(ds);
+        //    return ds;
+        //}
     }
 }

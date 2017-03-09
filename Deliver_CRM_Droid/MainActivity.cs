@@ -1,16 +1,17 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using Android.Telephony;
 using Android.Net;
+using Android.Telephony;
 
-namespace DeliverCrm_App_Droid
+namespace Deliver_CRM_Droid
 {
-    [Activity(Label = "DeliverCrm_App_Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Deliver_CRM_Droid", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        TextView _IsOnlineText, _Mobile;
+        TextView _IsOnlineText, _soapresult, _error, _Mobile;
         EditText _ServiceURL;
+        Button _login;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -18,16 +19,19 @@ namespace DeliverCrm_App_Droid
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
 
-
             ServiceURL();
             GetMobileNumber();
             CheckNetworkState();
-        }
+            _soapresult = FindViewById<TextView>(Resource.Id.soapresult);
+            _error = FindViewById<TextView>(Resource.Id.Error);
 
+            _login = (Button)FindViewById(Resource.Id.LogIn);
+            _login.Click += (o, e) => { GetLogin(); };
+        }
         private void ServiceURL()
         {
             _ServiceURL = FindViewById<EditText>(Resource.Id.ServiceURL);
-            _ServiceURL.Text = "soft.solveit.co.il:8081/delivercrmwebservice.asmx";
+            _ServiceURL.Text = "http://soft.solveit.co.il:8081/delivercrmwebservice.asmx";
         }
         private void CheckNetworkState()
         {
@@ -54,8 +58,16 @@ namespace DeliverCrm_App_Droid
             replacenumbers = Mobile.Replace("+972", "0");
             string dash = "-";
             Mobile = replacenumbers.Insert(3, dash);
-            _Mobile = FindViewById<TextView>(Resource.Id.MobileNumber);
+            _Mobile = FindViewById<EditText>(Resource.Id.MobileNumber);
             _Mobile.Text = Mobile;
+        }
+
+        public void GetLogin()
+        {
+            string a = "";
+            WebService.DeliverCRMWebService ws = new WebService.DeliverCRMWebService();
+            a = ws.GetDeliverMobile(_Mobile.Text);
+            
         }
 
     }

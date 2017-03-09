@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDeliverMobile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_mobile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeliverMobileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeliverMobileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDeliverMobileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeliverMobile" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverMobileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeliverMobileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverMobileHttpGetIn">
+    <wsdl:part name="_mobile" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverMobileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverMobileHttpPostIn">
+    <wsdl:part name="_mobile" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDeliverMobileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="DeliverCRMWebServiceSoap">
+    <wsdl:operation name="GetDeliverMobile">
+      <wsdl:input message="tns:GetDeliverMobileSoapIn" />
+      <wsdl:output message="tns:GetDeliverMobileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DeliverCRMWebServiceHttpGet">
+    <wsdl:operation name="GetDeliverMobile">
+      <wsdl:input message="tns:GetDeliverMobileHttpGetIn" />
+      <wsdl:output message="tns:GetDeliverMobileHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DeliverCRMWebServiceHttpPost">
+    <wsdl:operation name="GetDeliverMobile">
+      <wsdl:input message="tns:GetDeliverMobileHttpPostIn" />
+      <wsdl:output message="tns:GetDeliverMobileHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DeliverCRMWebServiceSoap" type="tns:DeliverCRMWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDeliverMobile">
+      <soap:operation soapAction="http://tempuri.org/GetDeliverMobile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DeliverCRMWebServiceSoap12" type="tns:DeliverCRMWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDeliverMobile">
+      <soap12:operation soapAction="http://tempuri.org/GetDeliverMobile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DeliverCRMWebServiceHttpGet" type="tns:DeliverCRMWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetDeliverMobile">
+      <http:operation location="/GetDeliverMobile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DeliverCRMWebServiceHttpPost" type="tns:DeliverCRMWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetDeliverMobile">
+      <http:operation location="/GetDeliverMobile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DeliverCRMWebService">
+    <wsdl:port name="DeliverCRMWebServiceSoap" binding="tns:DeliverCRMWebServiceSoap">
+      <soap:address location="http://soft.solveit.co.il:8081/delivercrmwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DeliverCRMWebServiceSoap12" binding="tns:DeliverCRMWebServiceSoap12">
+      <soap12:address location="http://soft.solveit.co.il:8081/delivercrmwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DeliverCRMWebServiceHttpGet" binding="tns:DeliverCRMWebServiceHttpGet">
+      <http:address location="http://soft.solveit.co.il:8081/delivercrmwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DeliverCRMWebServiceHttpPost" binding="tns:DeliverCRMWebServiceHttpPost">
+      <http:address location="http://soft.solveit.co.il:8081/delivercrmwebservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("DeliverCrm_App_Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Deliver_CRM_Droid.Resource", IsApplication=true)]
 
-namespace DeliverCrm_App_Droid
+namespace Deliver_CRM_Droid
 {
 	
 	
@@ -60,6 +60,9 @@ namespace DeliverCrm_App_Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050005
+			public const int Error = 2131034117;
+			
 			// aapt resource value: 0x7f050001
 			public const int LogIn = 2131034113;
 			
@@ -71,6 +74,9 @@ namespace DeliverCrm_App_Droid
 			
 			// aapt resource value: 0x7f050002
 			public const int TVisOnLine = 2131034114;
+			
+			// aapt resource value: 0x7f050004
+			public const int soapresult = 2131034116;
 			
 			static Id()
 			{
