@@ -40,19 +40,19 @@ namespace Delivers_CRM
             
         }
 
-        public string ReportWHIn(string ReportIn)
-        {
-            string query = "", Error = "";
-            try
-            {
+        //public string ReportWHIn(string ReportIn)
+        //{
+        //    string query = "", Error = "";
+        //    try
+        //    {
                 
 
-            }
-            catch
-            {
+        //    }
+        //    catch
+        //    {
 
-            }
-        }
+        //    }
+        //}
         //public DataSet login(string _mobile)
         //{
         //    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
