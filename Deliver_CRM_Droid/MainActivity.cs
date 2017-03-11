@@ -10,7 +10,7 @@ namespace Deliver_CRM_Droid
     [Activity(Label = "Deliver_CRM_Droid", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        TextView _IsOnlineText, _soapresult, _error, _Mobile;
+        TextView _IsOnlineText, _Mobile;
         EditText _ServiceURL;
         Button _login;
         protected override void OnCreate(Bundle bundle)
@@ -19,12 +19,9 @@ namespace Deliver_CRM_Droid
 
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
-
             ServiceURL();
             GetMobileNumber();
             CheckNetworkState();
-            _soapresult = FindViewById<TextView>(Resource.Id.soapresult);
-            _error = FindViewById<TextView>(Resource.Id.Error);
 
             _login = (Button)FindViewById(Resource.Id.LogIn);
             _login.Click += (o, e) => { GetLogin(); };
@@ -73,17 +70,16 @@ namespace Deliver_CRM_Droid
             string a = "";
             WebService.DeliverCRMWebService ws = new WebService.DeliverCRMWebService();
             a = ws.GetDeliverMobile(_Mobile.Text);
-            if(a =="-1")
+            if (a == "-1")
             {
-                Toast.MakeText(this,"מנוי לא קיים במערכת....",ToastLength.Short).Show();
+                Toast.MakeText(this, "מנוי לא קיים במערכת....", ToastLength.Short).Show();
             }
             else
             {
                 OpenHWPage();
             }
-            
-        }
 
+        }
     }
 }
 

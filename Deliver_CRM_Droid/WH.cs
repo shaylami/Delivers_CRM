@@ -9,23 +9,17 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Gms.Maps;
-using Android.Gms.Maps.Model;
-using Android.Support.V4.App;
 
 namespace Deliver_CRM_Droid
 {
     [Activity(Label = "WH")]
     public class WH : Activity
     {
-        private GoogleMap eMap;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.WH);
             // Create your application here
         }
-
     }
 }
