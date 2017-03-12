@@ -2,6 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TextView
+        android:text="Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TodayDate"
+        android:gravity="center"
+        android:textSize="48px" />
+    <TextView
+        android:text="Time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CurrentTime"
+        android:gravity="center"
+        android:textSize="48px" />
+    <Button
+        android:text="כניסה"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReportIn" />
+    <Button
+        android:text="יציאה"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnReportOut" />
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name=""
+        class="com.google.android.gms.maps.MapFragment" />
 </LinearLayout>

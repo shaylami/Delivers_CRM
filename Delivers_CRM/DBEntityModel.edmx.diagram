@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="Weeles_100_DBModel.GIS_Data" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Weeles_100_DBModel.Login_Users" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Weeles_100_DBModel.Motor_Bike" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Weeles_100_DBModel.Deliver_WH" Width="1.5" PointX="3.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

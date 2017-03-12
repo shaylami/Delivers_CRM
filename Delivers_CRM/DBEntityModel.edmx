@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Weeles_100_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Weeles_100_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bike_Jornal">
           <Key>
             <PropertyRef Name="Bike_Jornal_ID" />
@@ -80,6 +80,18 @@
           <Property Name="Emrg_Contact_Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Emrg_Contact_Reletive" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Deliver_WH">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportIn" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lng" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="GIS_Data">
           <Key>
             <PropertyRef Name="ID" />
@@ -119,12 +131,12 @@
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deliver_Joranl" EntityType="Self.Deliver_Joranl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deliver_Person" EntityType="Self.Deliver_Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deliver_WH" EntityType="Self.Deliver_WH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GIS_Data" EntityType="Self.GIS_Data" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login_Users" EntityType="Self.Login_Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Motor_Bike" EntityType="Self.Motor_Bike" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Weeles_100_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -245,7 +257,20 @@
           <EntitySet Name="GIS_Data" EntityType="Self.GIS_Data" />
           <EntitySet Name="Login_Users" EntityType="Self.Login_Users" />
           <EntitySet Name="Motor_Bike" EntityType="Self.Motor_Bike" />
+          <EntitySet Name="Deliver_WH" EntityType="Weeles_100_DBModel.Deliver_WH" />
         </EntityContainer>
+        <EntityType Name="Deliver_WH">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -365,6 +390,19 @@
                 <ScalarProperty Name="Car_License_Name" ColumnName="Car_License_Name" />
                 <ScalarProperty Name="Car_License_Type" ColumnName="Car_License_Type" />
                 <ScalarProperty Name="Car_License_Data" ColumnName="Car_License_Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliver_WH">
+            <EntityTypeMapping TypeName="Weeles_100_DBModel.Deliver_WH">
+              <MappingFragment StoreEntitySet="Deliver_WH">
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="ReportOut" ColumnName="ReportOut" />
+                <ScalarProperty Name="ReportIn" ColumnName="ReportIn" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

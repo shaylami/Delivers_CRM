@@ -33,5 +33,6 @@ namespace Delivers_CRM
         public virtual DbSet<GIS_Data> GIS_Data { get; set; }
         public virtual DbSet<Login_Users> Login_Users { get; set; }
         public virtual DbSet<Motor_Bike> Motor_Bike { get; set; }
+        public virtual DbSet<Deliver_WH> Deliver_WH { get; set; }
     }
 }

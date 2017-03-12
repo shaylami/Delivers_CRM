@@ -330,6 +330,9 @@
     <Compile Include="Deliver_Person.cs">
       <DependentUpon>DBEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Deliver_WH.cs">
+      <DependentUpon>DBEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GIS_Data.cs">
       <DependentUpon>DBEntityModel.tt</DependentUpon>
     </Compile>

@@ -39,6 +39,21 @@ namespace Delivers_CRM
             }
             
         }
+        [WebMethod]
+        public string ReportWH(string _mobile,string _date,string _reportIn,string _reportOut,string _lng,string _lat)
+        {
+            string query, error;
+            try
+            {
+                query = wde.Deliver_WH.First(x => x.Mobile == _mobile).Mobile;
+                return query;
+            }
+            catch(Exception ex)
+            {
+                error = "-1";
+                return error;
+            }
+        }
 
         //public string ReportWHIn(string ReportIn)
         //{
