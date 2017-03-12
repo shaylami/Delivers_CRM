@@ -7,7 +7,7 @@ using Android.Content;
 
 namespace Deliver_CRM_Droid
 {
-    [Activity(Label = "Deliver_CRM_Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "מערכת נוכחות", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         TextView _IsOnlineText, _Mobile;
