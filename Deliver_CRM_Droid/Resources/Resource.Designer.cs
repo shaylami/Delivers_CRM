@@ -253,14 +253,23 @@ namespace Deliver_CRM_Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080012
-			public const int CurrentTime = 2131230738;
+			// aapt resource value: 0x7f080013
+			public const int CurrentTime = 2131230739;
 			
 			// aapt resource value: 0x7f08000e
 			public const int LogIn = 2131230734;
 			
+			// aapt resource value: 0x7f080011
+			public const int Mobile = 2131230737;
+			
 			// aapt resource value: 0x7f08000d
 			public const int MobileNumber = 2131230733;
+			
+			// aapt resource value: 0x7f080014
+			public const int ReportIn = 2131230740;
+			
+			// aapt resource value: 0x7f080015
+			public const int ReportOut = 2131230741;
 			
 			// aapt resource value: 0x7f080010
 			public const int ServiceURL = 2131230736;
@@ -268,8 +277,8 @@ namespace Deliver_CRM_Droid
 			// aapt resource value: 0x7f08000f
 			public const int TVisOnLine = 2131230735;
 			
-			// aapt resource value: 0x7f080011
-			public const int TodayDate = 2131230737;
+			// aapt resource value: 0x7f080012
+			public const int TodayDate = 2131230738;
 			
 			// aapt resource value: 0x7f080005
 			public const int adjust_height = 2131230725;
@@ -280,11 +289,11 @@ namespace Deliver_CRM_Droid
 			// aapt resource value: 0x7f08000a
 			public const int auto = 2131230730;
 			
-			// aapt resource value: 0x7f080013
-			public const int btnReportIn = 2131230739;
+			// aapt resource value: 0x7f080016
+			public const int btnReportIn = 2131230742;
 			
-			// aapt resource value: 0x7f080014
-			public const int btnReportOut = 2131230740;
+			// aapt resource value: 0x7f080017
+			public const int btnReportOut = 2131230743;
 			
 			// aapt resource value: 0x7f08000b
 			public const int dark = 2131230731;
@@ -298,8 +307,8 @@ namespace Deliver_CRM_Droid
 			// aapt resource value: 0x7f08000c
 			public const int light = 2131230732;
 			
-			// aapt resource value: 0x7f080015
-			public const int map = 2131230741;
+			// aapt resource value: 0x7f080018
+			public const int map = 2131230744;
 			
 			// aapt resource value: 0x7f080001
 			public const int none = 2131230721;

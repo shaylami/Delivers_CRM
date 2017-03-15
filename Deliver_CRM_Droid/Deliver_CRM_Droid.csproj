@@ -183,6 +183,9 @@
   <ItemGroup>
     <None Include="Web References\WebService\delivercrmwebservice.disco" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\read_asset.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

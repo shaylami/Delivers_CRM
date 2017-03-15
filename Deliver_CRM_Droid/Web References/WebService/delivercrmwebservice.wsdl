@@ -16,6 +16,55 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetReportInWH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportInWHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportInWHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportOutWH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportOutWHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportOutWHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetReportWH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_reportIn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_reportOut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lng" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetReportWHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetReportWHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -25,10 +74,53 @@
   <wsdl:message name="GetDeliverMobileSoapOut">
     <wsdl:part name="parameters" element="tns:GetDeliverMobileResponse" />
   </wsdl:message>
+  <wsdl:message name="GetReportInWHSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportInWH" />
+  </wsdl:message>
+  <wsdl:message name="GetReportInWHSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportInWHResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportOutWHSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportOutWH" />
+  </wsdl:message>
+  <wsdl:message name="GetReportOutWHSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportOutWHResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetReportWHSoapIn">
+    <wsdl:part name="parameters" element="tns:SetReportWH" />
+  </wsdl:message>
+  <wsdl:message name="SetReportWHSoapOut">
+    <wsdl:part name="parameters" element="tns:SetReportWHResponse" />
+  </wsdl:message>
   <wsdl:message name="GetDeliverMobileHttpGetIn">
     <wsdl:part name="_mobile" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetDeliverMobileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportInWHHttpGetIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportInWHHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportOutWHHttpGetIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportOutWHHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportWHHttpGetIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+    <wsdl:part name="_reportIn" type="s:string" />
+    <wsdl:part name="_reportOut" type="s:string" />
+    <wsdl:part name="_lng" type="s:string" />
+    <wsdl:part name="_lat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportWHHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetDeliverMobileHttpPostIn">
@@ -37,10 +129,47 @@
   <wsdl:message name="GetDeliverMobileHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetReportInWHHttpPostIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportInWHHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportOutWHHttpPostIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetReportOutWHHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportWHHttpPostIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+    <wsdl:part name="_reportIn" type="s:string" />
+    <wsdl:part name="_reportOut" type="s:string" />
+    <wsdl:part name="_lng" type="s:string" />
+    <wsdl:part name="_lat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportWHHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="DeliverCRMWebServiceSoap">
     <wsdl:operation name="GetDeliverMobile">
       <wsdl:input message="tns:GetDeliverMobileSoapIn" />
       <wsdl:output message="tns:GetDeliverMobileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportInWH">
+      <wsdl:input message="tns:GetReportInWHSoapIn" />
+      <wsdl:output message="tns:GetReportInWHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportOutWH">
+      <wsdl:input message="tns:GetReportOutWHSoapIn" />
+      <wsdl:output message="tns:GetReportOutWHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportWH">
+      <wsdl:input message="tns:SetReportWHSoapIn" />
+      <wsdl:output message="tns:SetReportWHSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DeliverCRMWebServiceHttpGet">
@@ -48,17 +177,68 @@
       <wsdl:input message="tns:GetDeliverMobileHttpGetIn" />
       <wsdl:output message="tns:GetDeliverMobileHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetReportInWH">
+      <wsdl:input message="tns:GetReportInWHHttpGetIn" />
+      <wsdl:output message="tns:GetReportInWHHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportOutWH">
+      <wsdl:input message="tns:GetReportOutWHHttpGetIn" />
+      <wsdl:output message="tns:GetReportOutWHHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportWH">
+      <wsdl:input message="tns:SetReportWHHttpGetIn" />
+      <wsdl:output message="tns:SetReportWHHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DeliverCRMWebServiceHttpPost">
     <wsdl:operation name="GetDeliverMobile">
       <wsdl:input message="tns:GetDeliverMobileHttpPostIn" />
       <wsdl:output message="tns:GetDeliverMobileHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetReportInWH">
+      <wsdl:input message="tns:GetReportInWHHttpPostIn" />
+      <wsdl:output message="tns:GetReportInWHHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportOutWH">
+      <wsdl:input message="tns:GetReportOutWHHttpPostIn" />
+      <wsdl:output message="tns:GetReportOutWHHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportWH">
+      <wsdl:input message="tns:SetReportWHHttpPostIn" />
+      <wsdl:output message="tns:SetReportWHHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DeliverCRMWebServiceSoap" type="tns:DeliverCRMWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetDeliverMobile">
       <soap:operation soapAction="http://tempuri.org/GetDeliverMobile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportInWH">
+      <soap:operation soapAction="http://tempuri.org/GetReportInWH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportOutWH">
+      <soap:operation soapAction="http://tempuri.org/GetReportOutWH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportWH">
+      <soap:operation soapAction="http://tempuri.org/SetReportWH" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -78,6 +258,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetReportInWH">
+      <soap12:operation soapAction="http://tempuri.org/GetReportInWH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportOutWH">
+      <soap12:operation soapAction="http://tempuri.org/GetReportOutWH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportWH">
+      <soap12:operation soapAction="http://tempuri.org/SetReportWH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DeliverCRMWebServiceHttpGet" type="tns:DeliverCRMWebServiceHttpGet">
     <http:binding verb="GET" />
@@ -90,11 +297,65 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetReportInWH">
+      <http:operation location="/GetReportInWH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportOutWH">
+      <http:operation location="/GetReportOutWH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportWH">
+      <http:operation location="/SetReportWH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DeliverCRMWebServiceHttpPost" type="tns:DeliverCRMWebServiceHttpPost">
     <http:binding verb="POST" />
     <wsdl:operation name="GetDeliverMobile">
       <http:operation location="/GetDeliverMobile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportInWH">
+      <http:operation location="/GetReportInWH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportOutWH">
+      <http:operation location="/GetReportOutWH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportWH">
+      <http:operation location="/SetReportWH" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

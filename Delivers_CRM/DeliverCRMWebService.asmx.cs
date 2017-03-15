@@ -20,40 +20,117 @@ namespace Delivers_CRM
     // [System.Web.Script.Services.ScriptService]
     public class DeliverCRMWebService : System.Web.Services.WebService
     {
-        //SqlConnection connection;
-        Weeles_100_DBEntities wde = new Weeles_100_DBEntities();       
+        SqlConnection connection;
+        SqlCommand cmd;
+        Weeles_100_DBEntities wde = new Weeles_100_DBEntities();
         [WebMethod]
         public string GetDeliverMobile(string _mobile)
         {
             string query = "", Error = "";
             try
             {
-                
+
                 query = wde.Login_Users.First(x => x.Mobile == _mobile).Mobile;
                 return query;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Error = "-1";
                 return Error;
             }
-            
+
         }
         [WebMethod]
-        public string ReportWH(string _mobile,string _date,string _reportIn,string _reportOut,string _lng,string _lat)
+        public string GetReportInWH(string _mobile,string _date)
         {
-            string query, error;
+            string result, error,xml;
+            string a = _mobile;
+            string b = _date;
             try
             {
-                query = wde.Deliver_WH.First(x => x.Mobile == _mobile).Mobile;
-                return query;
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                connection.Open();
+                cmd = new SqlCommand("SELECT Mobile,Date,ReportIn,ReportOut FROM Deliver_WH WHERE Mobile ='" + _mobile + "' AND Date='" + _date + "'", connection);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+                xml = ds.GetXml();
+                result = ds.Tables[0].Rows[0]["ReportIn"].ToString();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                connection.Close();
+                return error = "-1";
+            }
+        }
+        [WebMethod]
+        public string GetReportOutWH(string _mobile, string _date)
+        {
+            string result, error, xml;
+            string a = _mobile;
+            string b = _date;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                connection.Open();
+                cmd = new SqlCommand("SELECT Mobile,Date,ReportIn,ReportOut FROM Deliver_WH WHERE Mobile ='" + _mobile + "' AND Date='" + _date + "'", connection);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+                xml = ds.GetXml();
+                result = ds.Tables[0].Rows[0]["ReportOut"].ToString();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                connection.Close();
+                return error = "-1";
+            }
+        }
+        [WebMethod]
+        public string SetReportWH(string _mobile, string _date, string _reportIn, string _reportOut, string _lng, string _lat)
+        {
+            string error,result;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                using (cmd = new SqlCommand("INSERT INTO Deliver_WH (Mobile,Date,ReportIn,ReportOut,Lng,Lat) VALUES (@Mobile,@Date,@ReportIn,@ReportOut,@Lng,@Lat)",connection))
+                {
+                    cmd.Parameters.AddWithValue("@Mobile", _mobile);
+                    cmd.Parameters.AddWithValue("@Date", _date);
+                    cmd.Parameters.AddWithValue("@ReportIn", _reportIn);
+                    cmd.Parameters.AddWithValue("@ReportOut", _reportOut);
+                    cmd.Parameters.AddWithValue("@Lng", _lng);
+                    cmd.Parameters.AddWithValue("@Lat", _lat);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                return result = "0";
             }
             catch(Exception ex)
             {
-                error = "-1";
-                return error;
+                connection.Close();
+                ex.ToString();
+                return error = "-1";
             }
+
+
         }
+    }
+}
+                
+
+
+                //error = "-1";
+                //return error;
 
         //public string ReportWHIn(string ReportIn)
         //{
@@ -76,5 +153,3 @@ namespace Delivers_CRM
         //    da.Fill(ds);
         //    return ds;
         //}
-    }
-}

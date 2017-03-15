@@ -4,28 +4,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:gravity="center">
     <TextView
-        android:text="Date"
-        android:layout_width="match_parent"
+        android:text="Mobile"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TodayDate"
         android:gravity="center"
-        android:textSize="48px" />
-    <TextView
-        android:text="Time"
-        android:layout_width="match_parent"
+        android:id="@+id/Mobile"
+        android:textSize="45px" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/CurrentTime"
-        android:gravity="center"
-        android:textSize="48px" />
+        android:gravity="center">
+        <TextView
+            android:text="Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:id="@+id/TodayDate"
+            android:textSize="45px" />
+        <TextView
+            android:text="Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/CurrentTime"
+            android:gravity="center"
+            android:textSize="45px" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/ReportIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="כניסה"
+            android:gravity="center"
+            android:layout_marginRight="100dp"
+            android:background="#ff0000"
+            android:textSize="45px" />
+        <TextView
+            android:id="@+id/ReportOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="יציאה"
+            android:gravity="center"
+            android:background="#00FF00"
+            android:textSize="45px" />
+    </LinearLayout>
     <Button
-        android:text="כניסה"
+        android:text="דווח כניסה"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnReportIn" />
     <Button
-        android:text="יציאה"
+        android:text="דווח יציאה"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnReportOut" />
