@@ -35,7 +35,11 @@ namespace Deliver_CRM_Droid.WebService {
         
         private System.Threading.SendOrPostCallback GetReportOutWHOperationCompleted;
         
-        private System.Threading.SendOrPostCallback SetReportWHOperationCompleted;
+        private System.Threading.SendOrPostCallback SetReportInWHOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetReportOutWHOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetReportSickWHOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -85,7 +89,13 @@ namespace Deliver_CRM_Droid.WebService {
         public event GetReportOutWHCompletedEventHandler GetReportOutWHCompleted;
         
         /// <remarks/>
-        public event SetReportWHCompletedEventHandler SetReportWHCompleted;
+        public event SetReportInWHCompletedEventHandler SetReportInWHCompleted;
+        
+        /// <remarks/>
+        public event SetReportOutWHCompletedEventHandler SetReportOutWHCompleted;
+        
+        /// <remarks/>
+        public event SetReportSickWHCompletedEventHandler SetReportSickWHCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDeliverMobile", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -179,41 +189,121 @@ namespace Deliver_CRM_Droid.WebService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetReportWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string SetReportWH(string _mobile, string _date, string _reportIn, string _reportOut, string _lng, string _lat) {
-            object[] results = this.Invoke("SetReportWH", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetReportInWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SetReportInWH(string _mobile, string _date, string _reportIn, string _reportAbsence, string _lng, string _lat) {
+            object[] results = this.Invoke("SetReportInWH", new object[] {
                         _mobile,
                         _date,
                         _reportIn,
-                        _reportOut,
+                        _reportAbsence,
                         _lng,
                         _lat});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void SetReportWHAsync(string _mobile, string _date, string _reportIn, string _reportOut, string _lng, string _lat) {
-            this.SetReportWHAsync(_mobile, _date, _reportIn, _reportOut, _lng, _lat, null);
+        public void SetReportInWHAsync(string _mobile, string _date, string _reportIn, string _reportAbsence, string _lng, string _lat) {
+            this.SetReportInWHAsync(_mobile, _date, _reportIn, _reportAbsence, _lng, _lat, null);
         }
         
         /// <remarks/>
-        public void SetReportWHAsync(string _mobile, string _date, string _reportIn, string _reportOut, string _lng, string _lat, object userState) {
-            if ((this.SetReportWHOperationCompleted == null)) {
-                this.SetReportWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetReportWHOperationCompleted);
+        public void SetReportInWHAsync(string _mobile, string _date, string _reportIn, string _reportAbsence, string _lng, string _lat, object userState) {
+            if ((this.SetReportInWHOperationCompleted == null)) {
+                this.SetReportInWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetReportInWHOperationCompleted);
             }
-            this.InvokeAsync("SetReportWH", new object[] {
+            this.InvokeAsync("SetReportInWH", new object[] {
+                        _mobile,
+                        _date,
+                        _reportIn,
+                        _reportAbsence,
+                        _lng,
+                        _lat}, this.SetReportInWHOperationCompleted, userState);
+        }
+        
+        private void OnSetReportInWHOperationCompleted(object arg) {
+            if ((this.SetReportInWHCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetReportInWHCompleted(this, new SetReportInWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetReportOutWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SetReportOutWH(string _mobile, string _date, string _reportOut, string _reportAbsence, string _lng, string _lat) {
+            object[] results = this.Invoke("SetReportOutWH", new object[] {
+                        _mobile,
+                        _date,
+                        _reportOut,
+                        _reportAbsence,
+                        _lng,
+                        _lat});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SetReportOutWHAsync(string _mobile, string _date, string _reportOut, string _reportAbsence, string _lng, string _lat) {
+            this.SetReportOutWHAsync(_mobile, _date, _reportOut, _reportAbsence, _lng, _lat, null);
+        }
+        
+        /// <remarks/>
+        public void SetReportOutWHAsync(string _mobile, string _date, string _reportOut, string _reportAbsence, string _lng, string _lat, object userState) {
+            if ((this.SetReportOutWHOperationCompleted == null)) {
+                this.SetReportOutWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetReportOutWHOperationCompleted);
+            }
+            this.InvokeAsync("SetReportOutWH", new object[] {
+                        _mobile,
+                        _date,
+                        _reportOut,
+                        _reportAbsence,
+                        _lng,
+                        _lat}, this.SetReportOutWHOperationCompleted, userState);
+        }
+        
+        private void OnSetReportOutWHOperationCompleted(object arg) {
+            if ((this.SetReportOutWHCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetReportOutWHCompleted(this, new SetReportOutWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetReportSickWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SetReportSickWH(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat) {
+            object[] results = this.Invoke("SetReportSickWH", new object[] {
                         _mobile,
                         _date,
                         _reportIn,
                         _reportOut,
+                        _reportAbsence,
                         _lng,
-                        _lat}, this.SetReportWHOperationCompleted, userState);
+                        _lat});
+            return ((string)(results[0]));
         }
         
-        private void OnSetReportWHOperationCompleted(object arg) {
-            if ((this.SetReportWHCompleted != null)) {
+        /// <remarks/>
+        public void SetReportSickWHAsync(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat) {
+            this.SetReportSickWHAsync(_mobile, _date, _reportIn, _reportOut, _reportAbsence, _lng, _lat, null);
+        }
+        
+        /// <remarks/>
+        public void SetReportSickWHAsync(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat, object userState) {
+            if ((this.SetReportSickWHOperationCompleted == null)) {
+                this.SetReportSickWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetReportSickWHOperationCompleted);
+            }
+            this.InvokeAsync("SetReportSickWH", new object[] {
+                        _mobile,
+                        _date,
+                        _reportIn,
+                        _reportOut,
+                        _reportAbsence,
+                        _lng,
+                        _lat}, this.SetReportSickWHOperationCompleted, userState);
+        }
+        
+        private void OnSetReportSickWHOperationCompleted(object arg) {
+            if ((this.SetReportSickWHCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SetReportWHCompleted(this, new SetReportWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.SetReportSickWHCompleted(this, new SetReportSickWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -316,17 +406,69 @@ namespace Deliver_CRM_Droid.WebService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
-    public delegate void SetReportWHCompletedEventHandler(object sender, SetReportWHCompletedEventArgs e);
+    public delegate void SetReportInWHCompletedEventHandler(object sender, SetReportInWHCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class SetReportWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class SetReportInWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal SetReportWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal SetReportInWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void SetReportOutWHCompletedEventHandler(object sender, SetReportOutWHCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SetReportOutWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SetReportOutWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void SetReportSickWHCompletedEventHandler(object sender, SetReportSickWHCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SetReportSickWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SetReportSickWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

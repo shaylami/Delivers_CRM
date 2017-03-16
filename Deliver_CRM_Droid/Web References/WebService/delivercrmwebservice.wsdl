@@ -46,22 +46,61 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetReportWH">
+      <s:element name="SetReportInWH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_reportIn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_reportAbsence" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lng" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetReportInWHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetReportInWHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetReportOutWH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_reportOut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_reportAbsence" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lng" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_lat" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetReportOutWHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetReportOutWHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetReportSickWH">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="_mobile" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_date" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_reportIn" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_reportOut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="_reportAbsence" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_lng" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="_lat" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SetReportWHResponse">
+      <s:element name="SetReportSickWHResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SetReportWHResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SetReportSickWHResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -86,11 +125,23 @@
   <wsdl:message name="GetReportOutWHSoapOut">
     <wsdl:part name="parameters" element="tns:GetReportOutWHResponse" />
   </wsdl:message>
-  <wsdl:message name="SetReportWHSoapIn">
-    <wsdl:part name="parameters" element="tns:SetReportWH" />
+  <wsdl:message name="SetReportInWHSoapIn">
+    <wsdl:part name="parameters" element="tns:SetReportInWH" />
   </wsdl:message>
-  <wsdl:message name="SetReportWHSoapOut">
-    <wsdl:part name="parameters" element="tns:SetReportWHResponse" />
+  <wsdl:message name="SetReportInWHSoapOut">
+    <wsdl:part name="parameters" element="tns:SetReportInWHResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetReportOutWHSoapIn">
+    <wsdl:part name="parameters" element="tns:SetReportOutWH" />
+  </wsdl:message>
+  <wsdl:message name="SetReportOutWHSoapOut">
+    <wsdl:part name="parameters" element="tns:SetReportOutWHResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetReportSickWHSoapIn">
+    <wsdl:part name="parameters" element="tns:SetReportSickWH" />
+  </wsdl:message>
+  <wsdl:message name="SetReportSickWHSoapOut">
+    <wsdl:part name="parameters" element="tns:SetReportSickWHResponse" />
   </wsdl:message>
   <wsdl:message name="GetDeliverMobileHttpGetIn">
     <wsdl:part name="_mobile" type="s:string" />
@@ -112,15 +163,38 @@
   <wsdl:message name="GetReportOutWHHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="SetReportWHHttpGetIn">
+  <wsdl:message name="SetReportInWHHttpGetIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+    <wsdl:part name="_reportIn" type="s:string" />
+    <wsdl:part name="_reportAbsence" type="s:string" />
+    <wsdl:part name="_lng" type="s:string" />
+    <wsdl:part name="_lat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportInWHHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportOutWHHttpGetIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+    <wsdl:part name="_reportOut" type="s:string" />
+    <wsdl:part name="_reportAbsence" type="s:string" />
+    <wsdl:part name="_lng" type="s:string" />
+    <wsdl:part name="_lat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportOutWHHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportSickWHHttpGetIn">
     <wsdl:part name="_mobile" type="s:string" />
     <wsdl:part name="_date" type="s:string" />
     <wsdl:part name="_reportIn" type="s:string" />
     <wsdl:part name="_reportOut" type="s:string" />
+    <wsdl:part name="_reportAbsence" type="s:string" />
     <wsdl:part name="_lng" type="s:string" />
     <wsdl:part name="_lat" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="SetReportWHHttpGetOut">
+  <wsdl:message name="SetReportSickWHHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetDeliverMobileHttpPostIn">
@@ -143,15 +217,38 @@
   <wsdl:message name="GetReportOutWHHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
-  <wsdl:message name="SetReportWHHttpPostIn">
+  <wsdl:message name="SetReportInWHHttpPostIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+    <wsdl:part name="_reportIn" type="s:string" />
+    <wsdl:part name="_reportAbsence" type="s:string" />
+    <wsdl:part name="_lng" type="s:string" />
+    <wsdl:part name="_lat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportInWHHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportOutWHHttpPostIn">
+    <wsdl:part name="_mobile" type="s:string" />
+    <wsdl:part name="_date" type="s:string" />
+    <wsdl:part name="_reportOut" type="s:string" />
+    <wsdl:part name="_reportAbsence" type="s:string" />
+    <wsdl:part name="_lng" type="s:string" />
+    <wsdl:part name="_lat" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportOutWHHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SetReportSickWHHttpPostIn">
     <wsdl:part name="_mobile" type="s:string" />
     <wsdl:part name="_date" type="s:string" />
     <wsdl:part name="_reportIn" type="s:string" />
     <wsdl:part name="_reportOut" type="s:string" />
+    <wsdl:part name="_reportAbsence" type="s:string" />
     <wsdl:part name="_lng" type="s:string" />
     <wsdl:part name="_lat" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="SetReportWHHttpPostOut">
+  <wsdl:message name="SetReportSickWHHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:portType name="DeliverCRMWebServiceSoap">
@@ -167,9 +264,17 @@
       <wsdl:input message="tns:GetReportOutWHSoapIn" />
       <wsdl:output message="tns:GetReportOutWHSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetReportWH">
-      <wsdl:input message="tns:SetReportWHSoapIn" />
-      <wsdl:output message="tns:SetReportWHSoapOut" />
+    <wsdl:operation name="SetReportInWH">
+      <wsdl:input message="tns:SetReportInWHSoapIn" />
+      <wsdl:output message="tns:SetReportInWHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportOutWH">
+      <wsdl:input message="tns:SetReportOutWHSoapIn" />
+      <wsdl:output message="tns:SetReportOutWHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportSickWH">
+      <wsdl:input message="tns:SetReportSickWHSoapIn" />
+      <wsdl:output message="tns:SetReportSickWHSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DeliverCRMWebServiceHttpGet">
@@ -185,9 +290,17 @@
       <wsdl:input message="tns:GetReportOutWHHttpGetIn" />
       <wsdl:output message="tns:GetReportOutWHHttpGetOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetReportWH">
-      <wsdl:input message="tns:SetReportWHHttpGetIn" />
-      <wsdl:output message="tns:SetReportWHHttpGetOut" />
+    <wsdl:operation name="SetReportInWH">
+      <wsdl:input message="tns:SetReportInWHHttpGetIn" />
+      <wsdl:output message="tns:SetReportInWHHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportOutWH">
+      <wsdl:input message="tns:SetReportOutWHHttpGetIn" />
+      <wsdl:output message="tns:SetReportOutWHHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportSickWH">
+      <wsdl:input message="tns:SetReportSickWHHttpGetIn" />
+      <wsdl:output message="tns:SetReportSickWHHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="DeliverCRMWebServiceHttpPost">
@@ -203,9 +316,17 @@
       <wsdl:input message="tns:GetReportOutWHHttpPostIn" />
       <wsdl:output message="tns:GetReportOutWHHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="SetReportWH">
-      <wsdl:input message="tns:SetReportWHHttpPostIn" />
-      <wsdl:output message="tns:SetReportWHHttpPostOut" />
+    <wsdl:operation name="SetReportInWH">
+      <wsdl:input message="tns:SetReportInWHHttpPostIn" />
+      <wsdl:output message="tns:SetReportInWHHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportOutWH">
+      <wsdl:input message="tns:SetReportOutWHHttpPostIn" />
+      <wsdl:output message="tns:SetReportOutWHHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReportSickWH">
+      <wsdl:input message="tns:SetReportSickWHHttpPostIn" />
+      <wsdl:output message="tns:SetReportSickWHHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DeliverCRMWebServiceSoap" type="tns:DeliverCRMWebServiceSoap">
@@ -237,8 +358,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetReportWH">
-      <soap:operation soapAction="http://tempuri.org/SetReportWH" style="document" />
+    <wsdl:operation name="SetReportInWH">
+      <soap:operation soapAction="http://tempuri.org/SetReportInWH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportOutWH">
+      <soap:operation soapAction="http://tempuri.org/SetReportOutWH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportSickWH">
+      <soap:operation soapAction="http://tempuri.org/SetReportSickWH" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -276,8 +415,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetReportWH">
-      <soap12:operation soapAction="http://tempuri.org/SetReportWH" style="document" />
+    <wsdl:operation name="SetReportInWH">
+      <soap12:operation soapAction="http://tempuri.org/SetReportInWH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportOutWH">
+      <soap12:operation soapAction="http://tempuri.org/SetReportOutWH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportSickWH">
+      <soap12:operation soapAction="http://tempuri.org/SetReportSickWH" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -315,8 +472,26 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetReportWH">
-      <http:operation location="/SetReportWH" />
+    <wsdl:operation name="SetReportInWH">
+      <http:operation location="/SetReportInWH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportOutWH">
+      <http:operation location="/SetReportOutWH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportSickWH">
+      <http:operation location="/SetReportSickWH" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -354,8 +529,26 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetReportWH">
-      <http:operation location="/SetReportWH" />
+    <wsdl:operation name="SetReportInWH">
+      <http:operation location="/SetReportInWH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportOutWH">
+      <http:operation location="/SetReportOutWH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReportSickWH">
+      <http:operation location="/SetReportSickWH" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

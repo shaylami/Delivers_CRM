@@ -95,25 +95,25 @@ namespace Delivers_CRM
             }
         }
         [WebMethod]
-        public string SetReportWH(string _mobile, string _date, string _reportIn, string _reportOut, string _lng, string _lat)
+        public string SetReportInWH(string _mobile, string _date, string _reportIn,string _reportAbsence, string _lng, string _lat)
         {
             string error,result;
             try
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
-                using (cmd = new SqlCommand("INSERT INTO Deliver_WH (Mobile,Date,ReportIn,ReportOut,Lng,Lat) VALUES (@Mobile,@Date,@ReportIn,@ReportOut,@Lng,@Lat)",connection))
+                using (cmd = new SqlCommand("INSERT INTO Deliver_WH (Mobile,Date,ReportIn,ReportAbsence,Lng,Lat) VALUES (@Mobile,@Date,@ReportIn,@ReportAbsence,@Lng,@Lat)", connection))
                 {
                     cmd.Parameters.AddWithValue("@Mobile", _mobile);
                     cmd.Parameters.AddWithValue("@Date", _date);
                     cmd.Parameters.AddWithValue("@ReportIn", _reportIn);
-                    cmd.Parameters.AddWithValue("@ReportOut", _reportOut);
+                    cmd.Parameters.AddWithValue("@ReportAbsence", _reportAbsence);
                     cmd.Parameters.AddWithValue("@Lng", _lng);
                     cmd.Parameters.AddWithValue("@Lat", _lat);
                     connection.Open();
                     cmd.ExecuteNonQuery();
                     connection.Close();
                 }
-                return result = "0";
+                return result = _reportIn; ;
             }
             catch(Exception ex)
             {
@@ -121,8 +121,63 @@ namespace Delivers_CRM
                 ex.ToString();
                 return error = "-1";
             }
-
-
+        }
+        [WebMethod]
+        public string SetReportOutWH(string _mobile, string _date, string _reportOut, string _reportAbsence, string _lng, string _lat)
+        {
+            string error, result;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                using (cmd = new SqlCommand("INSERT INTO Deliver_WH (Mobile,Date,ReportOut,ReportAbsence,Lng,Lat) VALUES (@Mobile,@Date,@ReportOut,@ReportAbsence,@Lng,@Lat)", connection))
+                {
+                    cmd.Parameters.AddWithValue("@Mobile", _mobile);
+                    cmd.Parameters.AddWithValue("@Date", _date);
+                    cmd.Parameters.AddWithValue("@ReportOut", _reportOut);
+                    cmd.Parameters.AddWithValue("@ReportAbsence", _reportAbsence);
+                    cmd.Parameters.AddWithValue("@Lng", _lng);
+                    cmd.Parameters.AddWithValue("@Lat", _lat);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                return result = _reportOut; ;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                ex.ToString();
+                return error = ex.ToString();
+            }
+        }
+        [WebMethod]
+        public string SetReportSickWH(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat)
+        {
+            string error, result;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                using (cmd = new SqlCommand("INSERT INTO Deliver_WH (Mobile,Date,ReportIn,ReportOut,ReportAbsence,Lng,Lat) VALUES (@Mobile,@Date,@ReportIn,@ReportOut,@ReportAbsence,@Lng,@Lat)", connection))
+                {
+                    cmd.Parameters.AddWithValue("@Mobile", _mobile);
+                    cmd.Parameters.AddWithValue("@Date", _date);
+                    cmd.Parameters.AddWithValue("@ReportIn", _reportIn);
+                    cmd.Parameters.AddWithValue("@ReportOut", _reportOut);
+                    cmd.Parameters.AddWithValue("@ReportAbsence", _reportAbsence);
+                    cmd.Parameters.AddWithValue("@Lng", _lng);
+                    cmd.Parameters.AddWithValue("@Lat", _lat);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                return result = _reportAbsence; ;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                ex.ToString();
+                return error = ex.ToString();
+            }
         }
     }
 }

@@ -265,11 +265,11 @@ namespace Deliver_CRM_Droid
 			// aapt resource value: 0x7f08000d
 			public const int MobileNumber = 2131230733;
 			
-			// aapt resource value: 0x7f080014
-			public const int ReportIn = 2131230740;
-			
 			// aapt resource value: 0x7f080015
-			public const int ReportOut = 2131230741;
+			public const int ReportIn = 2131230741;
+			
+			// aapt resource value: 0x7f080016
+			public const int ReportOut = 2131230742;
 			
 			// aapt resource value: 0x7f080010
 			public const int ServiceURL = 2131230736;
@@ -289,11 +289,17 @@ namespace Deliver_CRM_Droid
 			// aapt resource value: 0x7f08000a
 			public const int auto = 2131230730;
 			
-			// aapt resource value: 0x7f080016
-			public const int btnReportIn = 2131230742;
+			// aapt resource value: 0x7f080019
+			public const int btnDayOff = 2131230745;
 			
 			// aapt resource value: 0x7f080017
-			public const int btnReportOut = 2131230743;
+			public const int btnReportIn = 2131230743;
+			
+			// aapt resource value: 0x7f080018
+			public const int btnReportOut = 2131230744;
+			
+			// aapt resource value: 0x7f080014
+			public const int btnReportSick = 2131230740;
 			
 			// aapt resource value: 0x7f08000b
 			public const int dark = 2131230731;
@@ -307,8 +313,8 @@ namespace Deliver_CRM_Droid
 			// aapt resource value: 0x7f08000c
 			public const int light = 2131230732;
 			
-			// aapt resource value: 0x7f080018
-			public const int map = 2131230744;
+			// aapt resource value: 0x7f08001a
+			public const int map = 2131230746;
 			
 			// aapt resource value: 0x7f080001
 			public const int none = 2131230721;
@@ -361,7 +367,10 @@ namespace Deliver_CRM_Droid
 			public const int Main = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int WH = 2130903041;
+			public const int ReportSick = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int WH = 2130903042;
 			
 			static Layout()
 			{

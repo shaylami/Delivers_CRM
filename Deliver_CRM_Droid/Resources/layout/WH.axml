@@ -22,15 +22,15 @@
             android:text="Date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
+            android:layout_marginRight="80dp"
             android:id="@+id/TodayDate"
             android:textSize="45px" />
-        <TextView
+        <DigitalClock
             android:text="Time"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/CurrentTime"
             android:gravity="center"
+            android:id="@+id/CurrentTime"
             android:textSize="45px" />
     </LinearLayout>
     <LinearLayout
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:text="כניסה"
             android:gravity="center"
-            android:layout_marginRight="100dp"
+            android:layout_marginRight="80dp"
             android:background="#ff0000"
             android:textSize="45px" />
         <TextView
@@ -53,19 +53,41 @@
             android:layout_height="wrap_content"
             android:text="יציאה"
             android:gravity="center"
-            android:background="#00FF00"
+            android:background="#ff0000"
             android:textSize="45px" />
     </LinearLayout>
-    <Button
-        android:text="דווח כניסה"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnReportIn" />
-    <Button
-        android:text="דווח יציאה"
-        android:layout_width="match_parent"
+        android:gravity="center">
+        <Button
+            android:text="דווח כניסה"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnReportIn" />
+        <Button
+            android:text="דווח יציאה"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnReportOut" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnReportOut" />
+        android:gravity="center">
+        <Button
+            android:text="דווח מחלה"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnReportSick" />
+        <Button
+            android:text="דווח חופש"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDayOff" />
+    </LinearLayout>
     <fragment
         android:id="@+id/map"
         android:layout_width="match_parent"

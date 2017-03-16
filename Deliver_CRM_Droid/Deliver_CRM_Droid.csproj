@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
+    <Compile Include="ReportSick.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web References\WebService\Reference.cs">
@@ -140,6 +141,9 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\WH.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ReportSick.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="Web References\WebService\delivercrmwebservice.wsdl" />
