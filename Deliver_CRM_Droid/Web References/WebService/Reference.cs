@@ -35,6 +35,8 @@ namespace Deliver_CRM_Droid.WebService {
         
         private System.Threading.SendOrPostCallback GetReportOutWHOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetReportSickWHOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SetReportInWHOperationCompleted;
         
         private System.Threading.SendOrPostCallback SetReportOutWHOperationCompleted;
@@ -87,6 +89,9 @@ namespace Deliver_CRM_Droid.WebService {
         
         /// <remarks/>
         public event GetReportOutWHCompletedEventHandler GetReportOutWHCompleted;
+        
+        /// <remarks/>
+        public event GetReportSickWHCompletedEventHandler GetReportSickWHCompleted;
         
         /// <remarks/>
         public event SetReportInWHCompletedEventHandler SetReportInWHCompleted;
@@ -185,6 +190,37 @@ namespace Deliver_CRM_Droid.WebService {
             if ((this.GetReportOutWHCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetReportOutWHCompleted(this, new GetReportOutWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReportSickWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetReportSickWH(string _mobile, string _date) {
+            object[] results = this.Invoke("GetReportSickWH", new object[] {
+                        _mobile,
+                        _date});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReportSickWHAsync(string _mobile, string _date) {
+            this.GetReportSickWHAsync(_mobile, _date, null);
+        }
+        
+        /// <remarks/>
+        public void GetReportSickWHAsync(string _mobile, string _date, object userState) {
+            if ((this.GetReportSickWHOperationCompleted == null)) {
+                this.GetReportSickWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReportSickWHOperationCompleted);
+            }
+            this.InvokeAsync("GetReportSickWH", new object[] {
+                        _mobile,
+                        _date}, this.GetReportSickWHOperationCompleted, userState);
+        }
+        
+        private void OnGetReportSickWHOperationCompleted(object arg) {
+            if ((this.GetReportSickWHCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReportSickWHCompleted(this, new GetReportSickWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -391,6 +427,32 @@ namespace Deliver_CRM_Droid.WebService {
         private object[] results;
         
         internal GetReportOutWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetReportSickWHCompletedEventHandler(object sender, GetReportSickWHCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReportSickWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReportSickWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

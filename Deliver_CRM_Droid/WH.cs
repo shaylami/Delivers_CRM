@@ -78,8 +78,15 @@ namespace Deliver_CRM_Droid
             }
             else
             {
-                _reportIn.Text = "כניסה : "+b;
-                _btnReportIn.Visibility = Android.Views.ViewStates.Invisible;
+                if (b != "מחלה")
+                {
+                    _reportIn.Text = "כניסה : " + b;
+                    _btnReportIn.Visibility = Android.Views.ViewStates.Invisible;
+                }
+                else
+                {
+                    _reportIn.Text = "מחלה";
+                }
             }
             if(string.IsNullOrEmpty(a) || (a == "-1"))
             {
@@ -87,8 +94,15 @@ namespace Deliver_CRM_Droid
             }
             else
             {
-                _reportOut.Text = "יציאה : "+a;
-                _btnReportOut.Visibility = Android.Views.ViewStates.Invisible;
+                if (a != "מחלה")
+                {
+                    _reportOut.Text = "יציאה : " + a;
+                    _btnReportOut.Visibility = Android.Views.ViewStates.Invisible;
+                }
+                else
+                {
+                    _reportOut.Text = "מחלה";
+                }
             }
 
         }

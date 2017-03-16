@@ -95,6 +95,60 @@ namespace Delivers_CRM
             }
         }
         [WebMethod]
+        public string GetReportSickWH(string _mobile, string _date)
+        {
+            string result, error, xml;
+            string a = _mobile;
+            string b = _date;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                connection.Open();
+                cmd = new SqlCommand("SELECT Mobile,Date,ReportAbsence FROM Deliver_WH WHERE Mobile ='" + _mobile + "' AND Date='" + _date + "'", connection);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+                xml = ds.GetXml();
+                result = ds.Tables[0].Rows[0]["ReportAbsence"].ToString();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                connection.Close();
+                return error = "-1";
+            }
+        }
+        [WebMethod]
+        public string GetReportDayOffWH(string _mobile, string _date)
+        {
+            string result, error, xml;
+            string a = _mobile;
+            string b = _date;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                connection.Open();
+                cmd = new SqlCommand("SELECT Mobile,Date,ReportAbsence FROM Deliver_WH WHERE Mobile ='" + _mobile + "' AND Date='" + _date + "'", connection);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+                xml = ds.GetXml();
+                result = ds.Tables[0].Rows[0]["ReportAbsence"].ToString();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                connection.Close();
+                return error = "-1";
+            }
+        }
+        [WebMethod]
         public string SetReportInWH(string _mobile, string _date, string _reportIn,string _reportAbsence, string _lng, string _lat)
         {
             string error,result;
@@ -179,32 +233,35 @@ namespace Delivers_CRM
                 return error = ex.ToString();
             }
         }
+        [WebMethod]
+        public string SetReportDayOffWH(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat)
+        {
+            string error, result;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                using (cmd = new SqlCommand("INSERT INTO Deliver_WH (Mobile,Date,ReportIn,ReportOut,ReportAbsence,Lng,Lat) VALUES (@Mobile,@Date,@ReportIn,@ReportOut,@ReportAbsence,@Lng,@Lat)", connection))
+                {
+                    cmd.Parameters.AddWithValue("@Mobile", _mobile);
+                    cmd.Parameters.AddWithValue("@Date", _date);
+                    cmd.Parameters.AddWithValue("@ReportIn", _reportIn);
+                    cmd.Parameters.AddWithValue("@ReportOut", _reportOut);
+                    cmd.Parameters.AddWithValue("@ReportAbsence", _reportAbsence);
+                    cmd.Parameters.AddWithValue("@Lng", _lng);
+                    cmd.Parameters.AddWithValue("@Lat", _lat);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                return result = _reportAbsence; ;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                ex.ToString();
+                return error = ex.ToString();
+            }
+        }
     }
 }
                 
-
-
-                //error = "-1";
-                //return error;
-
-        //public string ReportWHIn(string ReportIn)
-        //{
-        //    string query = "", Error = "";
-        //    try
-        //    {
-                
-
-        //    }
-        //    catch
-        //    {
-
-        //    }
-        //}
-        //public DataSet login(string _mobile)
-        //{
-        //    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
-        //    SqlDataAdapter da = new SqlDataAdapter("SELECT Deliver_Mobile FROM Deliver_Person WHERE Deliver_Mobile = '" + _mobile+"'", connection);
-        //    DataSet ds = new DataSet();
-        //    da.Fill(ds);
-        //    return ds;
-        //}

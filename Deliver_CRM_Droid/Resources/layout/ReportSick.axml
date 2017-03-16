@@ -30,9 +30,20 @@
             android:id="@+id/CurrentTime"
             android:textSize="45px" />
     </LinearLayout>
+    <TextView
+        android:text="דווח"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SickReport" />
     <Button
         android:text="דווח מחלה"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnReportSick" />
+  <Button
+    android:text="חזרה למסך ראשי"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/btnBack2WHPage" />
 </LinearLayout>

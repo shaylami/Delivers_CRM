@@ -21,8 +21,8 @@ namespace Deliver_CRM_Droid
         string lng = "";
         string Mobile, date;
         DigitalClock _time;
-        TextView _date, _mobile;
-        Button _ReportSick;
+        TextView _date, _mobile,_reportSick;
+        Button _ReportSick,_Back2WHPage;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,12 +32,31 @@ namespace Deliver_CRM_Droid
             GetMobileNumber();
             GetDateTime();
             GetCurrentLocation();
-
+            GetreportSick();
             _time = (DigitalClock)FindViewById(Resource.Id.CurrentTime);
             _ReportSick = (Button)FindViewById(Resource.Id.btnReportSick);
             _ReportSick.Click += (o, e) => { SetReportSick(); };
+            _Back2WHPage = (Button)FindViewById(Resource.Id.btnBack2WHPage);
+            _Back2WHPage.Click += (o, e) => { ReturnWhPage(); };
 
 
+        }
+        private void GetreportSick()
+        {
+            string b = "";
+            _reportSick = FindViewById<TextView>(Resource.Id.SickReport);
+            _ReportSick = (Button)FindViewById(Resource.Id.btnReportSick);
+            WebService.DeliverCRMWebService ws = new WebService.DeliverCRMWebService();
+            b = ws.GetReportSickWH(_mobile.Text, _date.Text);
+            if (string.IsNullOrEmpty(b) || (b == "-1"))
+            {
+                _reportSick.Text = "לא דווח מחלה";
+            }
+            else
+            {
+                _reportSick.Text = "דווח יום : " + b;
+                _ReportSick.Visibility = Android.Views.ViewStates.Invisible;
+            }
         }
         /// <summary>
         /// when vutten reportin clicked data will send to web service for insert to the DB
