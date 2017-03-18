@@ -37,11 +37,15 @@ namespace Deliver_CRM_Droid.WebService {
         
         private System.Threading.SendOrPostCallback GetReportSickWHOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetReportDayOffWHOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SetReportInWHOperationCompleted;
         
         private System.Threading.SendOrPostCallback SetReportOutWHOperationCompleted;
         
         private System.Threading.SendOrPostCallback SetReportSickWHOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetReportDayOffWHOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -94,6 +98,9 @@ namespace Deliver_CRM_Droid.WebService {
         public event GetReportSickWHCompletedEventHandler GetReportSickWHCompleted;
         
         /// <remarks/>
+        public event GetReportDayOffWHCompletedEventHandler GetReportDayOffWHCompleted;
+        
+        /// <remarks/>
         public event SetReportInWHCompletedEventHandler SetReportInWHCompleted;
         
         /// <remarks/>
@@ -101,6 +108,9 @@ namespace Deliver_CRM_Droid.WebService {
         
         /// <remarks/>
         public event SetReportSickWHCompletedEventHandler SetReportSickWHCompleted;
+        
+        /// <remarks/>
+        public event SetReportDayOffWHCompletedEventHandler SetReportDayOffWHCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDeliverMobile", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -225,6 +235,37 @@ namespace Deliver_CRM_Droid.WebService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReportDayOffWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetReportDayOffWH(string _mobile, string _date) {
+            object[] results = this.Invoke("GetReportDayOffWH", new object[] {
+                        _mobile,
+                        _date});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReportDayOffWHAsync(string _mobile, string _date) {
+            this.GetReportDayOffWHAsync(_mobile, _date, null);
+        }
+        
+        /// <remarks/>
+        public void GetReportDayOffWHAsync(string _mobile, string _date, object userState) {
+            if ((this.GetReportDayOffWHOperationCompleted == null)) {
+                this.GetReportDayOffWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReportDayOffWHOperationCompleted);
+            }
+            this.InvokeAsync("GetReportDayOffWH", new object[] {
+                        _mobile,
+                        _date}, this.GetReportDayOffWHOperationCompleted, userState);
+        }
+        
+        private void OnGetReportDayOffWHOperationCompleted(object arg) {
+            if ((this.GetReportDayOffWHCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReportDayOffWHCompleted(this, new GetReportDayOffWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetReportInWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string SetReportInWH(string _mobile, string _date, string _reportIn, string _reportAbsence, string _lng, string _lat) {
             object[] results = this.Invoke("SetReportInWH", new object[] {
@@ -340,6 +381,47 @@ namespace Deliver_CRM_Droid.WebService {
             if ((this.SetReportSickWHCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SetReportSickWHCompleted(this, new SetReportSickWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetReportDayOffWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SetReportDayOffWH(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat) {
+            object[] results = this.Invoke("SetReportDayOffWH", new object[] {
+                        _mobile,
+                        _date,
+                        _reportIn,
+                        _reportOut,
+                        _reportAbsence,
+                        _lng,
+                        _lat});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SetReportDayOffWHAsync(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat) {
+            this.SetReportDayOffWHAsync(_mobile, _date, _reportIn, _reportOut, _reportAbsence, _lng, _lat, null);
+        }
+        
+        /// <remarks/>
+        public void SetReportDayOffWHAsync(string _mobile, string _date, string _reportIn, string _reportOut, string _reportAbsence, string _lng, string _lat, object userState) {
+            if ((this.SetReportDayOffWHOperationCompleted == null)) {
+                this.SetReportDayOffWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetReportDayOffWHOperationCompleted);
+            }
+            this.InvokeAsync("SetReportDayOffWH", new object[] {
+                        _mobile,
+                        _date,
+                        _reportIn,
+                        _reportOut,
+                        _reportAbsence,
+                        _lng,
+                        _lat}, this.SetReportDayOffWHOperationCompleted, userState);
+        }
+        
+        private void OnSetReportDayOffWHOperationCompleted(object arg) {
+            if ((this.SetReportDayOffWHCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetReportDayOffWHCompleted(this, new SetReportDayOffWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -468,6 +550,32 @@ namespace Deliver_CRM_Droid.WebService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetReportDayOffWHCompletedEventHandler(object sender, GetReportDayOffWHCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReportDayOffWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReportDayOffWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void SetReportInWHCompletedEventHandler(object sender, SetReportInWHCompletedEventArgs e);
     
     /// <remarks/>
@@ -531,6 +639,32 @@ namespace Deliver_CRM_Droid.WebService {
         private object[] results;
         
         internal SetReportSickWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void SetReportDayOffWHCompletedEventHandler(object sender, SetReportDayOffWHCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SetReportDayOffWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SetReportDayOffWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -57,7 +57,9 @@ namespace Deliver_CRM_Droid
         }
         private void ReportDayOff()
         {
-
+            var intent = new Intent(this, typeof(ReportDayOff));
+            StartActivity(intent);
+            Finish();
         }
         /// <summary>
         /// Get from web service report in & reportout for current today date
@@ -179,12 +181,19 @@ namespace Deliver_CRM_Droid
         /// </summary>
         private async void GetCurrentLocation()
         {
-            var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 100; //100 is new default
-            var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
-            lat = position.Longitude.ToString();
-            lng = position.Latitude.ToString();
-            initializeMap();
+            try
+            {
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 100; //100 is new default
+                var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
+                lat = position.Longitude.ToString();
+                lng = position.Latitude.ToString();
+                initializeMap();
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
         /// <summary>
         /// init Map on layot

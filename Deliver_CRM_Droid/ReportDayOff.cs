@@ -9,52 +9,50 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Telephony;
 using Plugin.Geolocator;
+using Android.Telephony;
 
 namespace Deliver_CRM_Droid
 {
-    [Activity(Label = "דווח מחלה")]
-    public class ReportSick : Activity
+    [Activity(Label = "דווח יום חופש")]
+    public class ReportDayOff : Activity
     {
         string lat = "";
         string lng = "";
         string Mobile, date;
         DigitalClock _time;
-        TextView _date, _mobile,_reportSick;
-        Button _ReportSick,_Back2WHPage;
+        TextView _date, _mobile, _reportDayOff;
+        Button _ReportDayOff, _Back2WHPage;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.ReportSick);
+            SetContentView(Resource.Layout.ReportDayOff);
             // Create your application here
 
             GetMobileNumber();
             GetDateTime();
-            GetreportSick();
+            GetreportDayOff();
             _time = (DigitalClock)FindViewById(Resource.Id.CurrentTime);
-            _ReportSick = (Button)FindViewById(Resource.Id.btnReportSick);
-            _ReportSick.Click += (o, e) => { SetReportSick(); };
+            _ReportDayOff = (Button)FindViewById(Resource.Id.btnReportDayOff);
+            _ReportDayOff.Click += (o, e) => { SetReportSick(); };
             _Back2WHPage = (Button)FindViewById(Resource.Id.btnBack2WHPage);
             _Back2WHPage.Click += (o, e) => { ReturnWhPage(); };
-
-
         }
-        private void GetreportSick()
+        private void GetreportDayOff()
         {
             string b = "";
-            _reportSick = FindViewById<TextView>(Resource.Id.SickReport);
-            _ReportSick = (Button)FindViewById(Resource.Id.btnReportSick);
+            _reportDayOff = FindViewById<TextView>(Resource.Id.DayOffReport);
+            _ReportDayOff = (Button)FindViewById(Resource.Id.btnReportDayOff);
             WebService.DeliverCRMWebService ws = new WebService.DeliverCRMWebService();
-            b = ws.GetReportSickWH(_mobile.Text, _date.Text);
+            b = ws.GetReportDayOffWH(_mobile.Text, _date.Text);
             if (string.IsNullOrEmpty(b) || (b == "-1"))
             {
-                _reportSick.Text = "לא דווח מחלה";
+                _reportDayOff.Text = "לא דווח חופש";
             }
             else
             {
-                _reportSick.Text = "דווח יום : " + b;
-                _ReportSick.Visibility = Android.Views.ViewStates.Invisible;
+                _reportDayOff.Text = "דווח יום : " + b;
+                _ReportDayOff.Visibility = Android.Views.ViewStates.Invisible;
             }
         }
         /// <summary>
@@ -65,9 +63,9 @@ namespace Deliver_CRM_Droid
 
             try
             {
-                string value, _reportAbsence = "מחלה";
+                string value, _reportAbsence = "חופש";
                 WebService.DeliverCRMWebService ws = new WebService.DeliverCRMWebService();
-                value = ws.SetReportSickWH(_mobile.Text, _date.Text,"08:00","17:00", _reportAbsence, lng, lat);
+                value = ws.SetReportDayOffWH(_mobile.Text, _date.Text, "08:00", "17:00", _reportAbsence, lng, lat);
                 Toast.MakeText(this, "data send to server", ToastLength.Short).Show();
                 ReturnWhPage();
             }
@@ -110,6 +108,5 @@ namespace Deliver_CRM_Droid
                 ex.ToString();
             }
         }
-
     }
 }
