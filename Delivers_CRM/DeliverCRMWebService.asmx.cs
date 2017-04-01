@@ -41,6 +41,34 @@ namespace Delivers_CRM
 
         }
         [WebMethod]
+        public string SetConnectionIsAlive(string _date,string _time,string _mobile,string _connectionType, string _isAlive)
+        {
+            string error, result;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                using (cmd = new SqlCommand("INSERT INTO ConnectionStatus (Date,Time,Mobile,ConnectionType,IsAlive) VALUES (@Date,@Time,@Mobile,@ConnectionType,@IsAlive)", connection))
+                {
+                    cmd.Parameters.AddWithValue("@Date", _date);
+                    cmd.Parameters.AddWithValue("@Time", _time);
+                    cmd.Parameters.AddWithValue("@Mobile", _mobile);
+                    cmd.Parameters.AddWithValue("@ConnectionType", _connectionType);
+                    cmd.Parameters.AddWithValue("@IsAlive", _isAlive);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                return result = _isAlive;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                ex.ToString();
+                return error = "-1";
+            }
+
+        }
+        [WebMethod]
         public string GetReportInWH(string _mobile,string _date)
         {
             string result, error,xml;
@@ -68,7 +96,7 @@ namespace Delivers_CRM
             }
         }
         [WebMethod]
-        public string GetReportOutWH(string _mobile, string _date)
+        public string GetReportWH(string _mobile, string _date)
         {
             string result, error, xml;
             string a = _mobile;
@@ -77,14 +105,42 @@ namespace Delivers_CRM
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
                 connection.Open();
-                cmd = new SqlCommand("SELECT Mobile,Date,ReportIn,ReportOut FROM Deliver_WH WHERE Mobile ='" + _mobile + "' AND Date='" + _date + "'", connection);
+                cmd = new SqlCommand("SELECT Mobile,Date,ReportIn,ReportOut,ReportAbsence,Lng,Lat FROM Deliver_WH WHERE Mobile ='" + _mobile + "' AND Date='" + _date + "'", connection);
                 cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 connection.Close();
                 xml = ds.GetXml();
-                result = ds.Tables[0].Rows[0]["ReportOut"].ToString();
+                result = xml;
+                //result = ds.Tables[0].Rows[0]["ReportIn"].ToString();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                connection.Close();
+                return error = "-1";
+            }
+        }
+        [WebMethod]
+        public string GetReportOutWH(string _mobile, string _date,string _reportAbsence)
+        {
+            string result, error, xml;
+            string a = _mobile;
+            string b = _date;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ToString());
+                connection.Open();
+                cmd = new SqlCommand("SELECT * FROM Deliver_WH WHERE Mobile ='" + _mobile + "' AND Date='" + _date + "'", connection);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                connection.Close();
+                xml = ds.GetXml();
+                result = ds.Tables[0].Rows[1]["ReportOut"].ToString();
                 return result;
             }
             catch (Exception ex)

@@ -163,9 +163,9 @@
             <asp:CommandField ButtonType="Button" CancelText="ביטול" DeleteText="מחק" EditText="עריכה" InsertText="הוסף" NewText="חדש" SelectText="בחר" ShowInsertButton="True" UpdateText="עדכן" />
         </Fields>
     </asp:DetailsView>
-    <asp:GridView ID="GvAllDelives" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Deliver_ID" DataSourceID="SqlDataSourceDelivers" CssClass="gridview">
+    <asp:GridView ID="GvAllDelives" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Deliver_ID" DataSourceID="SqlDataSourceDelivers" CssClass="gridview" OnSelectedIndexChanged="GvAllDelives_SelectedIndexChanged">
         <Columns>
-            <asp:CommandField ButtonType="Button" CancelText="ביטול" DeleteText="מחיקה" EditText="עריכה" InsertText="הוספה" NewText="חדש" SelectText="בחר" ShowEditButton="True" UpdateText="עדכן" />
+            <asp:CommandField ButtonType="Button" CancelText="ביטול" DeleteText="מחיקה" EditText="עריכה" InsertText="הוספה" NewText="חדש" SelectText="בחר" ShowEditButton="True" UpdateText="עדכן" ShowSelectButton="True" />
             <asp:BoundField DataField="Deliver_ID" HeaderText="Deliver_ID" InsertVisible="False" ReadOnly="True" SortExpression="Deliver_ID" Visible="False" />
             <asp:TemplateField HeaderText="שם מלא" SortExpression="Deliver_FULLName">
                 <EditItemTemplate>
@@ -181,30 +181,6 @@
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Deliver_Blue_ID") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="מס' רישיון נהיגה" SortExpression="Deliver_Lic_ID">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Deliver_Lic_ID") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Deliver_Lic_ID") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="תוקף רישיון נהיגה" SortExpression="Deliver_Lic_Expration_date">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Deliver_Lic_Expration_date") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("Deliver_Lic_Expration_date") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="תאריך לידה" SortExpression="Deliver_Birth_Date">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Deliver_Birth_Date") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Deliver_Birth_Date") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="טלפון נייד" SortExpression="Deliver_Mobile">
@@ -239,32 +215,25 @@
                     <asp:Label ID="Label9" runat="server" Text='<%# Bind("Deliver_Email") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="איש קשר בחרום" SortExpression="Emrg_Contact_Name">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("Emrg_Contact_Name") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label10" runat="server" Text='<%# Bind("Emrg_Contact_Name") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="טלפון איש קשר בחרום" SortExpression="Emrg_Contact_Phone">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox11" runat="server" Text='<%# Bind("Emrg_Contact_Phone") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label11" runat="server" Text='<%# Bind("Emrg_Contact_Phone") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="קרבה איש קשר בחרום" SortExpression="Emrg_Contact_Reletive">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox12" runat="server" Text='<%# Bind("Emrg_Contact_Reletive") %>'></asp:TextBox>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label12" runat="server" Text='<%# Bind("Emrg_Contact_Reletive") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <asp:DetailsView ID="DVShowDetails" runat="server" Height="50px" Width="400px" AutoGenerateRows="False" DataKeyNames="Deliver_ID">
+        <Fields>
+            <asp:BoundField DataField="Deliver_ID" HeaderText="מזהה מערכת" InsertVisible="False" ReadOnly="True" SortExpression="Deliver_ID" />
+            <asp:BoundField DataField="Deliver_FULLName" HeaderText="שם מלא" SortExpression="Deliver_FULLName" />
+            <asp:BoundField DataField="Deliver_Blue_ID" HeaderText="ת&quot;ז" SortExpression="Deliver_Blue_ID" />
+            <asp:BoundField DataField="Deliver_Lic_ID" HeaderText="מס' רישיון נהיגה" SortExpression="Deliver_Lic_ID" />
+            <asp:BoundField DataField="Deliver_Lic_Expration_date" HeaderText="תוקף רישיון נהיגה" SortExpression="Deliver_Lic_Expration_date" />
+            <asp:BoundField DataField="Deliver_Birth_Date" HeaderText="תאריך לידה" SortExpression="Deliver_Birth_Date" />
+            <asp:BoundField DataField="Deliver_Mobile" HeaderText="נייד" SortExpression="Deliver_Mobile" />
+            <asp:BoundField DataField="Deliver_Phone" HeaderText="נייח" SortExpression="Deliver_Phone" />
+            <asp:BoundField DataField="Deliver_Address" HeaderText="כתובת" SortExpression="Deliver_Address" />
+            <asp:BoundField DataField="Deliver_Email" HeaderText="דוא&quot;ל" SortExpression="Deliver_Email" />
+            <asp:BoundField DataField="Emrg_Contact_Name" HeaderText="איש קשר בחרום" SortExpression="Emrg_Contact_Name" />
+            <asp:BoundField DataField="Emrg_Contact_Phone" HeaderText="טל' איש קשר בחרום" SortExpression="Emrg_Contact_Phone" />
+            <asp:BoundField DataField="Emrg_Contact_Reletive" HeaderText="קרבה של איש קשר בחרום" SortExpression="Emrg_Contact_Reletive" />
+        </Fields>
+    </asp:DetailsView>
     <asp:SqlDataSource ID="SqlDataSourceDelivers" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" DeleteCommand="DELETE FROM [Deliver_Person] WHERE [Deliver_ID] = @original_Deliver_ID AND (([Deliver_FULLName] = @original_Deliver_FULLName) OR ([Deliver_FULLName] IS NULL AND @original_Deliver_FULLName IS NULL)) AND (([Deliver_Blue_ID] = @original_Deliver_Blue_ID) OR ([Deliver_Blue_ID] IS NULL AND @original_Deliver_Blue_ID IS NULL)) AND (([Deliver_Lic_ID] = @original_Deliver_Lic_ID) OR ([Deliver_Lic_ID] IS NULL AND @original_Deliver_Lic_ID IS NULL)) AND (([Deliver_Lic_Expration_date] = @original_Deliver_Lic_Expration_date) OR ([Deliver_Lic_Expration_date] IS NULL AND @original_Deliver_Lic_Expration_date IS NULL)) AND (([Deliver_Birth_Date] = @original_Deliver_Birth_Date) OR ([Deliver_Birth_Date] IS NULL AND @original_Deliver_Birth_Date IS NULL)) AND (([Deliver_Mobile] = @original_Deliver_Mobile) OR ([Deliver_Mobile] IS NULL AND @original_Deliver_Mobile IS NULL)) AND (([Deliver_Phone] = @original_Deliver_Phone) OR ([Deliver_Phone] IS NULL AND @original_Deliver_Phone IS NULL)) AND (([Deliver_Address] = @original_Deliver_Address) OR ([Deliver_Address] IS NULL AND @original_Deliver_Address IS NULL)) AND (([Deliver_Email] = @original_Deliver_Email) OR ([Deliver_Email] IS NULL AND @original_Deliver_Email IS NULL)) AND (([Emrg_Contact_Name] = @original_Emrg_Contact_Name) OR ([Emrg_Contact_Name] IS NULL AND @original_Emrg_Contact_Name IS NULL)) AND (([Emrg_Contact_Phone] = @original_Emrg_Contact_Phone) OR ([Emrg_Contact_Phone] IS NULL AND @original_Emrg_Contact_Phone IS NULL)) AND (([Emrg_Contact_Reletive] = @original_Emrg_Contact_Reletive) OR ([Emrg_Contact_Reletive] IS NULL AND @original_Emrg_Contact_Reletive IS NULL))" InsertCommand="INSERT INTO [Deliver_Person] ([Deliver_FULLName], [Deliver_Blue_ID], [Deliver_Lic_ID], [Deliver_Lic_Expration_date], [Deliver_Birth_Date], [Deliver_Mobile], [Deliver_Phone], [Deliver_Address], [Deliver_Email], [Emrg_Contact_Name], [Emrg_Contact_Phone], [Emrg_Contact_Reletive]) VALUES (@Deliver_FULLName, @Deliver_Blue_ID, @Deliver_Lic_ID, @Deliver_Lic_Expration_date, @Deliver_Birth_Date, @Deliver_Mobile, @Deliver_Phone, @Deliver_Address, @Deliver_Email, @Emrg_Contact_Name, @Emrg_Contact_Phone, @Emrg_Contact_Reletive)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Deliver_Person]" UpdateCommand="UPDATE [Deliver_Person] SET [Deliver_FULLName] = @Deliver_FULLName, [Deliver_Blue_ID] = @Deliver_Blue_ID, [Deliver_Lic_ID] = @Deliver_Lic_ID, [Deliver_Lic_Expration_date] = @Deliver_Lic_Expration_date, [Deliver_Birth_Date] = @Deliver_Birth_Date, [Deliver_Mobile] = @Deliver_Mobile, [Deliver_Phone] = @Deliver_Phone, [Deliver_Address] = @Deliver_Address, [Deliver_Email] = @Deliver_Email, [Emrg_Contact_Name] = @Emrg_Contact_Name, [Emrg_Contact_Phone] = @Emrg_Contact_Phone, [Emrg_Contact_Reletive] = @Emrg_Contact_Reletive WHERE [Deliver_ID] = @original_Deliver_ID AND (([Deliver_FULLName] = @original_Deliver_FULLName) OR ([Deliver_FULLName] IS NULL AND @original_Deliver_FULLName IS NULL)) AND (([Deliver_Blue_ID] = @original_Deliver_Blue_ID) OR ([Deliver_Blue_ID] IS NULL AND @original_Deliver_Blue_ID IS NULL)) AND (([Deliver_Lic_ID] = @original_Deliver_Lic_ID) OR ([Deliver_Lic_ID] IS NULL AND @original_Deliver_Lic_ID IS NULL)) AND (([Deliver_Lic_Expration_date] = @original_Deliver_Lic_Expration_date) OR ([Deliver_Lic_Expration_date] IS NULL AND @original_Deliver_Lic_Expration_date IS NULL)) AND (([Deliver_Birth_Date] = @original_Deliver_Birth_Date) OR ([Deliver_Birth_Date] IS NULL AND @original_Deliver_Birth_Date IS NULL)) AND (([Deliver_Mobile] = @original_Deliver_Mobile) OR ([Deliver_Mobile] IS NULL AND @original_Deliver_Mobile IS NULL)) AND (([Deliver_Phone] = @original_Deliver_Phone) OR ([Deliver_Phone] IS NULL AND @original_Deliver_Phone IS NULL)) AND (([Deliver_Address] = @original_Deliver_Address) OR ([Deliver_Address] IS NULL AND @original_Deliver_Address IS NULL)) AND (([Deliver_Email] = @original_Deliver_Email) OR ([Deliver_Email] IS NULL AND @original_Deliver_Email IS NULL)) AND (([Emrg_Contact_Name] = @original_Emrg_Contact_Name) OR ([Emrg_Contact_Name] IS NULL AND @original_Emrg_Contact_Name IS NULL)) AND (([Emrg_Contact_Phone] = @original_Emrg_Contact_Phone) OR ([Emrg_Contact_Phone] IS NULL AND @original_Emrg_Contact_Phone IS NULL)) AND (([Emrg_Contact_Reletive] = @original_Emrg_Contact_Reletive) OR ([Emrg_Contact_Reletive] IS NULL AND @original_Emrg_Contact_Reletive IS NULL))">
         <DeleteParameters>
             <asp:Parameter Name="original_Deliver_ID" Type="Int64" />

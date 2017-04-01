@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
         android:text="Mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:id="@+id/Mobile"
         android:textSize="45px" />
     <LinearLayout
@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="80dp"
+            android:layout_marginLeft="40dp"
             android:id="@+id/TodayDate"
             android:textSize="45px" />
         <DigitalClock
@@ -41,9 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnReportSick" />
-  <Button
-    android:text="חזרה למסך ראשי"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnBack2WHPage" />
+    <Button
+        android:text="חזרה למסך ראשי"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnBack2WHPage" />
 </LinearLayout>

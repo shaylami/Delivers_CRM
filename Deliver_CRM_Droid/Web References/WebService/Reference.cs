@@ -31,7 +31,11 @@ namespace Deliver_CRM_Droid.WebService {
         
         private System.Threading.SendOrPostCallback GetDeliverMobileOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SetConnectionIsAliveOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetReportInWHOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetReportWHOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetReportOutWHOperationCompleted;
         
@@ -89,7 +93,13 @@ namespace Deliver_CRM_Droid.WebService {
         public event GetDeliverMobileCompletedEventHandler GetDeliverMobileCompleted;
         
         /// <remarks/>
+        public event SetConnectionIsAliveCompletedEventHandler SetConnectionIsAliveCompleted;
+        
+        /// <remarks/>
         public event GetReportInWHCompletedEventHandler GetReportInWHCompleted;
+        
+        /// <remarks/>
+        public event GetReportWHCompletedEventHandler GetReportWHCompleted;
         
         /// <remarks/>
         public event GetReportOutWHCompletedEventHandler GetReportOutWHCompleted;
@@ -142,6 +152,43 @@ namespace Deliver_CRM_Droid.WebService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetConnectionIsAlive", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SetConnectionIsAlive(string _date, string _time, string _mobile, string _connectionType, string _isAlive) {
+            object[] results = this.Invoke("SetConnectionIsAlive", new object[] {
+                        _date,
+                        _time,
+                        _mobile,
+                        _connectionType,
+                        _isAlive});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SetConnectionIsAliveAsync(string _date, string _time, string _mobile, string _connectionType, string _isAlive) {
+            this.SetConnectionIsAliveAsync(_date, _time, _mobile, _connectionType, _isAlive, null);
+        }
+        
+        /// <remarks/>
+        public void SetConnectionIsAliveAsync(string _date, string _time, string _mobile, string _connectionType, string _isAlive, object userState) {
+            if ((this.SetConnectionIsAliveOperationCompleted == null)) {
+                this.SetConnectionIsAliveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetConnectionIsAliveOperationCompleted);
+            }
+            this.InvokeAsync("SetConnectionIsAlive", new object[] {
+                        _date,
+                        _time,
+                        _mobile,
+                        _connectionType,
+                        _isAlive}, this.SetConnectionIsAliveOperationCompleted, userState);
+        }
+        
+        private void OnSetConnectionIsAliveOperationCompleted(object arg) {
+            if ((this.SetConnectionIsAliveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetConnectionIsAliveCompleted(this, new SetConnectionIsAliveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReportInWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string GetReportInWH(string _mobile, string _date) {
             object[] results = this.Invoke("GetReportInWH", new object[] {
@@ -173,27 +220,60 @@ namespace Deliver_CRM_Droid.WebService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReportOutWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetReportOutWH(string _mobile, string _date) {
-            object[] results = this.Invoke("GetReportOutWH", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReportWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetReportWH(string _mobile, string _date) {
+            object[] results = this.Invoke("GetReportWH", new object[] {
                         _mobile,
                         _date});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetReportOutWHAsync(string _mobile, string _date) {
-            this.GetReportOutWHAsync(_mobile, _date, null);
+        public void GetReportWHAsync(string _mobile, string _date) {
+            this.GetReportWHAsync(_mobile, _date, null);
         }
         
         /// <remarks/>
-        public void GetReportOutWHAsync(string _mobile, string _date, object userState) {
+        public void GetReportWHAsync(string _mobile, string _date, object userState) {
+            if ((this.GetReportWHOperationCompleted == null)) {
+                this.GetReportWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReportWHOperationCompleted);
+            }
+            this.InvokeAsync("GetReportWH", new object[] {
+                        _mobile,
+                        _date}, this.GetReportWHOperationCompleted, userState);
+        }
+        
+        private void OnGetReportWHOperationCompleted(object arg) {
+            if ((this.GetReportWHCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReportWHCompleted(this, new GetReportWHCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReportOutWH", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetReportOutWH(string _mobile, string _date, string _reportAbsence) {
+            object[] results = this.Invoke("GetReportOutWH", new object[] {
+                        _mobile,
+                        _date,
+                        _reportAbsence});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReportOutWHAsync(string _mobile, string _date, string _reportAbsence) {
+            this.GetReportOutWHAsync(_mobile, _date, _reportAbsence, null);
+        }
+        
+        /// <remarks/>
+        public void GetReportOutWHAsync(string _mobile, string _date, string _reportAbsence, object userState) {
             if ((this.GetReportOutWHOperationCompleted == null)) {
                 this.GetReportOutWHOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReportOutWHOperationCompleted);
             }
             this.InvokeAsync("GetReportOutWH", new object[] {
                         _mobile,
-                        _date}, this.GetReportOutWHOperationCompleted, userState);
+                        _date,
+                        _reportAbsence}, this.GetReportOutWHOperationCompleted, userState);
         }
         
         private void OnGetReportOutWHOperationCompleted(object arg) {
@@ -472,6 +552,32 @@ namespace Deliver_CRM_Droid.WebService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void SetConnectionIsAliveCompletedEventHandler(object sender, SetConnectionIsAliveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SetConnectionIsAliveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SetConnectionIsAliveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
     public delegate void GetReportInWHCompletedEventHandler(object sender, GetReportInWHCompletedEventArgs e);
     
     /// <remarks/>
@@ -483,6 +589,32 @@ namespace Deliver_CRM_Droid.WebService {
         private object[] results;
         
         internal GetReportInWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetReportWHCompletedEventHandler(object sender, GetReportWHCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReportWHCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReportWHCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

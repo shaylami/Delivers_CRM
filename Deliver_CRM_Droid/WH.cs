@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Text;
-
 using Android.App;
 using Android.OS;
 using Android.Widget;
@@ -9,31 +7,28 @@ using Android.Gms.Maps.Model;
 using Android.Support.V4.App;
 using Plugin.Geolocator;
 using Android.Telephony;
-using System.Xml.Linq;
-using System.Linq;
-using Android.Locations;
-using Android.Runtime;
 using Android.Content;
+
 
 namespace Deliver_CRM_Droid
 {
     [Activity(Label = "דווח נוכחות")]
-    public class WH : Activity, IOnMapReadyCallback, ILocationListener
+    public class WH : Activity, IOnMapReadyCallback
     {
         private GoogleMap mMap;
-        string lat = "" ;
-        string lng = "" ;
-        string Mobile,date;
+        string lat = "", lat2 = "", DestenationLat = "";
+        string lng = "", lng2 = "", DestenationLng = "";
+        string Mobile, date;
         DigitalClock _time;
-        TextView _date, _mobile,_lat,_lng,_reportIn,_reportOut;
-        Button _btnReportIn, _btnReportOut,_btnReportSick,_btnReportDayOff;
+        TextView _date, _mobile, _lat, _lng, _reportIn, _reportOut;
+        Button _btnReportIn, _btnReportOut, _btnReportSick, _btnReportDayOff;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.WH);
             // Create your application here
             GetDateTime();
-            GetMobileNumber();       
+            GetMobileNumber();
             GetCurrentLocation();
             CheckReportingTodayDate();
             _time = (DigitalClock)FindViewById(Resource.Id.CurrentTime);
@@ -49,6 +44,7 @@ namespace Deliver_CRM_Droid
             _btnReportDayOff = (Button)FindViewById(Resource.Id.btnDayOff);
             _btnReportDayOff.Click += (o, e) => { ReportDayOff(); };
         }
+
         private void ReportSickDay()
         {
             var intent = new Intent(this, typeof(ReportSick));
@@ -66,23 +62,24 @@ namespace Deliver_CRM_Droid
         /// </summary>
         public void CheckReportingTodayDate()
         {
-            string b = "", a = "";
+            string In = "", Out = "",AbsReport="";
             _reportIn = FindViewById<TextView>(Resource.Id.ReportIn);
             _reportOut = FindViewById<TextView>(Resource.Id.ReportOut);
             _btnReportIn = (Button)FindViewById(Resource.Id.btnReportIn);
             _btnReportOut = (Button)FindViewById(Resource.Id.btnReportOut);
             WebService.DeliverCRMWebService ws = new WebService.DeliverCRMWebService();
-            b = ws.GetReportInWH(_mobile.Text, _date.Text);
-            a = ws.GetReportOutWH(_mobile.Text, _date.Text);
-            if (string.IsNullOrEmpty(b) || (b == "-1"))
+            In = ws.GetReportInWH(_mobile.Text, _date.Text);
+            Out = ws.GetReportOutWH(_mobile.Text, _date.Text,AbsReport);
+            if (string.IsNullOrEmpty(In) || (In == "-1"))
             {
                 _reportIn.Text = "כניסה : "+"לא דווח";               
             }
             else
             {
-                if (b != "מחלה")
+                if (In != "מחלה")
                 {
-                    _reportIn.Text = "כניסה : " + b;
+                    _reportIn.Text = "כניסה : " + In;
+                    _reportIn.SetBackgroundColor(Android.Graphics.Color.CadetBlue);
                     _btnReportIn.Visibility = Android.Views.ViewStates.Invisible;
                 }
                 else
@@ -90,15 +87,16 @@ namespace Deliver_CRM_Droid
                     _reportIn.Text = "מחלה";
                 }
             }
-            if(string.IsNullOrEmpty(a) || (a == "-1"))
+            if(string.IsNullOrEmpty(Out) || (Out == "-1"))
             {
                 _reportOut.Text = "יציאה : "+"לא דווח";
             }
             else
             {
-                if (a != "מחלה")
+                if (Out != "מחלה")
                 {
-                    _reportOut.Text = "יציאה : " + a;
+                    _reportOut.Text = "יציאה : " + Out;
+                    _reportOut.SetBackgroundColor(Android.Graphics.Color.CadetBlue);
                     _btnReportOut.Visibility = Android.Views.ViewStates.Invisible;
                 }
                 else
@@ -183,12 +181,30 @@ namespace Deliver_CRM_Droid
         {
             try
             {
-                var locator = CrossGeolocator.Current;
-                locator.DesiredAccuracy = 100; //100 is new default
-                var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
-                lat = position.Longitude.ToString();
-                lng = position.Latitude.ToString();
-                initializeMap();
+                if(lat =="" && lng == "")
+                {
+                    var locator = CrossGeolocator.Current;
+                    locator.DesiredAccuracy = 100; //100 is new default
+                    var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
+                    lat = position.Longitude.ToString();
+                    lng = position.Latitude.ToString();
+                    initializeMap();
+                }
+                else
+                {
+                    var locator = CrossGeolocator.Current;
+                    locator.DesiredAccuracy = 100; //100 is new default
+                    var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
+                    lat2 = position.Longitude.ToString();
+                    lng2 = position.Latitude.ToString();
+                    if(lat != lat2 || lng != lng2)
+                    {
+                        lat = lat2;
+                        lng = lng2;
+                        initializeMap();
+                    }
+                }
+
             }
             catch(Exception ex)
             {
@@ -236,24 +252,5 @@ namespace Deliver_CRM_Droid
             
         }
 
-        public void OnLocationChanged(Location location)
-        {
-            GetCurrentLocation();
-        }
-
-        public void OnProviderDisabled(string provider)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnProviderEnabled(string provider)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
